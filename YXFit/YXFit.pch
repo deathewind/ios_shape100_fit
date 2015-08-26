@@ -1,0 +1,68 @@
+//
+//  YXFit.pch
+//  YXFit
+//
+//  Created by 何军 on 6/8/15.
+//  Copyright (c) 2015年 itcast. All rights reserved.
+//
+
+#ifndef YXFit_YXFit_pch
+#define YXFit_YXFit_pch
+
+#import "UIImage+RenderedImage.h"
+#import "YXTabBarView.h"
+#import "YXNetworkingTool.h"
+//#import "AFHTTPRequestOperationManager.h"
+////#import "GTMBase64.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+RenderedImage.h"
+#import "UIView+Frame.h"
+#import "Model_product.h"
+#import "Model_order.h"
+#import "MJRefresh.h"
+#import "UIUtils.h"
+//#import "MLNavigationController.h"
+//#import "UIImageView+AFNetworking.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef DEBUG
+#define YXLog(...) NSLog(__VA_ARGS__)
+#else
+#define YXLog(...) /* */
+#endif
+//获取设备的物理高度和宽度
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+//颜色
+#undef  RGB
+#define RGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+//字体
+#undef  YXCharacterFont
+#define YXCharacterFont(s)    [UIFont fontWithName:@"Helvetica" size:s]
+#undef  YXCharacterBoldFont
+#define YXCharacterBoldFont(s)    [UIFont fontWithName:@"Helvetica-Bold" size:s]
+
+#define kUserBackgroundPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"myBackground.png"]
+
+
+#define stateCount 50
+#define StatusBarHeight 20  //状态栏高度
+
+
+#define YXToken             @"YXToken"
+#define YXTokenSecret       @"YXTokenSecret"
+#define YXUserName          @"YXUserName"
+#define YXUserId            @"YXUserId"
+#define YXUserSex           @"YXUserSex"
+
+//#define kUserInfo           @"YXuserInfo"
+//#define kUserName           @"YXuserName"
+//#define kUserSign           @"YXuserSign"
+#define YXUserIcon           @"YXUserIcon"
+//#define kUserSex            @"YXuserSex"
+//#define kUserHeight         @"YXuserHeight"
+//#define kUserWeight         @"YXuserWeight"
+//#define kUserBMI            @"YXuserBMI"
+//#define kUserBirthday       @"YXuserBirthday"
+//#define kUserClubAddress    @"YXuserClubAddress"
+#endif
