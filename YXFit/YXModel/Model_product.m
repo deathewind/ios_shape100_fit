@@ -15,7 +15,7 @@
     product.product_name = [dict objectForKey:@"name"];
     product.product_price = [dict objectForKey:@"price"];
     product.product_standard_price = [dict objectForKey:@"standard_price"];
-    product.product_count = [dict objectForKey:@"count"];
+    product.product_num = [NSString stringWithFormat:@"%@", [dict objectForKey:@"num"]];
     product.product_description = [dict objectForKey:@"description"];
     product.product_created = [dict objectForKey:@"created"];
     product.product_modified = [dict objectForKey:@"modified"];

@@ -200,6 +200,20 @@ static YXNetworkingTool *networkManager = nil;
     }];
 
 }
+- (void)checkVersionSuccess:(Success)success failure:(Failure)failure{
+    NSString *string_url = [YXHttp stringByAppendingString:YXCheckUpdate];
+    NSString *appCurVersion = [NSString stringWithFormat:@"%@.%@",[UIUtils Version],[UIUtils buildVersion]];
+    [self noLoginWithRequest:GET baseurl:string_url paremeter:@{@"app_key" : APP_KEY, @"version" : appCurVersion} success:^(id JSON) {
+        NSString *hasVersion = [NSString stringWithFormat:@"%@",JSON[@"has_new_version"]];
+        if ([hasVersion isEqualToString:@"1"]) {
+            success(JSON);
+        }else{
+            failure(nil, nil);
+        }
+    } failure:^(NSError *error, id JSON) {
+        failure(error, JSON);
+    }];
+}
 //修改用户信息
 - (void)updataUserInfo:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure{
     NSString *string_url = [YXHttp stringByAppendingString:YXUserUpdate];
@@ -215,7 +229,7 @@ static YXNetworkingTool *networkManager = nil;
 - (void)getProductListSuccess:(Success)success failure:(Failure)failure{
     NSString *string_url = [YXHttp stringByAppendingString:YXProductList];
     [self noLoginWithRequest:GET baseurl:string_url paremeter:nil success:^(id JSON) {
-      //  YXLog(@"%@", JSON);
+        YXLog(@"%@", JSON);
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[JSON count]];
         for (NSDictionary *attributes in JSON) {
             Model_product *product = [Model_product productWithDictionary:attributes];
@@ -287,9 +301,10 @@ static YXNetworkingTool *networkManager = nil;
 // ---------------------------------------------------------------------------------//
 #pragma mark 统一请求接口 需要登录
 - (void)loginWithRequest:(RequestMethod)method baseurl:(NSString *)url paremeter:(NSDictionary*)parameters success:(Success)success failure:(Failure)failure{
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"YXToken"];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:YXToken];
     if (token == nil) {
         YXLog(@"token = nil");
+        
 //        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"还未登录,是否现在登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
 //        [alert show];
       //  return;
@@ -308,7 +323,7 @@ static YXNetworkingTool *networkManager = nil;
     }else if (method==POST){
         requestMthodString=@"POST";
     }
-    NSString *tokenSecret = [[NSUserDefaults standardUserDefaults] objectForKey:@"YXTokenSecret"];
+    NSString *tokenSecret = [[NSUserDefaults standardUserDefaults] objectForKey:YXTokenSecret];
     [self hmac_sha1_signature:requestMthodString url:url param:info token_secret:tokenSecret];
     //生成oath报文头部(带有token的)
     NSString *oauthHeader = [self oathHeaderFromInfoWithToken:info];

@@ -107,7 +107,7 @@
     return 50;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"YXToken"];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:YXToken];
  
     NSString *title = [self.dataArray objectAtIndex:indexPath.row];
     if ([title isEqualToString:@"个人信息"]) {
@@ -123,6 +123,10 @@
         [self pushViewController:about];
     }
     if ([title isEqualToString:@"我的优惠券"]) {
+        if (token == nil) {
+            [UIUtils showTextOnly:self.view labelString:@"没有登录"];
+            return;
+        }
         YXCouponViewController *coupon = [[YXCouponViewController alloc] init];
         [self pushViewController:coupon];
     }

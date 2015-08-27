@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		7917C4DF1B8D4A0B00896027 /* YXCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7917C4DE1B8D4A0B00896027 /* YXCouponViewController.m */; };
+		7917C4E51B8D792700896027 /* ButtonDoctView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7917C4E41B8D792700896027 /* ButtonDoctView.m */; };
+		7917C4E81B8DAF6F00896027 /* YXIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7917C4E71B8DAF6F00896027 /* YXIntroViewController.m */; };
+		7917C4F31B8DBF8200896027 /* begin_en_one@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4EA1B8DBF8200896027 /* begin_en_one@2x.png */; };
+		7917C4F41B8DBF8200896027 /* begin_en_three@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4EB1B8DBF8200896027 /* begin_en_three@2x.png */; };
+		7917C4F51B8DBF8200896027 /* begin_en_two@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4EC1B8DBF8200896027 /* begin_en_two@2x.png */; };
+		7917C4F61B8DBF8200896027 /* begin_one480.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4ED1B8DBF8200896027 /* begin_one480.png */; };
+		7917C4F71B8DBF8200896027 /* begin_one@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4EE1B8DBF8200896027 /* begin_one@2x.png */; };
+		7917C4F81B8DBF8200896027 /* begin_three480.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4EF1B8DBF8200896027 /* begin_three480.png */; };
+		7917C4F91B8DBF8200896027 /* begin_three@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4F01B8DBF8200896027 /* begin_three@2x.png */; };
+		7917C4FA1B8DBF8200896027 /* begin_two480.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4F11B8DBF8200896027 /* begin_two480.png */; };
+		7917C4FB1B8DBF8200896027 /* begin_two@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4F21B8DBF8200896027 /* begin_two@2x.png */; };
 		793BF3961B8C7844001429B1 /* YXFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 793BF3951B8C7844001429B1 /* YXFeedbackViewController.m */; };
 		797F66E51B8AC71F0070E41B /* YXProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F66E41B8AC71F0070E41B /* YXProductViewController.m */; };
 		797F66E81B8AC7420070E41B /* YXProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F66E71B8AC7420070E41B /* YXProductDetailViewController.m */; };
@@ -148,6 +159,19 @@
 /* Begin PBXFileReference section */
 		7917C4DD1B8D4A0B00896027 /* YXCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXCouponViewController.h; sourceTree = "<group>"; };
 		7917C4DE1B8D4A0B00896027 /* YXCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXCouponViewController.m; sourceTree = "<group>"; };
+		7917C4E31B8D792700896027 /* ButtonDoctView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonDoctView.h; sourceTree = "<group>"; };
+		7917C4E41B8D792700896027 /* ButtonDoctView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonDoctView.m; sourceTree = "<group>"; };
+		7917C4E61B8DAF6F00896027 /* YXIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXIntroViewController.h; sourceTree = "<group>"; };
+		7917C4E71B8DAF6F00896027 /* YXIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXIntroViewController.m; sourceTree = "<group>"; };
+		7917C4EA1B8DBF8200896027 /* begin_en_one@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin_en_one@2x.png"; sourceTree = "<group>"; };
+		7917C4EB1B8DBF8200896027 /* begin_en_three@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin_en_three@2x.png"; sourceTree = "<group>"; };
+		7917C4EC1B8DBF8200896027 /* begin_en_two@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin_en_two@2x.png"; sourceTree = "<group>"; };
+		7917C4ED1B8DBF8200896027 /* begin_one480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = begin_one480.png; sourceTree = "<group>"; };
+		7917C4EE1B8DBF8200896027 /* begin_one@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin_one@2x.png"; sourceTree = "<group>"; };
+		7917C4EF1B8DBF8200896027 /* begin_three480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = begin_three480.png; sourceTree = "<group>"; };
+		7917C4F01B8DBF8200896027 /* begin_three@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin_three@2x.png"; sourceTree = "<group>"; };
+		7917C4F11B8DBF8200896027 /* begin_two480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = begin_two480.png; sourceTree = "<group>"; };
+		7917C4F21B8DBF8200896027 /* begin_two@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin_two@2x.png"; sourceTree = "<group>"; };
 		793BF3941B8C7844001429B1 /* YXFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXFeedbackViewController.h; sourceTree = "<group>"; };
 		793BF3951B8C7844001429B1 /* YXFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXFeedbackViewController.m; sourceTree = "<group>"; };
 		797F66E31B8AC71F0070E41B /* YXProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXProductViewController.h; sourceTree = "<group>"; };
@@ -394,9 +418,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7917C4E91B8DBF8200896027 /* begin */ = {
+			isa = PBXGroup;
+			children = (
+				7917C4EA1B8DBF8200896027 /* begin_en_one@2x.png */,
+				7917C4EB1B8DBF8200896027 /* begin_en_three@2x.png */,
+				7917C4EC1B8DBF8200896027 /* begin_en_two@2x.png */,
+				7917C4ED1B8DBF8200896027 /* begin_one480.png */,
+				7917C4EE1B8DBF8200896027 /* begin_one@2x.png */,
+				7917C4EF1B8DBF8200896027 /* begin_three480.png */,
+				7917C4F01B8DBF8200896027 /* begin_three@2x.png */,
+				7917C4F11B8DBF8200896027 /* begin_two480.png */,
+				7917C4F21B8DBF8200896027 /* begin_two@2x.png */,
+			);
+			path = begin;
+			sourceTree = "<group>";
+		};
 		797F66EB1B8AC7E00070E41B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7917C4E91B8DBF8200896027 /* begin */,
 				797F67AF1B8AFF880070E41B /* commol */,
 				797F67351B8AD35B0070E41B /* Default */,
 				797F66EC1B8AC7E00070E41B /* tabbar */,
@@ -589,6 +630,8 @@
 				797F67D51B8B153A0070E41B /* PayView.m */,
 				797F67D61B8B153A0070E41B /* MoneyView.h */,
 				797F67D71B8B153A0070E41B /* MoneyView.m */,
+				7917C4E31B8D792700896027 /* ButtonDoctView.h */,
+				7917C4E41B8D792700896027 /* ButtonDoctView.m */,
 			);
 			path = HomeTool;
 			sourceTree = "<group>";
@@ -868,6 +911,8 @@
 				79C33C791B7EE17400247956 /* BaseViewController.m */,
 				797F67A31B8AEFF00070E41B /* UIUtils.h */,
 				797F67A41B8AEFF00070E41B /* UIUtils.m */,
+				7917C4E61B8DAF6F00896027 /* YXIntroViewController.h */,
+				7917C4E71B8DAF6F00896027 /* YXIntroViewController.m */,
 			);
 			path = BaseViewController;
 			sourceTree = "<group>";
@@ -1017,11 +1062,15 @@
 				797F66FD1B8AC7E00070E41B /* tabBar_me_nor@2x.png in Resources */,
 				79C33C681B7EE0F400247956 /* Icon.png in Resources */,
 				797F674C1B8AD35B0070E41B /* 1024x1024.png in Resources */,
+				7917C4F51B8DBF8200896027 /* begin_en_two@2x.png in Resources */,
 				79C33C631B7EE0F400247956 /* 37x-Checkmark.png in Resources */,
+				7917C4F61B8DBF8200896027 /* begin_one480.png in Resources */,
 				797F68111B8B208B0070E41B /* icon_account@2x.png in Resources */,
 				797F67611B8AD35B0070E41B /* Default@2x.png in Resources */,
 				79C33C661B7EE0F400247956 /* Icon-Small.png in Resources */,
 				797F66FF1B8AC7E00070E41B /* tabBar_timeTable_nor@2x.png in Resources */,
+				7917C4F41B8DBF8200896027 /* begin_en_three@2x.png in Resources */,
+				7917C4F91B8DBF8200896027 /* begin_three@2x.png in Resources */,
 				797F66F71B8AC7E00070E41B /* tabBar_back@2x.png in Resources */,
 				797F66FB1B8AC7E00070E41B /* tabBar_home_nor@2x.png in Resources */,
 				797F67EB1B8B15BC0070E41B /* AlipaySDK.bundle in Resources */,
@@ -1034,16 +1083,21 @@
 				797F67B11B8AFF960070E41B /* info_dp_no@2x.png in Resources */,
 				797F66FC1B8AC7E00070E41B /* tabBar_home_sel@2x.png in Resources */,
 				79C33C6B1B7EE0F400247956 /* MJRefresh.bundle in Resources */,
+				7917C4F31B8DBF8200896027 /* begin_en_one@2x.png in Resources */,
 				79C33C641B7EE0F400247956 /* 37x-Checkmark@2x.png in Resources */,
+				7917C4F71B8DBF8200896027 /* begin_one@2x.png in Resources */,
 				797F68101B8B208B0070E41B /* icon_code@2x.png in Resources */,
 				797F68171B8BFE160070E41B /* alipay@2x.png in Resources */,
 				797F68191B8BFE160070E41B /* pay_check@2x.png in Resources */,
+				7917C4F81B8DBF8200896027 /* begin_three480.png in Resources */,
 				797F66FE1B8AC7E00070E41B /* tabBar_me_sel@2x.png in Resources */,
 				797F67A71B8AF58B0070E41B /* cd_back@2x.png in Resources */,
+				7917C4FA1B8DBF8200896027 /* begin_two480.png in Resources */,
 				797F68181B8BFE160070E41B /* pay_uncheck@2x.png in Resources */,
 				79C97F751B72F627006AE0EF /* Images.xcassets in Resources */,
 				797F66F91B8AC7E00070E41B /* tabBar_club_nor@2x.png in Resources */,
 				797F675F1B8AD35B0070E41B /* Default-568h@2x.png in Resources */,
+				7917C4FB1B8DBF8200896027 /* begin_two@2x.png in Resources */,
 				79C33C691B7EE0F400247956 /* Icon@2x.png in Resources */,
 				797F68211B8C0B430070E41B /* DF.png in Resources */,
 				797F68161B8BFE160070E41B /* weixin@2x.png in Resources */,
@@ -1085,6 +1139,7 @@
 				797F67961B8AE23E0070E41B /* MainListCell.m in Sources */,
 				797F67861B8AD4D00070E41B /* SDWebImageManager.m in Sources */,
 				797F671C1B8ACB8D0070E41B /* UIWebView+JavaScriptAlert.m in Sources */,
+				7917C4E81B8DAF6F00896027 /* YXIntroViewController.m in Sources */,
 				797F678D1B8AD4D00070E41B /* UIView+WebCacheOperation.m in Sources */,
 				79C33C5B1B7EE0F400247956 /* AFNetworkReachabilityManager.m in Sources */,
 				797F680D1B8B1FD80070E41B /* RegistView.m in Sources */,
@@ -1105,6 +1160,7 @@
 				7917C4DF1B8D4A0B00896027 /* YXCouponViewController.m in Sources */,
 				797F670D1B8ACAE30070E41B /* YXCustonButton.m in Sources */,
 				797F67221B8ACCAE0070E41B /* Model_product.m in Sources */,
+				7917C4E51B8D792700896027 /* ButtonDoctView.m in Sources */,
 				79C33C5C1B7EE0F400247956 /* AFSecurityPolicy.m in Sources */,
 				797F672D1B8ACE0A0070E41B /* YXNetworkingTool.m in Sources */,
 				797F67C41B8B10FB0070E41B /* OrderCell.m in Sources */,

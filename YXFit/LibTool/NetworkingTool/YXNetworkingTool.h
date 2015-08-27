@@ -26,6 +26,7 @@ typedef NS_ENUM(int, RequestMethod){
 #pragma mark - 用户信息相关
 - (void)uploadImagePath:(NSString *)path success:(Success)success failure:(Failure)failure;
 - (void)updataUserInfo:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure;
+- (void)checkVersionSuccess:(Success)success failure:(Failure)failure;
 //获取用户信息
 - (void)getUserInfomation:(NSString *)userID success:(Success)success failure:(Failure)failure;
 #pragma mark - 支付相关

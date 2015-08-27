@@ -118,7 +118,7 @@
 //保存头像图片
 + (NSString *)saveMyImage:(UIImage *)image{
     NSArray *pathArray=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *pathString=[[pathArray objectAtIndex:0] stringByAppendingPathComponent:@"upLoadIcon.jpg"];
+    NSString *pathString=[[pathArray objectAtIndex:0] stringByAppendingPathComponent:@"icon.jpg"];
     NSData *iconData = UIImageJPEGRepresentation(image, 1.0);
     [iconData writeToFile:pathString atomically:YES];
     return pathString;
@@ -156,7 +156,6 @@
     [MBProgressHUD hideHUDForView:view animated:YES];
 }
 + (void)showTextOnly:(UIView *)view labelString:(NSString *)str {
-    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     // Configure for text only and offset down
     hud.mode = MBProgressHUDModeText;
@@ -164,5 +163,15 @@
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:1];
+}
+
++ (void)showTextOnly:(UIView *)view labelString:(NSString *)str time:(float)time{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    // Configure for text only and offset down
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = str;
+    hud.margin = 10.f;
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:time];
 }
 @end

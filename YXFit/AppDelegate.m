@@ -15,6 +15,7 @@
 #import "MLNavigationController.h"
 
 #import "Pingpp.h"
+#import "YXIntroViewController.h"
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
@@ -28,11 +29,28 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+
+    
+
+    
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]){
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+        YXIntroViewController *intro = [[YXIntroViewController alloc] init];
+        self.window.rootViewController = intro;
+    }else{
+        UIViewController *rootViewController = [self setRootVC];
+        [[self window] setRootViewController:rootViewController];
+        
+        [[YXTabBarView sharedInstance] showAnimation];
+    }
+    
+   // [self checkVersion]; //版本检测
+    return YES;
+}
+- (void)loadMainView{
     UIViewController *rootViewController = [self setRootVC];
     [[self window] setRootViewController:rootViewController];
-    
     [[YXTabBarView sharedInstance] showAnimation];
-    return YES;
 }
 - (UITabBarController *)setRootVC{
     YXTabBarViewController *tabBarController = [[YXTabBarViewController alloc] init];
@@ -56,6 +74,14 @@
     tabBarController.viewControllers = @[productNav, introduceNav, orderNav, myNav];
     
     return tabBarController;
+}
+
+- (void)checkVersion{
+    [[YXNetworkingTool sharedInstance] checkVersionSuccess:^(id JSON) {
+        
+    } failure:^(NSError *error, id JSON) {
+        
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

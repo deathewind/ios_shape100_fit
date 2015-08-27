@@ -98,7 +98,9 @@
     if ([status isEqualToString:@"5"]) {
         tips = @"交易关闭";
     }
-    CGSize  textSize = [tips sizeWithFont:YXCharacterFont(14) constrainedToSize:CGSizeMake(_name.frame.size.width, 20) lineBreakMode:NSLineBreakByWordWrapping];
+  //  CGSize  textSize = [tips sizeWithFont:YXCharacterFont(14) constrainedToSize:CGSizeMake(_name.frame.size.width, 20) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize textSize = [tips boundingRectWithSize:CGSizeMake(_name.frame.size.width, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:YXCharacterFont(14)} context:nil].size;
+    
     _status.frame = CGRectMake(_name.frame.origin.x, _money.frame.size.height + _money.frame.origin.y, textSize.width, 20);
     _status.text = tips;
 }

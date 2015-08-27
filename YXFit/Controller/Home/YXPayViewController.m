@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view.
     [self.view addSubview:self.scrollView];
     _payString = @"wx";
-    [self addTipsView];
+    
     [self addPayButton];
 }
 
@@ -40,12 +40,13 @@
         _scrollView.contentSize = CGSizeMake(ScreenWidth, ScreenHeight);
         [_scrollView addSubview:self.payView];
         [_scrollView addSubview:self.moneyView];
+        [self addTipsView];
     }
     return _scrollView;
 }
 - (PayView *)payView{
     if (!_payView) {
-        _payView = [[PayView alloc] initWithFrame:CGRectMake(10, 5, _scrollView.frame.size.width - 10 * 2, 132)];
+        _payView = [[PayView alloc] initWithFrame:CGRectMake(0, 10, _scrollView.width, 120)];
         _payView.payChange = ^(NSString *payStr){
             NSLog(@"%@",payStr);
             _payString = payStr;
@@ -55,7 +56,7 @@
 }
 - (MoneyView *)moneyView{
     if (!_moneyView) {
-        _moneyView = [[MoneyView alloc] initWithFrame:CGRectMake(10, self.payView.frame.size.height + 30, _scrollView.frame.size.width - 10 * 2, 200)]; //182
+        _moneyView = [[MoneyView alloc] initWithFrame:CGRectMake(0, self.payView.frame.size.height + 20, _scrollView.width, 170)]; //182
         _moneyView.totel.text = [NSString stringWithFormat:@"%@元", self.order.order_payment];
         _moneyView.coupon.text = @"0元";
         _moneyView.balance.text = @"0元";
@@ -67,8 +68,10 @@
 
 - (void)addTipsView{
     NSString *tips = @"网上支付扣款后,看订单山莨菪碱佛前金鹏飞进去陪我饥饿法撒旦发生的法律是地方是滴是滴飞， 阿加速度来飞机票钱未付激情片阿斯顿解放辣椒是劳动节佛前戊二醛，将连接片去哦额文件看得见放辣椒是大家佛尔uoqplaldjf，了垃圾大佛去偶尔陪。按键都疯啦.";
-    CGSize  textSize = [tips sizeWithFont:YXCharacterBoldFont(16) constrainedToSize:CGSizeMake(ScreenWidth - 40, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, self.moneyView.frame.size.height + self.moneyView.frame.origin.y + 30, _scrollView.frame.size.width - 20 * 2, textSize.height)];
+    //CGSize  textSize = [tips sizeWithFont:YXCharacterBoldFont(16) constrainedToSize:CGSizeMake(ScreenWidth - 40, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    CGSize textSize = [tips boundingRectWithSize:CGSizeMake(ScreenWidth - 40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:YXCharacterFont(16)} context:nil].size;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, self.moneyView.frame.size.height + self.moneyView.frame.origin.y + 50, _scrollView.frame.size.width - 10 * 2, textSize.height)];
     label.font = YXCharacterFont(15);
     label.text = tips;
     label.numberOfLines = 0;

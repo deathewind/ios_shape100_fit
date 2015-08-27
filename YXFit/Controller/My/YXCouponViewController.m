@@ -20,7 +20,7 @@
     self.view.backgroundColor = RGB(240, 240, 240);
     self.titleBar.text = @"我的优惠券";
     [self addBackButton];
-    [self loadRefreshView];
+   // [self loadRefreshView];
 }
 - (void)loadRefreshView
 {
@@ -38,17 +38,18 @@
 }
 - (void)loadNewState:(MJRefreshBaseView *)refreshView
 {
-    [[YXNetworkingTool sharedInstance] getProductListSuccess:^(id JSON) {
-        self.dataArray = [[NSMutableArray alloc] initWithArray:JSON];
-        [self.tableView reloadData];
-        [refreshView endRefreshing];
-    } failure:^(NSError *error, id JSON) {
-        [refreshView endRefreshing];
-    }];
+//    [[YXNetworkingTool sharedInstance] getProductListSuccess:^(id JSON) {
+//        self.dataArray = [[NSMutableArray alloc] initWithArray:JSON];
+//        [self.tableView reloadData];
+//        [refreshView endRefreshing];
+//    } failure:^(NSError *error, id JSON) {
+//        [refreshView endRefreshing];
+//    }];
+    [refreshView endRefreshing];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataArray.count;
+    return 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

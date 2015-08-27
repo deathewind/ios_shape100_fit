@@ -23,8 +23,9 @@
 + (NSString *)saveMyImage:(UIImage *)image;
 
 
-
+//touest
 + (void)showTextOnly:(UIView *)view labelString:(NSString *)str;
++ (void)showTextOnly:(UIView *)view labelString:(NSString *)str time:(float)time;
 + (void)showProgressHUDto:(UIView *)view withString:(NSString *)tipString ;
 + (void)showProgressHUDto:(UIView *)view withString:(NSString *)tipString showTime:(float)time;
 + (void)showProgressHUDto:(UIView *)view below:(UIView *)navView withString:(NSString *)tipString showTime:(float)time;

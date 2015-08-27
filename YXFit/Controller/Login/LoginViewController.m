@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.titleBar.text = @"会员登录";
+   // self.titleBar.text = @"会员登录";
     [self addLeftBtn];
     [self.view addSubview:self.scrollView];
 
@@ -40,6 +40,32 @@
     [backBtn setImage:[UIImage imageFileName:@"cd_back.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.navBar addSubview:backBtn];
+    
+  //  [self.navBar addSubview:self.topView];
+    
+    UISegmentedControl *segment_order = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"登录", nil), NSLocalizedString(@"注册", nil)]];
+    segment_order.frame = CGRectMake(70, 22, self.view.frame.size.width - 70 * 2, 40);
+    segment_order.selectedSegmentIndex = 0;
+    segment_order.tintColor = [UIColor whiteColor];
+    [segment_order setTitleTextAttributes:@{NSFontAttributeName :YXCharacterBoldFont(18)} forState:UIControlStateNormal];
+    [segment_order addTarget:self action:@selector(didClickButton_segment:) forControlEvents:UIControlEventValueChanged];
+    [self.navBar addSubview:segment_order];
+}
+- (void)didClickButton_segment:(UISegmentedControl *)segment{
+    switch (segment.selectedSegmentIndex) {
+        case 0:{
+        
+            self.loginView.hidden = NO;
+            self.registView.hidden = YES;
+            //self.titleBar.text = @"登录";
+        }break;
+        case 1:{
+            self.loginView.hidden = YES;
+            self.registView.hidden = NO;
+        }break;
+        default:
+            break;
+    }
 }
 - (void)back{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -50,7 +76,7 @@
         _scrollView.backgroundColor = [UIColor whiteColor];
         _scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
         _scrollView.delegate = self;
-        [_scrollView addSubview:self.topView];
+        //[_scrollView addSubview:self.topView];
         [_scrollView addSubview:self.loginView];
         [_scrollView addSubview:self.registView];
     }
@@ -58,16 +84,21 @@
 }
 - (UIView *)topView{
     if (!_topView) {
-        _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+        _topView = [[UIView alloc] initWithFrame:CGRectMake(100, StatusBarHeight, self.view.frame.size.width - 200, 44)];
+
+
+        
         UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         loginBtn.frame = CGRectMake(0, 0, _topView.frame.size.width/2, _topView.frame.size.height);
         [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
         [loginBtn addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
         loginBtn.selected = YES;
         loginBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-        [loginBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+        [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        loginBtn.backgroundColor = [UIColor whiteColor];
+        loginBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        loginBtn.layer.borderWidth = 1;
+        loginBtn.backgroundColor = [UIColor clearColor];
         _loginBtn = loginBtn;
         [_topView addSubview:loginBtn];
         
@@ -75,11 +106,13 @@
         registBtn.frame = CGRectMake(loginBtn.frame.size.width, 0, loginBtn.frame.size.width, loginBtn.frame.size.height);
         [registBtn setTitle:@"注册" forState:UIControlStateNormal];
         [registBtn addTarget:self action:@selector(showRegistView:) forControlEvents:UIControlEventTouchUpInside];
-        [registBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+        [registBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [registBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         registBtn.selected = NO;
         registBtn.titleLabel.font = loginBtn.titleLabel.font;
-        registBtn.backgroundColor = RGB(240, 240, 240);
+        registBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        registBtn.layer.borderWidth = 1;
+        registBtn.backgroundColor = [UIColor clearColor];
         _registBtn = registBtn;
         [_topView addSubview:registBtn];
     }
@@ -91,7 +124,7 @@
     self.loginView.hidden = NO;
     self.registView.hidden = YES;
     _registBtn.selected = NO;
-    _registBtn.backgroundColor = RGB(240, 240, 240);
+   // _registBtn.backgroundColor = RGB(240, 240, 240);
     button.backgroundColor = [UIColor whiteColor];
     self.titleBar.text = @"登录";
 }
@@ -100,21 +133,21 @@
     self.loginView.hidden = YES;
     self.registView.hidden = NO;
     _loginBtn.selected = NO;
-    _loginBtn.backgroundColor = RGB(240, 240, 240);
+  //  _loginBtn.backgroundColor = RGB(240, 240, 240);
     button.backgroundColor = [UIColor whiteColor];
     self.titleBar.text = @"注册";
 }
 
 - (LoginView *)loginView{
     if (!_loginView) {
-        _loginView = [[LoginView alloc] initWithFrame:CGRectMake(0, self.topView.frame.size.height, self.view.frame.size.width, self.scrollView.frame.size.height - self.topView.frame.size.height)];
+        _loginView = [[LoginView alloc] initWithFrame:CGRectMake(0, self.navBar.height + 20, self.view.frame.size.width, self.scrollView.frame.size.height - self.navBar.height)];
         _loginView.delegate = self;
     }
     return _loginView;
 }
 - (RegistView *)registView{
     if (!_registView) {
-        _registView = [[RegistView alloc] initWithFrame:CGRectMake(0, self.topView.frame.size.height, self.view.frame.size.width, self.scrollView.frame.size.height - self.topView.frame.size.height)];
+        _registView = [[RegistView alloc] initWithFrame:CGRectMake(0, self.navBar.height + 20, self.view.frame.size.width, self.scrollView.frame.size.height - self.navBar.height)];
         _registView.delegate = self;
         _registView.txtConPwd.delegate = self;
         _registView.hidden = YES;

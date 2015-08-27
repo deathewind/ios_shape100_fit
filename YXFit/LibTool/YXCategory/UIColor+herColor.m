@@ -7,7 +7,7 @@
 //
 
 #import "UIColor+herColor.h"
-#define RGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1.]
+
 @implementation UIColor (herColor)
 + (UIColor *)hexFloatColor:(NSString *)hexStr {
     if (hexStr.length < 6)

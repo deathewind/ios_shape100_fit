@@ -25,7 +25,9 @@
         [self addSubview:_num];
         
         NSString *tips = @"订单状态: ";
-        CGSize  textSize = [tips sizeWithFont:YXCharacterFont(15) constrainedToSize:CGSizeMake(200, 20) lineBreakMode:NSLineBreakByWordWrapping];
+      //  CGSize  textSize = [tips sizeWithFont:YXCharacterFont(15) constrainedToSize:CGSizeMake(200, 20) lineBreakMode:NSLineBreakByWordWrapping];
+        
+        CGSize textSize = [tips boundingRectWithSize:CGSizeMake(200, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:YXCharacterFont(15)} context:nil].size;
         _lab = [[UILabel alloc] initWithFrame:CGRectMake(10, _num.frame.size.height, textSize.width, 20)];
         _lab.font = YXCharacterFont(15);
         _lab.textColor = [UIColor blackColor];
@@ -62,7 +64,8 @@
     if ([sta isEqualToString:@"5"]) {
         tips = @"交易关闭";
     }
-    CGSize  textSize = [tips sizeWithFont:YXCharacterFont(15) constrainedToSize:CGSizeMake(200, 20) lineBreakMode:NSLineBreakByWordWrapping];
+   // CGSize  textSize = [tips sizeWithFont:YXCharacterFont(15) constrainedToSize:CGSizeMake(200, 20) lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize textSize = [tips boundingRectWithSize:CGSizeMake(200, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:YXCharacterFont(15)} context:nil].size;
     _status.frame = CGRectMake(_lab.frame.size.width + _lab.frame.origin.x, _lab.frame.origin.y, textSize.width, 20);
     
 

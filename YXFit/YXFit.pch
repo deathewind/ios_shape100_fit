@@ -21,6 +21,7 @@
 #import "Model_order.h"
 #import "MJRefresh.h"
 #import "UIUtils.h"
+#import "AppDelegate.h"
 //#import "MLNavigationController.h"
 //#import "UIImageView+AFNetworking.h"
 // Include any system framework and library headers here that should be included in all compilation units.

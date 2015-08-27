@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CountView : UIView
-@property (nonatomic,copy) void(^countChange)(NSString *);
+@property(nonatomic, strong) NSString *maxCount;
+@property(nonatomic,copy) void(^countChange)(NSString *);
 @end

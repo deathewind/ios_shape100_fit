@@ -11,12 +11,13 @@
 #import "CourseHeaderView.h"
 #import "CountView.h"
 #import "DescribeView.h"
-@interface YXProductDetailViewController()
+#import "ButtonDoctView.h"
+@interface YXProductDetailViewController()<ButtonDoctViewDelegate>
 @property(nonatomic, strong) UIScrollView *scrollView;
 @property(nonatomic, strong) CountView *countView;
 @property(nonatomic, strong) CourseHeaderView  *imageView;
 @property(nonatomic, strong) UILabel *describe;
-
+@property(nonatomic, strong) ButtonDoctView *buttonView;
 @property(nonatomic, strong) NSString *counts;
 @end
 @implementation YXProductDetailViewController
@@ -37,6 +38,7 @@
         [UIUtils hideProgressHUD:self.view];
         Model_product *product = [Model_product productWithDictionary:JSON];
         [self.imageView setProduct:product];
+        self.countView.maxCount = product.product_num;
         self.describe.text = product.product_description;
     } failure:^(NSError *error, id JSON) {
         [UIUtils hideProgressHUD:self.view];
@@ -50,13 +52,24 @@
         _scrollView.contentSize = CGSizeMake(ScreenWidth, ScreenHeight);
         [_scrollView addSubview:self.imageView];
         [_scrollView addSubview:self.countView];
+        [_scrollView addSubview:self.buttonView];
         [_scrollView addSubview:self.describe];
     }
     return _scrollView;
 }
+- (ButtonDoctView *)buttonView{
+    if (!_buttonView) {
+        _buttonView = [[ButtonDoctView alloc] initWithFrame:CGRectMake(10, self.countView.height + self.countView.origin.y + 10, _scrollView.width - 10 * 2, 44)];
+        _buttonView.delegate = self;
+    }
+    return _buttonView;
+}
+- (void)clickChangeView:(UIButton *)button{
+    
+}
 - (UILabel *)describe{
     if (!_describe) {
-        _describe = [[UILabel alloc] initWithFrame:CGRectMake(10, self.countView.height + self.countView.origin.y + 10, _scrollView.width - 10 * 2, 100)];
+        _describe = [[UILabel alloc] initWithFrame:CGRectMake(10, self.buttonView.height + self.buttonView.origin.y + 1, _scrollView.width - 10 * 2, 100)];
         _describe.numberOfLines = 0;
         _describe.font = YXCharacterFont(15);
         // _describe.text = self.product.product_description;
@@ -68,7 +81,7 @@
         _countView = [[CountView alloc] initWithFrame:CGRectMake(10, self.imageView.height + 10, _scrollView.width - 10 * 2, 50)];
         
         _countView.countChange = ^(NSString *count){
-            YXLog(@"%@", count);
+           // YXLog(@"%@", count);
             _counts = count;
         };
     }
@@ -82,6 +95,11 @@
     }
     return _imageView;
 }
+
+- (void)addTipsView{
+    
+}
+
 - (void)addBackButton{
     UIButton *button_back = [UIButton buttonWithType:UIButtonTypeCustom];
     button_back.frame = CGRectMake(0, 20, 60, 44);
@@ -111,7 +129,11 @@
         NSLog(@"JSON = %@", JSON);
     } failure:^(NSError *error, id JSON) {
         [UIUtils hideProgressHUD:self.view];
-        NSLog(@"error = %@", error);
+        NSLog(@"error = %ld", (long)error.code);
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)JSON;
+        if(response.statusCode==401){ //未登陆错误
+            [UIUtils showTextOnly:self.view labelString:@"您还未登录"];
+        }
     }];
     
 }

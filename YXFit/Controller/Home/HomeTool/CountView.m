@@ -76,6 +76,10 @@
             }
         }
     }else{
+        if ([_label.text isEqualToString:self.maxCount]) {
+            [UIUtils showTextOnly:self.superview labelString:@"已最大购买量"];
+            return;
+        }
         _label.text = [NSString stringWithFormat:@"%ld",[_label.text integerValue] + 1];
         _leftBtn.enabled = YES;
     }
