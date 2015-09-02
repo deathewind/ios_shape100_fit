@@ -1,0 +1,44 @@
+/* 
+  Localizable.strings
+  YXFit
+
+  Created by 何军 on 27/8/15.
+  Copyright (c) 2015年 itcast. All rights reserved.
+*/
+//注册
+"Register" = "注册";
+"Login" = "登录";
+"Code" = "获取验证码";
+"Enter phoneNumber" = "请输入手机号";
+"Enter your phoneNumber" = "请输入您的手机号码";
+"Enter password" = "请输入密码";
+"Code passwork" = "请填写短信验证码";
+"Set password" = "请设置密码";
+"Confirm password" = "请确认密码";
+"Find passwork" = "找回密码";
+"Reset password" = "重置密码";
+//注册登录提示语
+"Empty phoneNumber" = "手机号不可为空";
+"Wrong phoneNumber" = "手机号不可用";
+"Empty password" = "密码不可为空";
+"Wrong password" = "密码至少6位";
+"Logging" = "登录中..";
+"Registering" = "注册中..";
+"Login Success" = "登录成功";
+"Sending" = "发送中";
+"Send Success" = "发送成功";
+"Register Success" = "注册成功";
+"Empty code" = "验证码不可为空";
+"Same passwork" = "两次输入的密码不一致";
+"Already exists" = "用户已存在";
+"Reset Success" = "重置密码成功";
+//网络
+"Network"="网络不给力";
+"No more"="已无更多";
+"Loading"="加载中..";
+"NoLogin"="您还未登录";
+//个人
+"Camera"="相机";
+//common
+"OK" = "确定";
+"Cancel" = "取消";

@@ -46,7 +46,7 @@
         line1.backgroundColor = [UIColor lightGrayColor];
         [weix_pay addSubview:line1];
         
-        UIImageView *line2 = [[UIImageView alloc] initWithFrame:CGRectMake(15, weix_pay.height - 0.5, self.width - 15, 0.5)];
+        UIImageView *line2 = [[UIImageView alloc] initWithFrame:CGRectMake(10, weix_pay.height - 0.5, self.width - 10, 0.5)];
         line2.backgroundColor = [UIColor lightGrayColor];
         [weix_pay addSubview:line2];
         

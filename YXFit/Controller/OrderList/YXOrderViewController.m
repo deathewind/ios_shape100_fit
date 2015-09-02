@@ -10,6 +10,7 @@
 #import "YXOrderDetailViewController.h"
 #import "YXLoadMoreView.h"
 #import "OrderCell.h"
+
 @interface YXOrderViewController ()<UITableViewDataSource,UITableViewDelegate,YXLoadMoreViewDelegate, MJRefreshBaseViewDelegate, UIScrollViewDelegate>
 {
     MJRefreshBaseView       *_head;
@@ -25,7 +26,10 @@
     [super viewDidLoad];
     self.titleBar.text = @"我的订单";
     [self loadRefreshView];
+    [self creatBackButton];
 }
+
+
 - (void)loadRefreshView
 {
     // 1、下拉刷新控件
@@ -63,13 +67,20 @@
         }else{
             isLoadMore = NO;
             if (self.dataArray.count>10) {
-                self.footerView.titleLabel.text = NSLocalizedString(@"No more state", nil);
+                self.footerView.titleLabel.text = NSLocalizedString(@"No more", nil);
             }
         }
         
     } failure:^(NSError *error, id JSON) {
+        YXLog(@"--- %@ ---- %@", error, JSON);
         [refreshView endRefreshing];
-        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"You have no internet connection", nil)];
+//        NSHTTPURLResponse *response = (NSHTTPURLResponse *)JSON;
+//        if (response.statusCode == 401) {
+//            [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"NoLogin", nil)];
+//        }else{
+//            [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
+//        }
+        
     }];
 }
 - (UITableView *)tableView{
@@ -86,7 +97,7 @@
 
 - (YXLoadMoreView *)footerView{
     if (!_footerView) {
-        _footerView = [[YXLoadMoreView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+        _footerView = [[YXLoadMoreView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
         _footerView.delegate = self;
     }
     return _footerView;
@@ -173,10 +184,12 @@
         }
     } failure:^(NSError *error, id JSON) {
         [self.footerView.activeView stopAnimating];
-        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
+      //  [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
         self.footerView.titleLabel.text = NSLocalizedString(@"Network", nil);
         isLoadMore = YES;
     }];
 }
-
+- (void)dealloc{
+    [_head free];
+}
 @end

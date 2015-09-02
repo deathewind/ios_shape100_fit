@@ -19,7 +19,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = RGB(240, 240, 240);
     self.titleBar.text = @"我的优惠券";
-    [self addBackButton];
+    [self creatBackButton];
    // [self loadRefreshView];
 }
 - (void)loadRefreshView
@@ -83,12 +83,5 @@
     }
     return _tableView;
 }
-- (void)addBackButton{
-    UIButton *button_back = [UIButton buttonWithType:UIButtonTypeCustom];
-    button_back.frame = CGRectMake(0, StatusBarHeight, 60, 44);
-    button_back.showsTouchWhenHighlighted = YES;
-    [button_back setImage:[UIImage imageFileName:@"cd_back.png"] forState:UIControlStateNormal];
-    [button_back addTarget:self action:@selector(clickButton_back)forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button_back];
-}
+
 @end

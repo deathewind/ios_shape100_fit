@@ -78,7 +78,7 @@
         line1.backgroundColor = [UIColor lightGrayColor];
         [totel addSubview:line1];
         
-        UIImageView *line2 = [[UIImageView alloc] initWithFrame:CGRectMake(15, totel.height - 0.5, self.width - 15, 0.5)];
+        UIImageView *line2 = [[UIImageView alloc] initWithFrame:CGRectMake(10, totel.height - 0.5, self.width - 10, 0.5)];
         line2.backgroundColor = [UIColor lightGrayColor];
         [totel addSubview:line2];
         

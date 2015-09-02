@@ -20,7 +20,7 @@
 }
  - (CGRect)titleRectForContentRect:(CGRect)contentRect
 {
-    CGFloat titleY = contentRect.size.height *0.6;
+    CGFloat titleY = contentRect.size.height *0.6 - 1;
     CGFloat titleW = contentRect.size.width;
     CGFloat titleH = contentRect.size.height - titleY;
     

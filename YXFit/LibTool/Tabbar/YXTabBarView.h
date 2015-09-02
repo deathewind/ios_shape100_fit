@@ -16,4 +16,5 @@
 - (void)tabBarCreatButton;
 - (void)showAnimation;
 - (void)hiddenAnimation;
+- (void)selectIndex:(NSInteger)index;
 @end

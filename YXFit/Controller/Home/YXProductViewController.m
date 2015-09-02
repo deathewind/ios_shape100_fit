@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleBar.text = @"商品列表";
-    self.view.backgroundColor = RGB(233, 233, 233);
+   // self.view.backgroundColor = RGB(233, 233, 233);
     [self loadRefreshView];
 }
 - (void)loadRefreshView
@@ -49,10 +49,12 @@
 }
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBar.height, self.view.width, self.view.height - self.navBar.height - 51)];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBar.height, self.view.width, self.view.height - self.navBar.height)];
         _tableView.dataSource = self;
         _tableView.delegate = self;
+       // _tableView.backgroundColor =
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
         [self.view addSubview:_tableView];
     }
     return _tableView;
@@ -79,11 +81,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     YXProductDetailViewController *detail = [[YXProductDetailViewController alloc] init];
     detail.product = [self.dataArray objectAtIndex:indexPath.row];
-   // [self.navigationController pushViewController:detail animated:YES ];
     [self pushViewController:detail];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 110;
+    return 120;
 }
 @end

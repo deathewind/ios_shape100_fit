@@ -13,7 +13,18 @@
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-//        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
+        UILabel *label_pay = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.width - 10 * 2, 30)];
+        label_pay.text = @"商品信息";
+        label_pay.backgroundColor = [UIColor clearColor];
+        label_pay.textAlignment = NSTextAlignmentLeft;
+        label_pay.textColor = RGB(60, 60, 60);
+        label_pay.font = YXCharacterBoldFont(16);
+        [self addSubview:label_pay];
+        
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, label_pay.height, self.width, 150)];
+        view.backgroundColor = [UIColor whiteColor];
+        [self addSubview:view];
 //        _num = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width -  10 * 2, 20)];
 //        _num.font = YXCharacterFont(15);
 //        _num.textColor = [UIColor blackColor];

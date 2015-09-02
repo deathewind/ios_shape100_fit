@@ -25,20 +25,20 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = RGB(233, 233, 233);
-        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(10, 5, ScreenWidth - 10 *2, 120)];
+        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, ScreenWidth, 128)];
         bgView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:bgView];
         
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 140, bgView.frame.size.height)];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 130, bgView.height - 5 * 2)];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         [bgView addSubview:_imageView];
         
-        _name = [[UILabel alloc] initWithFrame:CGRectMake(_imageView.frame.size.width + 5, 10, bgView.frame.size.width - _imageView.frame.size.width - 5, 20)];
-        _name.textColor = [UIColor blackColor];
+        _name = [[UILabel alloc] initWithFrame:CGRectMake(_imageView.width + _imageView.origin.x * 2, _imageView.origin.y * 2, bgView.width - _imageView.width - _imageView.origin.x * 3, 20)];
+        _name.textColor = RGB(60, 60, 60);
        // _name.backgroundColor = [UIColor redColor];
         _name.numberOfLines = 0;
         _name.textAlignment = NSTextAlignmentLeft;
-        _name.font = YXCharacterBoldFont(16);
+        _name.font = YXCharacterBoldFont(17);
         [bgView addSubview:_name];
         
         _time = [[UILabel alloc] initWithFrame:CGRectMake(_name.frame.origin.x, _name.frame.size.height + _name.frame.origin.y, _name.frame.size.width, 20)];

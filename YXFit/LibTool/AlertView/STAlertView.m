@@ -31,6 +31,9 @@ typedef enum {
     else if (buttonIndex == 1 && theAlertView.tag == STAlertViewTypeNormal && otherButtonBlock)
         otherButtonBlock();
     else if (buttonIndex == 1 && theAlertView.tag == STAlertViewTypeTextField && textFieldBlock)
+//        if ([alertView textFieldAtIndex:0].text.length > 20) {
+//            [UIUtils showTextOnly: labelString:]
+//        }
         textFieldBlock([alertView textFieldAtIndex:0].text);
     
 }
@@ -54,6 +57,7 @@ typedef enum {
     
     alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles, nil];
     alertView.tag = STAlertViewTypeNormal;
+    
     
     [alertView show];
     
@@ -79,7 +83,7 @@ typedef enum {
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     [[alertView textFieldAtIndex:0] setPlaceholder:textFieldMessage];
     [[alertView textFieldAtIndex:0] setText:texttFieldValue];
-    
+
     [alertView show];
     
     return self;

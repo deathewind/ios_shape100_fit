@@ -20,37 +20,37 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = RGB(233, 233, 233);
+        self.backgroundColor = RGB(230, 230, 230);
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(10, 5, ScreenWidth - 10 *2, 100)];
+        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 1, ScreenWidth , 118)];
         bgView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:bgView];
         
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, bgView.height)];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 100, bgView.height - 5 * 2)];
         [bgView addSubview:_imageView];
         
-        _name = [[UILabel alloc] initWithFrame:CGRectMake(_imageView.width + 5, 5, 130, 40)];
-        //_name.backgroundColor = [UIColor redColor];
+        _name = [[UILabel alloc] initWithFrame:CGRectMake(_imageView.width + _imageView.origin.x * 2, _imageView.origin.y + 5, bgView.width - _imageView.origin.x *3 - _imageView.width, 20)];
+        _name.textColor = RGB(60, 60, 60);
         _name.numberOfLines = 0;
         _name.textAlignment = NSTextAlignmentLeft;
-        _name.font = YXCharacterBoldFont(16);
+        _name.font = YXCharacterBoldFont(17);
         [bgView addSubview:_name];
         
-        _price = [[UILabel alloc] initWithFrame:CGRectMake(_name.width + _name.origin.x, 5, bgView.width - _name.width - _name.origin.x - 10, 40)];
-        _price.textAlignment = NSTextAlignmentRight;
-      //  _price.backgroundColor = [UIColor redColor];
-        _price.textColor = [UIColor orangeColor];
-        _price.font = YXCharacterBoldFont(16);
-        [bgView addSubview:_price];
-        
-        _describe = [[UILabel alloc] initWithFrame:CGRectMake(_name.origin.x, _name.height + _name.origin.y, bgView.width - 100, bgView.height - _name.height - _name.origin.y - 5)];
-       // _describe.backgroundColor = [UIColor orangeColor];
+        _describe = [[UILabel alloc] initWithFrame:CGRectMake(_name.origin.x, _name.height + _name.origin.y, _name.width, bgView.height - _name.height * 2 - _name.origin.y * 2)];
+      //  _describe.backgroundColor = [UIColor orangeColor];
         _describe.textColor = [UIColor grayColor];
         _describe.textAlignment = NSTextAlignmentLeft;
         _describe.font = YXCharacterFont(15);
         _describe.numberOfLines = 0;
         [bgView addSubview:_describe];
+        
+        _price = [[UILabel alloc] initWithFrame:CGRectMake(_name.origin.x, _describe.height + _describe.origin.y, _name.width, _name.height)];
+        _price.textAlignment = NSTextAlignmentRight;
+       // _price.backgroundColor = [UIColor redColor];
+        _price.textColor = [UIColor redColor];
+        _price.font = YXCharacterBoldFont(17);
+        [bgView addSubview:_price];
         
     }
     return self;

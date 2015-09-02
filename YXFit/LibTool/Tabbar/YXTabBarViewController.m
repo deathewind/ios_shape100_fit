@@ -22,8 +22,8 @@
 - (void)delegate_changeViewController:(NSInteger)index{
     self.selectedIndex = index;
 }
-- (void)exit{
-    [[YXTabBarView sharedInstance] removeFromSuperview];
-    [YXTabBarView sharedInstance].delegate = nil;
+- (void)changeIndex:(NSInteger)index{
+    self.selectedIndex = index;
+    [[YXTabBarView sharedInstance] selectIndex:index];
 }
 @end

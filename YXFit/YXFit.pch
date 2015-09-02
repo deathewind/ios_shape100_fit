@@ -22,6 +22,8 @@
 #import "MJRefresh.h"
 #import "UIUtils.h"
 #import "AppDelegate.h"
+#import "YXLoadingView.h"
+#import "LoginViewController.h"
 //#import "MLNavigationController.h"
 //#import "UIImageView+AFNetworking.h"
 // Include any system framework and library headers here that should be included in all compilation units.
@@ -31,12 +33,17 @@
 #else
 #define YXLog(...) /* */
 #endif
+
+#define ShareApp (AppDelegate *)[[UIApplication sharedApplication] delegate]
 //获取设备的物理高度和宽度
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 //颜色
 #undef  RGB
 #define RGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#undef RGBA
+#define RGBA(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
+
 //字体
 #undef  YXCharacterFont
 #define YXCharacterFont(s)    [UIFont fontWithName:@"Helvetica" size:s]
@@ -46,7 +53,7 @@
 #define kUserBackgroundPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"myBackground.png"]
 
 
-#define stateCount 50
+#define stateCount 50      //请求数量，每页数目
 #define StatusBarHeight 20  //状态栏高度
 
 
@@ -66,4 +73,7 @@
 //#define kUserBMI            @"YXuserBMI"
 //#define kUserBirthday       @"YXuserBirthday"
 //#define kUserClubAddress    @"YXuserClubAddress"
+
+//NSNotificationCenterName
+#define YXUserNotLoginNoti @"needUserLogin"
 #endif

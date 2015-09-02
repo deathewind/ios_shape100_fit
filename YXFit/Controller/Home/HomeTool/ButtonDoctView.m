@@ -32,7 +32,7 @@
         button1.titleLabel.font = YXCharacterFont(15);
         button1.tag = 1;
         [button1 addTarget:self action:@selector(changeBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [button1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button1 setTitleColor:RGB(60, 60, 60) forState:UIControlStateNormal];
         [self addSubview:button1];
         
         UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -41,7 +41,7 @@
         button2.titleLabel.font = YXCharacterFont(15);
         button2.tag = 2;
         [button2 addTarget:self action:@selector(changeBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [button2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button2 setTitleColor:RGB(60, 60, 60) forState:UIControlStateNormal];
         [self addSubview:button2];
         
         UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -50,20 +50,20 @@
         button3.titleLabel.font = YXCharacterFont(15);
         button3.tag = 3;
         [button3 addTarget:self action:@selector(changeBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [button3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button3 setTitleColor:RGB(60, 60, 60) forState:UIControlStateNormal];
         [self addSubview:button3];
         
-        UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(button.width - 1, 10, 1, self.height - 10 * 2)];
-        line.backgroundColor = [UIColor lightGrayColor];
-        [button addSubview:line];
-        
-        UIImageView *line1 = [[UIImageView alloc] initWithFrame:CGRectMake(button1.width - 1, line.origin.y, 1, line.height)];
-        line1.backgroundColor = [UIColor lightGrayColor];
-        [button1 addSubview:line1];
-        
-        UIImageView *line2 = [[UIImageView alloc] initWithFrame:CGRectMake(button2.width - 1, line.origin.y, 1, line.height)];
-        line2.backgroundColor = [UIColor lightGrayColor];
-        [button2 addSubview:line2];
+//        UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(button.width - 1, 10, 1, self.height - 10 * 2)];
+//        line.backgroundColor = [UIColor lightGrayColor];
+//        [button addSubview:line];
+//        
+//        UIImageView *line1 = [[UIImageView alloc] initWithFrame:CGRectMake(button1.width - 1, line.origin.y, 1, line.height)];
+//        line1.backgroundColor = [UIColor lightGrayColor];
+//        [button1 addSubview:line1];
+//        
+//        UIImageView *line2 = [[UIImageView alloc] initWithFrame:CGRectMake(button2.width - 1, line.origin.y, 1, line.height)];
+//        line2.backgroundColor = [UIColor lightGrayColor];
+//        [button2 addSubview:line2];
         
         _line = [[UIView alloc] initWithFrame:CGRectMake(0, self.height - 2, button.width, 2)];
         _line.backgroundColor = [UIColor orangeColor];
@@ -83,7 +83,7 @@
     for (UIButton *view in self.subviews) {
         if ([view isKindOfClass:[UIButton class]]) {
             if (view.tag != button.tag) {
-                [view setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                [view setTitleColor:RGB(60, 60, 60) forState:UIControlStateNormal];
             }
         }
     }

@@ -16,9 +16,9 @@
 
 
 @property(nonatomic, strong) UIScrollView *scrollView;
-@property(nonatomic, strong) UIView *topView;
-@property(nonatomic, strong) UIButton *loginBtn;
-@property(nonatomic, strong) UIButton *registBtn;
+//@property(nonatomic, strong) UIView *topView;
+//@property(nonatomic, strong) UIButton *loginBtn;
+//@property(nonatomic, strong) UIButton *registBtn;
 @property(nonatomic, strong) LoginView   *loginView;
 @property(nonatomic, strong) RegistView   *registView;
 
@@ -43,21 +43,19 @@
     
   //  [self.navBar addSubview:self.topView];
     
-    UISegmentedControl *segment_order = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"登录", nil), NSLocalizedString(@"注册", nil)]];
-    segment_order.frame = CGRectMake(70, 22, self.view.frame.size.width - 70 * 2, 40);
+    UISegmentedControl *segment_order = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Login", nil), NSLocalizedString(@"Register", nil)]];
+    segment_order.frame = CGRectMake(70, 23, self.view.frame.size.width - 70 * 2, 38);
     segment_order.selectedSegmentIndex = 0;
     segment_order.tintColor = [UIColor whiteColor];
-    [segment_order setTitleTextAttributes:@{NSFontAttributeName :YXCharacterBoldFont(18)} forState:UIControlStateNormal];
+    [segment_order setTitleTextAttributes:@{NSFontAttributeName :YXCharacterBoldFont(17)} forState:UIControlStateNormal];
     [segment_order addTarget:self action:@selector(didClickButton_segment:) forControlEvents:UIControlEventValueChanged];
     [self.navBar addSubview:segment_order];
 }
 - (void)didClickButton_segment:(UISegmentedControl *)segment{
     switch (segment.selectedSegmentIndex) {
         case 0:{
-        
             self.loginView.hidden = NO;
             self.registView.hidden = YES;
-            //self.titleBar.text = @"登录";
         }break;
         case 1:{
             self.loginView.hidden = YES;
@@ -72,9 +70,9 @@
 }
 - (UIScrollView *)scrollView{
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.navBar.frame.size.height , self.view.frame.size.width, self.view.frame.size.height - self.navBar.frame.size.height)];
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.navBar.height , ScreenWidth, ScreenHeight - self.navBar.height)];
         _scrollView.backgroundColor = [UIColor whiteColor];
-        _scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
+        _scrollView.contentSize = CGSizeMake(ScreenWidth, ScreenHeight);
         _scrollView.delegate = self;
         //[_scrollView addSubview:self.topView];
         [_scrollView addSubview:self.loginView];
@@ -82,72 +80,37 @@
     }
     return _scrollView;
 }
-- (UIView *)topView{
-    if (!_topView) {
-        _topView = [[UIView alloc] initWithFrame:CGRectMake(100, StatusBarHeight, self.view.frame.size.width - 200, 44)];
 
 
-        
-        UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        loginBtn.frame = CGRectMake(0, 0, _topView.frame.size.width/2, _topView.frame.size.height);
-        [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
-        [loginBtn addTarget:self action:@selector(showLoginView:) forControlEvents:UIControlEventTouchUpInside];
-        loginBtn.selected = YES;
-        loginBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-        [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        loginBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        loginBtn.layer.borderWidth = 1;
-        loginBtn.backgroundColor = [UIColor clearColor];
-        _loginBtn = loginBtn;
-        [_topView addSubview:loginBtn];
-        
-        UIButton *registBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        registBtn.frame = CGRectMake(loginBtn.frame.size.width, 0, loginBtn.frame.size.width, loginBtn.frame.size.height);
-        [registBtn setTitle:@"注册" forState:UIControlStateNormal];
-        [registBtn addTarget:self action:@selector(showRegistView:) forControlEvents:UIControlEventTouchUpInside];
-        [registBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [registBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        registBtn.selected = NO;
-        registBtn.titleLabel.font = loginBtn.titleLabel.font;
-        registBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        registBtn.layer.borderWidth = 1;
-        registBtn.backgroundColor = [UIColor clearColor];
-        _registBtn = registBtn;
-        [_topView addSubview:registBtn];
-    }
-    return _topView;
-}
-
-- (void)showLoginView:(UIButton *)button{
-    button.selected = YES;
-    self.loginView.hidden = NO;
-    self.registView.hidden = YES;
-    _registBtn.selected = NO;
-   // _registBtn.backgroundColor = RGB(240, 240, 240);
-    button.backgroundColor = [UIColor whiteColor];
-    self.titleBar.text = @"登录";
-}
-- (void)showRegistView:(UIButton *)button{
-    button.selected = YES;
-    self.loginView.hidden = YES;
-    self.registView.hidden = NO;
-    _loginBtn.selected = NO;
-  //  _loginBtn.backgroundColor = RGB(240, 240, 240);
-    button.backgroundColor = [UIColor whiteColor];
-    self.titleBar.text = @"注册";
-}
+//- (void)showLoginView:(UIButton *)button{
+//    button.selected = YES;
+//    self.loginView.hidden = NO;
+//    self.registView.hidden = YES;
+//    _registBtn.selected = NO;
+//   // _registBtn.backgroundColor = RGB(240, 240, 240);
+//    button.backgroundColor = [UIColor whiteColor];
+//    self.titleBar.text = @"登录";
+//}
+//- (void)showRegistView:(UIButton *)button{
+//    button.selected = YES;
+//    self.loginView.hidden = YES;
+//    self.registView.hidden = NO;
+//    _loginBtn.selected = NO;
+//  //  _loginBtn.backgroundColor = RGB(240, 240, 240);
+//    button.backgroundColor = [UIColor whiteColor];
+//    self.titleBar.text = @"注册";
+//}
 
 - (LoginView *)loginView{
     if (!_loginView) {
-        _loginView = [[LoginView alloc] initWithFrame:CGRectMake(0, self.navBar.height + 20, self.view.frame.size.width, self.scrollView.frame.size.height - self.navBar.height)];
+        _loginView = [[LoginView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, self.scrollView.frame.size.height - self.navBar.height)];
         _loginView.delegate = self;
     }
     return _loginView;
 }
 - (RegistView *)registView{
     if (!_registView) {
-        _registView = [[RegistView alloc] initWithFrame:CGRectMake(0, self.navBar.height + 20, self.view.frame.size.width, self.scrollView.frame.size.height - self.navBar.height)];
+        _registView = [[RegistView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, self.scrollView.frame.size.height - self.navBar.height)];
         _registView.delegate = self;
         _registView.txtConPwd.delegate = self;
         _registView.hidden = YES;
@@ -166,20 +129,26 @@
 - (void)btnLoginAction{ //登录
     if(self.loginView.txtUser.text.length==0)
     {
-        [UIUtils showTextOnly:self.view labelString:@"手机号不可为空！"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Empty phoneNumber", nil)];
         return;
     }
     if (![UIUtils validateMobile:self.loginView.txtUser.text]){
-        [UIUtils showTextOnly:self.view labelString:@"手机号不可用！"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Wrong phoneNumber", nil)];
         return;
     }
     if(self.loginView.txtPwd.text.length==0)
     {
-        [UIUtils showTextOnly:self.view labelString:@"密码不可为空！"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Empty password", nil)];
         return;
     }
+    if(self.loginView.txtPwd.text.length < 6)
+    {
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Wrong password", nil)];
+        return;
+    }
+    [self.view endEditing:YES];
     if ([UIUtils isConnectNetwork]) {
-        [UIUtils showProgressHUDto:self.view withString:@"登录中" showTime:30];
+        [UIUtils showProgressHUDto:self.view withString:NSLocalizedString(@"Logging", nil) showTime:30];
         [[YXNetworkingTool sharedInstance] userLogin:self.loginView.txtUser.text password:self.loginView.txtPwd.text success:^(id JSON) {
             NSString *oauth_token = [JSON objectForKey:@"oauth_token"];
             NSString *oauth_token_secret = [JSON objectForKey:@"oauth_token_secret"];
@@ -190,7 +159,7 @@
             [[YXNetworkingTool sharedInstance] getUserInfomation:user_id success:^(id JSON) {
                 YXLog(@"%@", JSON);
                 [UIUtils hideProgressHUD:self.view];
-                [UIUtils showTextOnly:self.view labelString:@"登录成功"];
+                [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Login Success", nil)];
                 //名字
                 if ([JSON[@"name"] isEqualToString:@""] || JSON[@"name"] == nil) {
                     [[NSUserDefaults standardUserDefaults] setObject:screen_name forKey:YXUserName];
@@ -222,15 +191,17 @@
                     [self dismissViewControllerAnimated:YES completion:nil];
                 });
             } failure:^(NSError *error, id JSON) {
+                YXLog(@"error = %@", JSON);
                 [UIUtils hideProgressHUD:self.view];
-                [UIUtils showTextOnly:self.view labelString:@"网络不给力"];
+              //  [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
                 [[NSUserDefaults standardUserDefaults] setObject:nil forKey:YXToken];
                 [[NSUserDefaults standardUserDefaults] setObject:nil forKey:YXTokenSecret];
             }];
 
         } failure:^(NSError *error, id JSON) {
+            YXLog(@"error = %@", JSON);
             [UIUtils hideProgressHUD:self.view];
-            [UIUtils showTextOnly:self.view labelString:@"网络不给力"];
+           // [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
         }];
     }
 
@@ -253,22 +224,22 @@
 - (void)btnVerifyAction{
     if(self.registView.txtUser.text.length==0)
     {
-        [UIUtils showTextOnly:self.view labelString:@"手机号不可为空！"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Empty phoneNumber", nil)];
         return;
     }
     if (![UIUtils validateMobile:self.registView.txtUser.text]){
-        [UIUtils showTextOnly:self.view labelString:@"手机号不可用！"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Wrong phoneNumber", nil)];
         return;
     }
-    [UIUtils showProgressHUDto:self.view withString:@"发送中" showTime:30];
+    [UIUtils showProgressHUDto:self.view withString:NSLocalizedString(@"Sending", nil) showTime:30];
     [[YXNetworkingTool sharedInstance] getVerifyCode:self.registView.txtUser.text success:^(id JSON) {
         YXLog(@"%@", JSON);
         [UIUtils hideProgressHUD:self.view];
-        [UIUtils showTextOnly:self.view labelString:@"发送成功"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Send Success", nil)];
         [self.registView startBeginTimeCountDown];
     } failure:^(NSError *error, id JSON) {
         [UIUtils hideProgressHUD:self.view];
-        [UIUtils showTextOnly:self.view labelString:@"发送失败"];
+       // [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
     }];
 
 }
@@ -276,49 +247,59 @@
 - (void)btnRegistAction{
     if(self.registView.txtUser.text.length==0)
     {
-        [UIUtils showTextOnly:self.view labelString:@"手机号不可为空！"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Empty phoneNumber", nil)];
         return;
     }
     if (![UIUtils validateMobile:self.registView.txtUser.text]){
-        [UIUtils showTextOnly:self.view labelString:@"手机号码不能用"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Wrong phoneNumber", nil)];
         return;
     }
     if (self.registView.txtCode.text.length == 0){
-        [UIUtils showTextOnly:self.view labelString:@"验证码不可为空！"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Empty code", nil)];
         return;
     }
     if (self.registView.txtPwd.text.length == 0){
-        [UIUtils showTextOnly:self.view labelString:@"密码不可为空！"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Empty password", nil)];
         return;
     }
     if (self.registView.txtConPwd.text.length == 0){
-        [UIUtils showTextOnly:self.view labelString:@"密码不可为空！"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Empty password", nil)];
         return;
     }
     if (self.registView.txtConPwd.text.length < 6) {
-        [UIUtils showTextOnly:self.view labelString:@"密码不能少于6位"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Wrong password", nil)];
         return;
     }
     if (![self.registView.txtPwd.text isEqualToString:self.registView.txtConPwd.text]) {
-        [UIUtils showTextOnly:self.view labelString:@"两次输入的密码不一致！"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Same passwork", nil)];
         return;
     }
 
-    
+    [self.view endEditing:YES];
     NSMutableDictionary *param = [NSMutableDictionary dictionaryWithObject:self.registView.txtUser.text forKey:@"phone"];
     [param setObject:self.registView.txtPwd.text forKey:@"password"];
     [param setObject:self.registView.txtCode.text forKey:@"code"];
-    [UIUtils showProgressHUDto:self.view withString:@"注册中" showTime:30];
+    [UIUtils showProgressHUDto:self.view withString:NSLocalizedString(@"Registering", nil) showTime:30];
     [[YXNetworkingTool sharedInstance] registWith:param success:^(id JSON) {
         YXLog(@"%@", JSON);
         [UIUtils hideProgressHUD:self.view];
-        [UIUtils showTextOnly:self.view labelString:@"注册成功"];
+        [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Register Success", nil)];
         
        // [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"User Name Already Exists", nil)];
     } failure:^(NSError *error, id JSON) {
-        
+        YXLog(@"error = %@ ===== %@", error, JSON);
         [UIUtils hideProgressHUD:self.view];
-        [UIUtils showTextOnly:self.view labelString:@"网络不给力"];
+        if (JSON[@"error"]) {
+            if ([[NSString stringWithFormat:@"%@", JSON[@"error"]] isEqualToString:@"400"]) {
+                [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Already exists", nil)];
+                return ;
+            }
+        }
+//        NSHTTPURLResponse *response = (NSHTTPURLResponse *)JSON;
+//        if(response.statusCode==400){ //未登陆错误
+//            [UIUtils showTextOnly:self.view labelString:@"您还未登录"];
+//        }
+       // [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
     }];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

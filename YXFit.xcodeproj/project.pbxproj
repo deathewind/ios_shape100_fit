@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		791624E51B9583FB0071360A /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791624E41B9583FB0071360A /* TableViewController.m */; };
+		791624E81B95B32B0071360A /* cd_backBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791624E71B95B32B0071360A /* cd_backBlack@2x.png */; };
 		7917C4DF1B8D4A0B00896027 /* YXCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7917C4DE1B8D4A0B00896027 /* YXCouponViewController.m */; };
 		7917C4E51B8D792700896027 /* ButtonDoctView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7917C4E41B8D792700896027 /* ButtonDoctView.m */; };
 		7917C4E81B8DAF6F00896027 /* YXIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7917C4E71B8DAF6F00896027 /* YXIntroViewController.m */; };
@@ -19,7 +21,15 @@
 		7917C4F91B8DBF8200896027 /* begin_three@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4F01B8DBF8200896027 /* begin_three@2x.png */; };
 		7917C4FA1B8DBF8200896027 /* begin_two480.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4F11B8DBF8200896027 /* begin_two480.png */; };
 		7917C4FB1B8DBF8200896027 /* begin_two@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7917C4F21B8DBF8200896027 /* begin_two@2x.png */; };
+		7917C5131B8EB22A00896027 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7917C5151B8EB22A00896027 /* Localizable.strings */; };
+		7917C5221B8EF3FF00896027 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7917C5191B8EF3FF00896027 /* libWeChatSDK.a */; };
+		7917C5231B8EF3FF00896027 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7917C51D1B8EF3FF00896027 /* libWeiboSDK.a */; };
+		7917C5241B8EF3FF00896027 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7917C51E1B8EF3FF00896027 /* WeiboSDK.bundle */; };
+		7917C5251B8EF3FF00896027 /* YXShareCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7917C5211B8EF3FF00896027 /* YXShareCenter.m */; };
 		793BF3961B8C7844001429B1 /* YXFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 793BF3951B8C7844001429B1 /* YXFeedbackViewController.m */; };
+		7978A5CF1B8FF91C0048325A /* YXHandleError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7978A5CE1B8FF91C0048325A /* YXHandleError.m */; };
+		7978A5D21B9002760048325A /* YXIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7978A5D11B9002760048325A /* YXIndicatorView.m */; };
+		7978A5D51B9024860048325A /* YXLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7978A5D41B9024860048325A /* YXLoadingView.m */; };
 		797F66E51B8AC71F0070E41B /* YXProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F66E41B8AC71F0070E41B /* YXProductViewController.m */; };
 		797F66E81B8AC7420070E41B /* YXProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F66E71B8AC7420070E41B /* YXProductDetailViewController.m */; };
 		797F66F71B8AC7E00070E41B /* tabBar_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 797F66ED1B8AC7E00070E41B /* tabBar_back@2x.png */; };
@@ -115,6 +125,7 @@
 		797F681F1B8C08920070E41B /* YXAboutUSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F681E1B8C08920070E41B /* YXAboutUSViewController.m */; };
 		797F68211B8C0B430070E41B /* DF.png in Resources */ = {isa = PBXBuildFile; fileRef = 797F68201B8C0B430070E41B /* DF.png */; };
 		797F68251B8C28B10070E41B /* STAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F68241B8C28B10070E41B /* STAlertView.m */; };
+		79C306E01B91B04D005119EB /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C306DF1B91B04D005119EB /* CExpandHeader.m */; };
 		79C33C581B7EE0F400247956 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C33C2B1B7EE0F300247956 /* AFHTTPRequestOperation.m */; };
 		79C33C591B7EE0F400247956 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C33C2D1B7EE0F300247956 /* AFHTTPRequestOperationManager.m */; };
 		79C33C5A1B7EE0F400247956 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C33C2F1B7EE0F300247956 /* AFHTTPSessionManager.m */; };
@@ -157,6 +168,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		791624E31B9583FB0071360A /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		791624E41B9583FB0071360A /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		791624E71B95B32B0071360A /* cd_backBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cd_backBlack@2x.png"; sourceTree = "<group>"; };
 		7917C4DD1B8D4A0B00896027 /* YXCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXCouponViewController.h; sourceTree = "<group>"; };
 		7917C4DE1B8D4A0B00896027 /* YXCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXCouponViewController.m; sourceTree = "<group>"; };
 		7917C4E31B8D792700896027 /* ButtonDoctView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonDoctView.h; sourceTree = "<group>"; };
@@ -172,8 +186,24 @@
 		7917C4F01B8DBF8200896027 /* begin_three@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin_three@2x.png"; sourceTree = "<group>"; };
 		7917C4F11B8DBF8200896027 /* begin_two480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = begin_two480.png; sourceTree = "<group>"; };
 		7917C4F21B8DBF8200896027 /* begin_two@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin_two@2x.png"; sourceTree = "<group>"; };
+		7917C5141B8EB22A00896027 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		7917C5161B8EB22E00896027 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7917C5191B8EF3FF00896027 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		7917C51A1B8EF3FF00896027 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		7917C51B1B8EF3FF00896027 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		7917C51D1B8EF3FF00896027 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		7917C51E1B8EF3FF00896027 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		7917C51F1B8EF3FF00896027 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		7917C5201B8EF3FF00896027 /* YXShareCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXShareCenter.h; sourceTree = "<group>"; };
+		7917C5211B8EF3FF00896027 /* YXShareCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXShareCenter.m; sourceTree = "<group>"; };
 		793BF3941B8C7844001429B1 /* YXFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXFeedbackViewController.h; sourceTree = "<group>"; };
 		793BF3951B8C7844001429B1 /* YXFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXFeedbackViewController.m; sourceTree = "<group>"; };
+		7978A5CD1B8FF91C0048325A /* YXHandleError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXHandleError.h; sourceTree = "<group>"; };
+		7978A5CE1B8FF91C0048325A /* YXHandleError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXHandleError.m; sourceTree = "<group>"; };
+		7978A5D01B9002760048325A /* YXIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXIndicatorView.h; sourceTree = "<group>"; };
+		7978A5D11B9002760048325A /* YXIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXIndicatorView.m; sourceTree = "<group>"; };
+		7978A5D31B9024860048325A /* YXLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXLoadingView.h; sourceTree = "<group>"; };
+		7978A5D41B9024860048325A /* YXLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLoadingView.m; sourceTree = "<group>"; };
 		797F66E31B8AC71F0070E41B /* YXProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXProductViewController.h; sourceTree = "<group>"; };
 		797F66E41B8AC71F0070E41B /* YXProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXProductViewController.m; sourceTree = "<group>"; };
 		797F66E61B8AC7420070E41B /* YXProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXProductDetailViewController.h; sourceTree = "<group>"; };
@@ -329,6 +359,8 @@
 		797F68201B8C0B430070E41B /* DF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DF.png; sourceTree = "<group>"; };
 		797F68231B8C28B10070E41B /* STAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAlertView.h; sourceTree = "<group>"; };
 		797F68241B8C28B10070E41B /* STAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAlertView.m; sourceTree = "<group>"; };
+		79C306DE1B91B04D005119EB /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
+		79C306DF1B91B04D005119EB /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		79C33C2A1B7EE0F300247956 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		79C33C2B1B7EE0F300247956 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		79C33C2C1B7EE0F300247956 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -402,9 +434,11 @@
 				797F67F31B8B15BC0070E41B /* libWeChatSDK.a in Frameworks */,
 				797F67ED1B8B15BC0070E41B /* libpingpp+alipay.a in Frameworks */,
 				797F67F01B8B15BC0070E41B /* libpingpp+up.a in Frameworks */,
+				7917C5231B8EF3FF00896027 /* libWeiboSDK.a in Frameworks */,
 				797F67F21B8B15BC0070E41B /* libpingpp+wx.a in Frameworks */,
 				797F67F11B8B15BC0070E41B /* libUPPayPlugin.a in Frameworks */,
 				797F67EF1B8B15BC0070E41B /* libpingpp.a in Frameworks */,
+				7917C5221B8EF3FF00896027 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +468,37 @@
 			path = begin;
 			sourceTree = "<group>";
 		};
+		7917C5171B8EF3FF00896027 /* ShareSDK */ = {
+			isa = PBXGroup;
+			children = (
+				7917C5181B8EF3FF00896027 /* libWechatSDK */,
+				7917C51C1B8EF3FF00896027 /* libWeiboSDK */,
+				7917C5201B8EF3FF00896027 /* YXShareCenter.h */,
+				7917C5211B8EF3FF00896027 /* YXShareCenter.m */,
+			);
+			path = ShareSDK;
+			sourceTree = "<group>";
+		};
+		7917C5181B8EF3FF00896027 /* libWechatSDK */ = {
+			isa = PBXGroup;
+			children = (
+				7917C5191B8EF3FF00896027 /* libWeChatSDK.a */,
+				7917C51A1B8EF3FF00896027 /* WXApi.h */,
+				7917C51B1B8EF3FF00896027 /* WXApiObject.h */,
+			);
+			path = libWechatSDK;
+			sourceTree = "<group>";
+		};
+		7917C51C1B8EF3FF00896027 /* libWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				7917C51D1B8EF3FF00896027 /* libWeiboSDK.a */,
+				7917C51E1B8EF3FF00896027 /* WeiboSDK.bundle */,
+				7917C51F1B8EF3FF00896027 /* WeiboSDK.h */,
+			);
+			path = libWeiboSDK;
+			sourceTree = "<group>";
+		};
 		797F66EB1B8AC7E00070E41B /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				797F67A61B8AF58B0070E41B /* cd_back@2x.png */,
+				791624E71B95B32B0071360A /* cd_backBlack@2x.png */,
 				797F66ED1B8AC7E00070E41B /* tabBar_back@2x.png */,
 				797F66EE1B8AC7E00070E41B /* tabbar_bg@2x.png */,
 				797F66EF1B8AC7E00070E41B /* tabBar_club_nor@2x.png */,
@@ -545,6 +611,12 @@
 				797F67BF1B8B0FD80070E41B /* YXLoadMoreView.m */,
 				797F672B1B8ACE0A0070E41B /* YXNetworkingTool.h */,
 				797F672C1B8ACE0A0070E41B /* YXNetworkingTool.m */,
+				7978A5D31B9024860048325A /* YXLoadingView.h */,
+				7978A5D41B9024860048325A /* YXLoadingView.m */,
+				7978A5CD1B8FF91C0048325A /* YXHandleError.h */,
+				7978A5CE1B8FF91C0048325A /* YXHandleError.m */,
+				7978A5D01B9002760048325A /* YXIndicatorView.h */,
+				7978A5D11B9002760048325A /* YXIndicatorView.m */,
 			);
 			path = NetworkingTool;
 			sourceTree = "<group>";
@@ -632,6 +704,8 @@
 				797F67D71B8B153A0070E41B /* MoneyView.m */,
 				7917C4E31B8D792700896027 /* ButtonDoctView.h */,
 				7917C4E41B8D792700896027 /* ButtonDoctView.m */,
+				79C306DE1B91B04D005119EB /* CExpandHeader.h */,
+				79C306DF1B91B04D005119EB /* CExpandHeader.m */,
 			);
 			path = HomeTool;
 			sourceTree = "<group>";
@@ -776,6 +850,7 @@
 		79C33C271B7EE0F300247956 /* LibSDK */ = {
 			isa = PBXGroup;
 			children = (
+				7917C5171B8EF3FF00896027 /* ShareSDK */,
 				797F67DB1B8B15BC0070E41B /* ChannelPING */,
 				797F678E1B8AE1160070E41B /* GTMBase64 */,
 				797F67621B8AD4D00070E41B /* SDWebImage */,
@@ -898,6 +973,8 @@
 				797F66E41B8AC71F0070E41B /* YXProductViewController.m */,
 				797F66E61B8AC7420070E41B /* YXProductDetailViewController.h */,
 				797F66E71B8AC7420070E41B /* YXProductDetailViewController.m */,
+				791624E31B9583FB0071360A /* TableViewController.h */,
+				791624E41B9583FB0071360A /* TableViewController.m */,
 				797F67D11B8B152F0070E41B /* YXPayViewController.h */,
 				797F67D21B8B152F0070E41B /* YXPayViewController.m */,
 			);
@@ -958,6 +1035,7 @@
 				79C97F681B72F627006AE0EF /* Info.plist */,
 				79C97F691B72F627006AE0EF /* main.m */,
 				79C97F8D1B72F70F006AE0EF /* YXFit.pch */,
+				7917C5151B8EB22A00896027 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1042,6 +1120,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 79C97F5B1B72F626006AE0EF;
 			productRefGroup = 79C97F651B72F626006AE0EF /* Products */;
@@ -1071,7 +1150,9 @@
 				797F66FF1B8AC7E00070E41B /* tabBar_timeTable_nor@2x.png in Resources */,
 				7917C4F41B8DBF8200896027 /* begin_en_three@2x.png in Resources */,
 				7917C4F91B8DBF8200896027 /* begin_three@2x.png in Resources */,
+				791624E81B95B32B0071360A /* cd_backBlack@2x.png in Resources */,
 				797F66F71B8AC7E00070E41B /* tabBar_back@2x.png in Resources */,
+				7917C5131B8EB22A00896027 /* Localizable.strings in Resources */,
 				797F66FB1B8AC7E00070E41B /* tabBar_home_nor@2x.png in Resources */,
 				797F67EB1B8B15BC0070E41B /* AlipaySDK.bundle in Resources */,
 				797F67601B8AD35B0070E41B /* Default.png in Resources */,
@@ -1090,6 +1171,7 @@
 				797F68171B8BFE160070E41B /* alipay@2x.png in Resources */,
 				797F68191B8BFE160070E41B /* pay_check@2x.png in Resources */,
 				7917C4F81B8DBF8200896027 /* begin_three480.png in Resources */,
+				7917C5241B8EF3FF00896027 /* WeiboSDK.bundle in Resources */,
 				797F66FE1B8AC7E00070E41B /* tabBar_me_sel@2x.png in Resources */,
 				797F67A71B8AF58B0070E41B /* cd_back@2x.png in Resources */,
 				7917C4FA1B8DBF8200896027 /* begin_two480.png in Resources */,
@@ -1149,6 +1231,7 @@
 				797F67C71B8B14490070E41B /* YXOrderDetailViewController.m in Sources */,
 				79C33C621B7EE0F400247956 /* UIImageView+AFNetworking.m in Sources */,
 				79C33C5F1B7EE0F400247956 /* AFURLResponseSerialization.m in Sources */,
+				7978A5D51B9024860048325A /* YXLoadingView.m in Sources */,
 				79C33C6A1B7EE0F400247956 /* MBProgressHUD.m in Sources */,
 				797F67A01B8AEF350070E41B /* CountView.m in Sources */,
 				79C33C5D1B7EE0F400247956 /* AFURLConnectionOperation.m in Sources */,
@@ -1162,6 +1245,7 @@
 				797F67221B8ACCAE0070E41B /* Model_product.m in Sources */,
 				7917C4E51B8D792700896027 /* ButtonDoctView.m in Sources */,
 				79C33C5C1B7EE0F400247956 /* AFSecurityPolicy.m in Sources */,
+				7978A5D21B9002760048325A /* YXIndicatorView.m in Sources */,
 				797F672D1B8ACE0A0070E41B /* YXNetworkingTool.m in Sources */,
 				797F67C41B8B10FB0070E41B /* OrderCell.m in Sources */,
 				793BF3961B8C7844001429B1 /* YXFeedbackViewController.m in Sources */,
@@ -1170,7 +1254,9 @@
 				797F67AB1B8AFCB40070E41B /* YXBGScrollowView.m in Sources */,
 				797F66E51B8AC71F0070E41B /* YXProductViewController.m in Sources */,
 				797F67341B8AD0200070E41B /* YXIntroduceViewController.m in Sources */,
+				791624E51B9583FB0071360A /* TableViewController.m in Sources */,
 				797F67921B8AE1160070E41B /* GTMBase64.m in Sources */,
+				79C306E01B91B04D005119EB /* CExpandHeader.m in Sources */,
 				797F681C1B8C003A0070E41B /* YXMyInfoViewController.m in Sources */,
 				797F67061B8ACACC0070E41B /* MLNavigationController.m in Sources */,
 				79C33C5A1B7EE0F400247956 /* AFHTTPSessionManager.m in Sources */,
@@ -1193,11 +1279,13 @@
 				797F67801B8AD4D00070E41B /* NSData+ImageContentType.m in Sources */,
 				797F670E1B8ACAE30070E41B /* YXTabBarViewController.m in Sources */,
 				797F67871B8AD4D00070E41B /* SDWebImagePrefetcher.m in Sources */,
+				7978A5CF1B8FF91C0048325A /* YXHandleError.m in Sources */,
 				797F678A1B8AD4D00070E41B /* UIImage+MultiFormat.m in Sources */,
 				797F678C1B8AD4D00070E41B /* UIImageView+WebCache.m in Sources */,
 				797F67261B8ACD200070E41B /* YXOrderViewController.m in Sources */,
 				797F67CF1B8B14540070E41B /* OrderInfoView.m in Sources */,
 				797F670F1B8ACAE30070E41B /* YXTabBarView.m in Sources */,
+				7917C5251B8EF3FF00896027 /* YXShareCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1218,6 +1306,18 @@
 			targetProxy = 79C97F7E1B72F627006AE0EF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7917C5151B8EB22A00896027 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7917C5141B8EB22A00896027 /* zh-Hans */,
+				7917C5161B8EB22E00896027 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		79C97F851B72F627006AE0EF /* Debug */ = {
@@ -1256,7 +1356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1293,7 +1393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1322,6 +1422,8 @@
 					"$(PROJECT_DIR)/YXFit/LibSDK/ChannelPING",
 					"$(PROJECT_DIR)/YXFit/LibSDK/ChannelPING/UnionPay",
 					"$(PROJECT_DIR)/YXFit/LibSDK/ChannelPING/Wx",
+					"$(PROJECT_DIR)/YXFit/LibSDK/ShareSDK/libWechatSDK",
+					"$(PROJECT_DIR)/YXFit/LibSDK/ShareSDK/libWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1349,6 +1451,8 @@
 					"$(PROJECT_DIR)/YXFit/LibSDK/ChannelPING",
 					"$(PROJECT_DIR)/YXFit/LibSDK/ChannelPING/UnionPay",
 					"$(PROJECT_DIR)/YXFit/LibSDK/ChannelPING/Wx",
+					"$(PROJECT_DIR)/YXFit/LibSDK/ShareSDK/libWechatSDK",
+					"$(PROJECT_DIR)/YXFit/LibSDK/ShareSDK/libWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

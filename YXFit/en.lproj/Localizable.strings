@@ -1,0 +1,44 @@
+/* 
+  Localizable.strings
+  YXFit
+
+  Created by 何军 on 27/8/15.
+  Copyright (c) 2015年 itcast. All rights reserved.
+*/
+//注册
+"Register" = "Register";
+"Login" = "Login";
+"Code" = "Get code";
+"Enter phoneNumber" = "Enter phoneNumber";
+"Enter your phoneNumber" = "Enter your phoneNumber";
+"Enter password" = "Enter password";
+"Code passwork" = "Enter the code";
+"Set password" = "Set password";
+"Confirm password" = "Confirm password";
+"Find passwork" = "Find passwork";
+"Reset password" = "Reset password";
+//注册登录提示语
+"Empty phoneNumber" = "The phoneNumber is empty";
+"Wrong phoneNumber" = "The phoneNumber is not available";
+"Empty password" = "Password is empty";
+"Wrong password" = "Password at least 6 bit";
+"Logging" = "Loading";
+"Registering" = "Register";
+"Login Success" = "Login Success";
+"Sending" = "Sending";
+"Send Success" = "Send Success";
+"Register Success" = "Register Success";
+"Empty code" = "Code is empty";
+"Same passwork" = "Passwords you entered must be the same";
+"Already exists" = "Users already exist";
+"Reset Success" = "Reset Success";
+//网络
+"Network"="Network timeout";
+"No more"="No more";
+"Loading"="Loading";
+"NoLogin"="Not Logged in";
+//个人
+"Camera"=" Camera";
+//common
+"OK" = "OK";
+"Cancel" = "Cancel";

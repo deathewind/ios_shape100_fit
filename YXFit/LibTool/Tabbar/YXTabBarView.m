@@ -38,8 +38,8 @@ static YXTabBarView *YXTabBarInstance = nil;
         _tabBarView.image = [UIImage imageFileName:@"tabbar_bg.png"];
         [self addSubview:_tabBarView];
         
-        UIImageView *topLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 1)];
-        topLine.backgroundColor = RGB(177, 177, 177);
+        UIImageView *topLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0.5, self.frame.size.width, 0.5)];
+        topLine.backgroundColor = RGB(200, 200, 200);
         [self addSubview:topLine];
     }
     return self;
@@ -52,10 +52,10 @@ static YXTabBarView *YXTabBarInstance = nil;
             }
         }
     }
-    [self creatButtonWithName:@"tabBar_home_nor.png" andImageName:@"tabBar_home_sel.png" andTitle:NSLocalizedString(@"主页", nil) atIndex:0];
-    [self creatButtonWithName:@"tabBar_club_nor.png" andImageName:@"tabBar_club_sel.png" andTitle:NSLocalizedString(@"健身", nil) atIndex:1];
-    [self creatButtonWithName:@"tabBar_timeTable_nor.png" andImageName:@"tabBar_timeTable_sel.png" andTitle:NSLocalizedString(@"订单", nil) atIndex:2];
-    [self creatButtonWithName:@"tabBar_me_nor.png" andImageName:@"tabBar_me_sel.png" andTitle:NSLocalizedString(@"我", nil) atIndex:3];
+    [self creatButtonWithName:@"tabBar_home_nor.png" andImageName:@"tabBar_home_sel.png" andTitle:NSLocalizedString(@"企业课", nil) atIndex:0];
+    [self creatButtonWithName:@"tabBar_club_nor.png" andImageName:@"tabBar_club_sel.png" andTitle:NSLocalizedString(@"俱乐部", nil) atIndex:1];
+//    [self creatButtonWithName:@"tabBar_timeTable_nor.png" andImageName:@"tabBar_timeTable_sel.png" andTitle:NSLocalizedString(@"订单", nil) atIndex:2];
+    [self creatButtonWithName:@"tabBar_me_nor.png" andImageName:@"tabBar_me_sel.png" andTitle:NSLocalizedString(@"我", nil) atIndex:2];
     
    // YXCustonButton *btn = self.subviews[0];
     YXCustonButton *btn = _tabBarView.subviews[0];
@@ -65,9 +65,9 @@ static YXTabBarView *YXTabBarInstance = nil;
 -(void)creatButtonWithName:(NSString *)normal andImageName:(NSString *)selected andTitle:(NSString *)title atIndex:(int)index{
     YXCustonButton *button = [YXCustonButton buttonWithType:UIButtonTypeCustom];
     button.tag = index;
-    CGFloat buttonW = _tabBarView.frame.size.width / 4;
+    CGFloat buttonW = _tabBarView.frame.size.width / 3;
     CGFloat buttonH = self.frame.size.height;
-    button.frame = CGRectMake(80 *index, 2, buttonW, buttonH - 4);
+    button.frame = CGRectMake(buttonW *index, 2, buttonW, buttonH - 4);
     [button setImage:[UIImage imageFileName:normal] forState:UIControlStateNormal];
     [button setImage:[UIImage imageFileName:selected] forState:UIControlStateDisabled];
     [button setTitle:title forState:UIControlStateNormal];
@@ -77,7 +77,7 @@ static YXTabBarView *YXTabBarInstance = nil;
     [button addTarget:self action:@selector(changeViewController:) forControlEvents:UIControlEventTouchDown];
     button.imageView.contentMode = UIViewContentModeCenter;
     button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    button.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.0f];
+    button.titleLabel.font = YXCharacterBoldFont(13);
     [_tabBarView addSubview:button];
 }
 - (void)changeViewController:(YXCustonButton *)sender{
@@ -125,5 +125,12 @@ static YXTabBarView *YXTabBarInstance = nil;
         self.hidden = YES;
     }];
 
+}
+
+- (void)selectIndex:(NSInteger)index{
+    YXCustonButton *btn = (YXCustonButton *)_tabBarView.subviews[index];
+    //  YXCustonButton *btn =(YXCustonButton *)[self viewWithTag:0];
+    [self changeViewController:btn];
+    
 }
 @end

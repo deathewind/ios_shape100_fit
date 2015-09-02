@@ -92,7 +92,7 @@
 {
    // YXLog(@"%lu", (unsigned long)self.viewControllers.count);
     
-    if (self.viewControllers.count > 0) [[YXTabBarView sharedInstance] hiddenAnimation];
+    if (self.viewControllers.count > 0 && self.canDragBack) [[YXTabBarView sharedInstance] hiddenAnimation];
 //    
 //    {
 //      //  [LGTabBarView sharedInstance].hidden = YES;

@@ -11,11 +11,15 @@
 #import "YXProductViewController.h"
 #import "YXOrderViewController.h"
 #import "YXMyViewController.h"
-#import "YXTabBarViewController.h"
+
 #import "MLNavigationController.h"
 
 #import "Pingpp.h"
 #import "YXIntroViewController.h"
+
+#import "YXOrderDetailViewController.h"
+
+#define umengfeedback @"55e5284de0f55a7145000d56" //
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
@@ -28,11 +32,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
 
-    
-
-    
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]){
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
         YXIntroViewController *intro = [[YXIntroViewController alloc] init];
@@ -40,10 +40,8 @@
     }else{
         UIViewController *rootViewController = [self setRootVC];
         [[self window] setRootViewController:rootViewController];
-        
         [[YXTabBarView sharedInstance] showAnimation];
     }
-    
    // [self checkVersion]; //版本检测
     return YES;
 }
@@ -55,7 +53,7 @@
 - (UITabBarController *)setRootVC{
     YXTabBarViewController *tabBarController = [[YXTabBarViewController alloc] init];
     tabBarController.delegate = self;
-   // self.tabbar = tabBarController;
+    self.tabbar = tabBarController;
     
     YXProductViewController *productVC = [[YXProductViewController alloc] init];
     MLNavigationController *productNav = [[MLNavigationController alloc] initWithRootViewController:productVC];
@@ -63,15 +61,15 @@
     YXIntroduceViewController *introduceVC = [[YXIntroduceViewController alloc] init];
     MLNavigationController *introduceNav = [[MLNavigationController alloc] initWithRootViewController:introduceVC];
     
-    YXOrderViewController *orderVC = [[YXOrderViewController alloc] init];
-    MLNavigationController *orderNav = [[MLNavigationController alloc] initWithRootViewController:orderVC];
+//    YXOrderViewController *orderVC = [[YXOrderViewController alloc] init];
+//    MLNavigationController *orderNav = [[MLNavigationController alloc] initWithRootViewController:orderVC];
     
     YXMyViewController *myVC = [[YXMyViewController alloc] init];
     MLNavigationController *myNav = [[MLNavigationController alloc] initWithRootViewController:myVC];
     
 
     
-    tabBarController.viewControllers = @[productNav, introduceNav, orderNav, myNav];
+    tabBarController.viewControllers = @[productNav, introduceNav, myNav];
     
     return tabBarController;
 }
@@ -116,14 +114,15 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    YXLog(@"open222222");
     NSString *urlStr=[[url absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     if ([urlStr rangeOfString:@"pingpp?"].location != NSNotFound) {
         [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
             // result : success, fail, cancel, invalid
-            NSLog(@"%@", result);
+            YXLog(@"支付结果%@", result);
             NSString *msg;
             if (error == nil) {
-                NSLog(@"PingppError is nil");
+                YXLog(@"PingppError is nil");
                 if ([result isEqualToString:@"success"]) {
                     msg = @"支付成功";
                 }
@@ -135,11 +134,19 @@
                 }
                 //   msg = result;
             } else {
-                NSLog(@"PingppError: code=%lu msg=%@", (unsigned long)error.code, [error getMsg]);
+                YXLog(@"PingppError: code=%lu msg=%@", (unsigned long)error.code, [error getMsg]);
                 msg = [NSString stringWithFormat:@"result=%@ PingppError: code=%lu msg=%@", result, (unsigned long)error.code, [error getMsg]];
             }
             // [(ViewController*)self.viewController.visibleViewController showAlertMessage:msg];
-            [UIUtils showTextOnly:self.window.rootViewController.view labelString:msg];
+           // [UIUtils showTextOnly:self.window.rootViewController.view labelString:msg time:2];
+           // [self.tabbar changeIndex:2];
+           // YXOrderViewController *order = (YXOrderViewController *)self.tabbar.selectedViewController;
+            
+//            NSString *orderid = [[NSUserDefaults standardUserDefaults] objectForKey:@"orderID"];
+            YXOrderDetailViewController *orderDetail = [[YXOrderDetailViewController alloc] init];
+//            orderDetail.orderID = orderid;
+//           // [order.navigationController pushViewController:orderDetail animated:YES];
+            [self.window.rootViewController.navigationController pushViewController:orderDetail animated:YES];
             
         }];
     }

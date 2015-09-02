@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface YXTabBarViewController : UITabBarController
-- (void)exit;
+- (void)changeIndex:(NSInteger)index;
 @end

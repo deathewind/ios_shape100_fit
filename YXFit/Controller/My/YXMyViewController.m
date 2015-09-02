@@ -14,6 +14,8 @@
 #import "YXAboutUSViewController.h"
 #import "YXFeedbackViewController.h"
 #import "YXCouponViewController.h"
+#import "MLNavigationController.h"
+#import "YXOrderViewController.h"
 @interface YXMyViewController()<UITableViewDataSource, UITableViewDelegate, YXBGScrollowViewDelegate, MyHeaderViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
@@ -29,12 +31,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    // self.titleBar.text = @"商品列表";
-    self.view.backgroundColor = [UIColor whiteColor];
+    
     [self.view addSubview:self.bgView];
     [self loadData];
 }
 - (void)loadData{
-    self.dataArray = [NSArray arrayWithObjects:@"个人信息",@"账户余额",@"我的优惠券",@"意见反馈",@"关于我们", nil];
+    self.dataArray = [NSArray arrayWithObjects:@"我的订单",@"个人信息",@"我的优惠券",@"意见反馈",@"关于我们", nil];
     [self.tableView reloadData];
 }
 
@@ -73,7 +75,9 @@
 }
 - (void)showPortrait:(UITapGestureRecognizer *)tap{
     LoginViewController *login = [[LoginViewController alloc] init];
-    [self presentViewController:login animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:login];
+    nav.navigationBarHidden = YES;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -97,6 +101,7 @@
         [cell addSubview:line];
     }
     cell.textLabel.text = [self.dataArray objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = RGB(60, 60, 60);
     return cell;
 }
 
@@ -110,10 +115,24 @@
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:YXToken];
  
     NSString *title = [self.dataArray objectAtIndex:indexPath.row];
+    if ([title isEqualToString:@"我的订单"]) {
+        if (token == nil) {
+            //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"还未登录,是否现在登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            //            [alert show];
+            [self presentLoginView];
+            return;
+            
+        }
+        YXOrderViewController *info = [[YXOrderViewController alloc] init];
+        [self pushViewController:info];
+    }
     if ([title isEqualToString:@"个人信息"]) {
         if (token == nil) {
-            [UIUtils showTextOnly:self.view labelString:@"没有登录"];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"还未登录,是否现在登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//            [alert show];
+            [self presentLoginView];
             return;
+            
         }
         YXMyInfoViewController *info = [[YXMyInfoViewController alloc] init];
         [self pushViewController:info];
@@ -124,7 +143,9 @@
     }
     if ([title isEqualToString:@"我的优惠券"]) {
         if (token == nil) {
-            [UIUtils showTextOnly:self.view labelString:@"没有登录"];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"还未登录,是否现在登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//            [alert show];
+            [self presentLoginView];
             return;
         }
         YXCouponViewController *coupon = [[YXCouponViewController alloc] init];
@@ -134,5 +155,20 @@
         YXFeedbackViewController *feedback = [[YXFeedbackViewController alloc] init];
         [self pushViewController:feedback];
     }
+}
+#pragma mark alertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        LoginViewController *login = [[LoginViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:login];
+        nav.navigationBarHidden = YES;
+        [self presentViewController:nav animated:YES completion:nil];
+    }
+}
+- (void)presentLoginView{
+    LoginViewController *login = [[LoginViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:login];
+    nav.navigationBarHidden = YES;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 @end

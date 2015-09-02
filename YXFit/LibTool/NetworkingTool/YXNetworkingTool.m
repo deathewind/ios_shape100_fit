@@ -267,6 +267,7 @@ static YXNetworkingTool *networkManager = nil;
 - (void)getTradeList:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure{
     NSString *string_url = [YXHttp stringByAppendingString:YXTradeList];
     [self loginWithRequest:GET baseurl:string_url paremeter:parameters success:^(id JSON) {
+        YXLog(@"订单列表 = %@ --- %d", JSON, [JSON count]);
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[JSON count]];
         for (NSDictionary *attributes in JSON) {
             Model_order *order = [Model_order orderWithDictionary:attributes];
@@ -298,16 +299,34 @@ static YXNetworkingTool *networkManager = nil;
         failure(error, JSON);
     }];
 }
+#pragma mark alertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        LoginViewController *login = [[LoginViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:login];
+        nav.navigationBarHidden = YES;
+        AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
+        [appDelegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
+    }
+}
 // ---------------------------------------------------------------------------------//
 #pragma mark 统一请求接口 需要登录
 - (void)loginWithRequest:(RequestMethod)method baseurl:(NSString *)url paremeter:(NSDictionary*)parameters success:(Success)success failure:(Failure)failure{
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:YXToken];
-    if (token == nil) {
+    if (token == nil) {//未登录
         YXLog(@"token = nil");
         
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"还未登录,是否现在登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-//        [alert show];
-      //  return;
+        //[NSNotificationCenter defaultCenter] postNotificationName: object:ur
+        
+
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            NSError *error = nil;
+            failure(error, token);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"还未登录,是否现在登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alert show];
+        });
+        return;
     }
     NSMutableDictionary *info_custom = [NSMutableDictionary dictionaryWithObjectsAndKeys:token,@"oauth_token",nil];
     [info_custom addEntriesFromDictionary:parameters];
@@ -363,10 +382,15 @@ static YXNetworkingTool *networkManager = nil;
         failure(error, operation.response);
         // YXLog(@"error是%@",error);
         ////  YXLog(@"状态码是%ld",(long)operation.responseObject);
-        YXLog(@"operation.response = %@ ", operation);
+        YXLog(@"operation.response = %@ ", operation.responseString);
         YXLog(@"状态码是%ld",(long)operation.response.statusCode);
-        if (operation.response.statusCode==401) {
-           // [[NSNotificationCenter defaultCenter] postNotificationName:YXLoggingTokenOutdatedError object:nil];
+        if (operation.response.statusCode==401) {//没有登录
+            AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
+            [UIUtils showTextOnly:appDelegate.window.rootViewController.view labelString:NSLocalizedString(@"NoLogin", nil)];
+        }
+        if (operation.response == NULL || operation.response.statusCode == 0) {//请求超时
+            AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
+            [UIUtils showTextOnly:appDelegate.window.rootViewController.view labelString:NSLocalizedString(@"Network", nil)];
         }
     }];
     [[AFHTTPRequestOperationManager manager].operationQueue addOperation:operation];
@@ -406,6 +430,15 @@ static YXNetworkingTool *networkManager = nil;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error,operation.responseObject);
+        YXLog(@"operation.response = %@ ", operation);
+        if (operation.response == NULL || operation.response.statusCode == 0) {//请求超时
+            NSLog(@"111");
+            AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
+            [UIUtils showTextOnly:appDelegate.window.rootViewController.view labelString:NSLocalizedString(@"Network", nil)];
+        }else{
+            AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
+            [UIUtils showTextOnly:appDelegate.window.rootViewController.view labelString:NSLocalizedString(@"Network", nil)];
+        }
     }];
     [[AFHTTPRequestOperationManager manager].operationQueue addOperation:operation];
 

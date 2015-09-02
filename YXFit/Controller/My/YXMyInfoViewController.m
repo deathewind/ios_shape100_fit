@@ -30,6 +30,7 @@
     self.titleBar.text = @"个人信息";
     [self loadTableData];
     [self.view addSubview:self.tableView];
+    [self creatBackButton];
     [self addBackButton];
 }
 - (void)loadTableData{
@@ -103,15 +104,18 @@
                 cell = [[UITableViewCell alloc] initWithStyle: 	UITableViewCellStyleDefault reuseIdentifier:nil];
                // cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
-                UILabel *left = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, ScreenWidth/2 - 20, 40)];
+                UILabel *left = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 60, 40)];
                 left.font = YXCharacterFont(16);
                 left.text = @"昵称";
+               // left.backgroundColor = [UIColor orangeColor];
                 [cell.contentView addSubview:left];
                 
-                _name = [[UILabel alloc] initWithFrame:CGRectMake(left.width + left.origin.x, 0, left.width, left.height)];
+                _name = [[UILabel alloc] initWithFrame:CGRectMake(left.width + left.origin.x, 0, ScreenWidth - 20 * 2 - 60, left.height)];
                 _name.font = YXCharacterFont(16);
                 _name.textColor = RGB(136, 136, 136);
                 _name.textAlignment = NSTextAlignmentRight;
+               // _name.backgroundColor = [UIColor redColor];
+                _name.numberOfLines = 2;
                 [cell.contentView addSubview:_name];
                 
                 UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 0.5)];
@@ -131,6 +135,8 @@
                 cell = [[UITableViewCell alloc] initWithStyle: 	UITableViewCellStyleDefault reuseIdentifier:nil];
               //  cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor whiteColor];
+//                cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+//                cell.selectedBackgroundView.backgroundColor = RGB(233, 233, 233);
                 UILabel *left = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, ScreenWidth/2 - 20, 40)];
                 left.font = YXCharacterFont(16);
                 left.text = @"性别";
@@ -171,17 +177,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"更换头像" delegate:self
-                                                  cancelButtonTitle:NSLocalizedString(@"取消", nil)
-                                             destructiveButtonTitle:NSLocalizedString(@"拍照", nil)
-                                                  otherButtonTitles:NSLocalizedString(@"从相册选取", nil), nil];
+                                                  cancelButtonTitle:@"取消"
+                                             destructiveButtonTitle:nil
+                                                  otherButtonTitles:@"拍照",@"从相册选取", nil];
         sheet.tag = 1000;
         [sheet showInView:self.view];
     }else{
         if (indexPath.row == 0) {
-            self.alert = [[STAlertView alloc] initWithTitle:@"更改昵称" message:nil textFieldHint:nil textFieldValue:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定" cancelButtonBlock:^{
+           // NSString *mess = [NSString stringWithFormat:@"原来昵称:%@", _name.text];
+            self.alert = [[STAlertView alloc] initWithTitle:@"更改昵称" message:@"昵称最多20个字符" textFieldHint:_name.text textFieldValue:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定" cancelButtonBlock:^{
                // NSLog(@"11");
             } otherButtonBlock:^(NSString *result) {
-                NSLog(@"result = %@", result);
+                NSLog(@"result = %lu", (unsigned long)result.length);
                 if (result != nil && result.length > 0) {
                     if (result.length > 20) {
                         [UIUtils showTextOnly:self.view labelString:@"名字太长了"];
@@ -197,12 +204,13 @@
         }else if(indexPath.row == 1){
             UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"性别选择" delegate:self
                                                       cancelButtonTitle:NSLocalizedString(@"取消", nil)
-                                                 destructiveButtonTitle:@"男"
-                                                      otherButtonTitles:@"女",@"保密", nil];
+                                                 destructiveButtonTitle:nil
+                                                      otherButtonTitles:@"男",@"女",@"保密", nil];
             sheet.tag = 1001;
             [sheet showInView:self.view];
         }
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消选中状态
 }
 
 
@@ -299,12 +307,7 @@
 
 
 - (void)addBackButton{
-    UIButton *button_back = [UIButton buttonWithType:UIButtonTypeCustom];
-    button_back.frame = CGRectMake(0, StatusBarHeight, 60, 44);
-    button_back.showsTouchWhenHighlighted = YES;
-    [button_back setImage:[UIImage imageFileName:@"cd_back.png"] forState:UIControlStateNormal];
-    [button_back addTarget:self action:@selector(clickButton_back)forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button_back];
+
     
     UIButton *button_save = [UIButton buttonWithType:UIButtonTypeCustom];
     button_save.frame = CGRectMake(ScreenWidth - 60, StatusBarHeight, 60, 44);

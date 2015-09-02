@@ -15,7 +15,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.titleBar.text = @"关于我们";
     [self UI_US];
-    [self addBackBtn];
+    [self creatBackButton];
     // Do any additional setup after loading the view.
 }
 - (void)UI_US{
@@ -27,14 +27,7 @@
     tabelView_teacher.dataSource  = self;
     [self.view addSubview:tabelView_teacher];
 }
-- (void)addBackBtn{
-    UIButton *button_back = [UIButton buttonWithType:UIButtonTypeCustom];
-    button_back.frame = CGRectMake(0, StatusBarHeight, 60, 44);
-    button_back.showsTouchWhenHighlighted = YES;
-    [button_back setImage:[UIImage imageFileName:@"cd_back.png"] forState:UIControlStateNormal];
-    [button_back addTarget:self action:@selector(clickButton_back)forControlEvents:UIControlEventTouchUpInside];
-    [self.navBar addSubview:button_back];
-}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;

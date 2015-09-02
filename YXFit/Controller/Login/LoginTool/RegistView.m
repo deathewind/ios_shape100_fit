@@ -20,7 +20,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UIView *phoneView = [[UIView alloc] initWithFrame:CGRectMake(25, 40, self.frame.size.width - 50, 44)];
+        UIView *phoneView = [[UIView alloc] initWithFrame:CGRectMake(20, 40, self.frame.size.width - 40, 44)];
         phoneView.layer.borderWidth = 1;
         phoneView.layer.borderColor = RGB(222, 222, 222).CGColor;
         [self addSubview:phoneView];
@@ -28,7 +28,7 @@
         imgUser.image = [UIImage imageFileName:@"icon_account"];
         [phoneView addSubview:imgUser];
         _txtUser = [[UITextField alloc] initWithFrame:CGRectMake(30, 0, phoneView.frame.size.width - 30, phoneView.frame.size.height)];
-        _txtUser.placeholder = @"请输入您的手机号码";
+        _txtUser.placeholder = NSLocalizedString(@"Enter your phoneNumber", nil);
         _txtUser.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _txtUser.textAlignment = NSTextAlignmentLeft;
         _txtUser.clearButtonMode = UITextFieldViewModeAlways;
@@ -38,7 +38,7 @@
         _txtUser.autocapitalizationType = UITextAutocapitalizationTypeNone;//字多自动缩进
         _txtUser.adjustsFontSizeToFitWidth = YES;//缩进最小字体
         _txtUser.minimumFontSize = 20;
-        _txtUser.font = [UIFont systemFontOfSize:16];
+        _txtUser.font = YXCharacterFont(16);
         [phoneView addSubview:_txtUser];
         
         UIView *verifyView = [[UIView alloc] initWithFrame:CGRectMake(phoneView.frame.origin.x, phoneView.frame.origin.y + phoneView.frame.size.height + 20, phoneView.frame.size.width, phoneView.frame.size.height)];
@@ -49,8 +49,8 @@
         imgVerifyView.image = [UIImage imageFileName:@"icon_code"];
         [verifyView addSubview:imgVerifyView];
         _txtCode = [[UITextField alloc] initWithFrame:CGRectMake(30, 0, verifyView.frame.size.width - 30 - 100, verifyView.frame.size.height)];
-        _txtCode.placeholder = @"请填写短信验证码";
-        _txtCode.font = [UIFont systemFontOfSize:16];
+        _txtCode.placeholder = NSLocalizedString(@"Code passwork", nil);
+        _txtCode.font = YXCharacterFont(16);
         _txtCode.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _txtCode.autocorrectionType = UITextAutocorrectionTypeNo;
         _txtCode.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -62,10 +62,10 @@
         btnVerify.tag = 100;
         [btnVerify addTarget:self action:@selector(btnRegistAction:) forControlEvents:UIControlEventTouchUpInside];
         btnVerify.layer.cornerRadius = 5;
-        btnVerify.backgroundColor = [UIColor orangeColor];
-        btnVerify.titleLabel.font = [UIFont systemFontOfSize:15];
+        btnVerify.backgroundColor = RGB(156, 210, 120);
+        btnVerify.titleLabel.font = YXCharacterFont(15);
         _btnVerify = btnVerify;
-        [btnVerify setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [btnVerify setTitle:NSLocalizedString(@"Code", nil) forState:UIControlStateNormal];
         [verifyView addSubview:btnVerify];
         
         UIView *pwdView = [[UIView alloc] initWithFrame:CGRectMake(verifyView.frame.origin.x, verifyView.frame.origin.y + verifyView.frame.size.height + 20, verifyView.frame.size.width, verifyView.frame.size.height)];
@@ -76,9 +76,9 @@
         imgPwd.image = [UIImage imageFileName:@"icon_code"];
         [pwdView addSubview:imgPwd];
         _txtPwd = [[UITextField alloc] initWithFrame:CGRectMake(30, 0, pwdView.frame.size.width - 30, pwdView.frame.size.height)];
-        _txtPwd.placeholder = @"请设置密码";
+        _txtPwd.placeholder = NSLocalizedString(@"Set password", nil);
         _txtPwd.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _txtPwd.font = [UIFont systemFontOfSize:16];
+        _txtPwd.font = YXCharacterFont(16);
         _txtPwd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _txtPwd.textColor = [UIColor blackColor];
         _txtPwd.textAlignment = NSTextAlignmentLeft;
@@ -98,9 +98,9 @@
         imgConPwd.image = [UIImage imageFileName:@"icon_code"];
         [pwdConView addSubview:imgConPwd];
         _txtConPwd = [[UITextField alloc] initWithFrame:CGRectMake(30, 0, pwdConView.frame.size.width - 30, pwdConView.frame.size.height)];
-        _txtConPwd.placeholder = @"请确认密码";
+        _txtConPwd.placeholder = NSLocalizedString(@"Confirm password", nil);
         _txtConPwd.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _txtConPwd.font = [UIFont systemFontOfSize:16];
+        _txtConPwd.font = YXCharacterFont(16);
         _txtConPwd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _txtConPwd.textColor = [UIColor blackColor];
         _txtConPwd.textAlignment = NSTextAlignmentLeft;
@@ -114,9 +114,9 @@
         
         UIButton *btnRegist = [UIButton buttonWithType:UIButtonTypeCustom];
         btnRegist.frame = CGRectMake(pwdConView.frame.origin.x, pwdConView.frame.origin.y + pwdConView.frame.size.height + 20, pwdConView.frame.size.width, pwdConView.frame.size.height);
-        [btnRegist setTitle:@"注册" forState:UIControlStateNormal];
+        [btnRegist setTitle:NSLocalizedString(@"Register", nil) forState:UIControlStateNormal];
         btnRegist.layer.cornerRadius = 5;
-        btnRegist.backgroundColor = [UIColor orangeColor];
+        btnRegist.backgroundColor = RGB(156, 210, 120);
         btnRegist.tag = 101;
         [btnRegist addTarget:self action:@selector(btnRegistAction:)forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnRegist];
@@ -143,7 +143,7 @@
 - (void)runTimePage
 {
     _time_countDown --;
-    NSString *string_countDown = [NSString stringWithFormat:@"%ld秒",(long)_time_countDown];
+    NSString *string_countDown = [NSString stringWithFormat:@"%ld(s)",(long)_time_countDown];
     [_btnVerify setTitle:string_countDown forState:UIControlStateNormal];
     if(_time_countDown == 0){
         [self stopTimePage];
@@ -154,8 +154,8 @@
 - (void)stopTimePage
 {
     [_btnVerify setUserInteractionEnabled:YES];
-    _btnVerify.backgroundColor = [UIColor orangeColor];
-    [_btnVerify setTitle:@"获取验证码" forState:UIControlStateNormal];
+    _btnVerify.backgroundColor = RGB(156, 210, 120);
+    [_btnVerify setTitle:NSLocalizedString(@"Code", nil) forState:UIControlStateNormal];
     if(_timer_countDown) {
         [_timer_countDown invalidate];
         _timer_countDown = nil;

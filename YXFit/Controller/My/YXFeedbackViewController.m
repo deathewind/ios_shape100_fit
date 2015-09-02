@@ -16,7 +16,7 @@
     self.titleBar.text = @"意见反馈";
     self.view.backgroundColor = [UIColor whiteColor];
     [self addTextView];
-    
+    [self creatBackButton];
     UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(p_touchOutSide:)];
     [self.view addGestureRecognizer:tapGesture];
 }
@@ -45,13 +45,6 @@
     [put addTarget:self action:@selector(putSuess) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:put];
     
-    
-    UIButton *button_back = [UIButton buttonWithType:UIButtonTypeCustom];
-    button_back.frame = CGRectMake(0, StatusBarHeight, 60, 44);
-    [button_back setImage:[UIImage imageFileName:@"cd_back.png"] forState:UIControlStateNormal];
-    [button_back addTarget:self action:@selector(clickButton_back)forControlEvents:UIControlEventTouchUpInside];
-    button_back.showsTouchWhenHighlighted = YES;
-    [self.navBar addSubview:button_back];
 }
 - (void)putSuess{
     
