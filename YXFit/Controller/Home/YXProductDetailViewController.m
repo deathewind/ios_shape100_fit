@@ -8,136 +8,105 @@
 
 #import "YXProductDetailViewController.h"
 #import "YXPayViewController.h"
-#import "CourseHeaderView.h"
+
 #import "CountView.h"
 #import "DescribeView.h"
 #import "ButtonDoctView.h"
 //#import "CExpandHeader.h"
+#import "ExpandTableViewHeader.h"
+#import "YXCalendarViewController.h"
 
-@interface YXProductDetailViewController()<ButtonDoctViewDelegate, YXLoadingViewDelegate, UITableViewDataSource,UITableViewDelegate>
+@interface YXProductDetailViewController()<ButtonDoctViewDelegate, YXLoadingViewDelegate, UITableViewDataSource,UITableViewDelegate, UIScrollViewDelegate>
 {
     YXLoadingView *CoverView;
     NSString      *product_id;
-   // CExpandHeader *_header;
     UILabel       *_moneyLabel;
 }
-//@property(nonatomic, strong) UIScrollView *scrollView;
+
 @property(nonatomic, strong) CountView *countView;
-@property(nonatomic, strong) CourseHeaderView  *imageView;
 @property(nonatomic, strong) UILabel *describe;
 @property(nonatomic, strong) ButtonDoctView *buttonView;
 @property(nonatomic, strong) NSString *counts;
-//@property (nonatomic, strong) YXBGScrollowView *bgView;
-@property(nonatomic, weak) UIButton *button;
+
 @property(nonatomic, strong) UITableView *tableView;
+@property(nonatomic, strong) ExpandTableViewHeader *headerView;
+
+@property(nonatomic, strong) UILabel *label; //日期时间标签
+
+
+@property(nonatomic, strong) NSIndexPath *indexPa; //记录日期选择的位置
+
 @end
 @implementation YXProductDetailViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-  //  self.navBar.hidden = YES;
-   // self.navBar.alpha = 0;
     self.titleBar.text = self.product.product_name;
-  //  [self.view addSubview:self.bgView];
     [self.view insertSubview:self.tableView belowSubview:self.navBar];
     [self creatBackButton];
     [self addBuyButton];
     [self addCoverView];
     [self loadProductData];
     _counts = @"1";
-    
 }
-//- (YXBGScrollowView *)bgView{
-//    if (!_bgView) {
-//        _bgView = [[YXBGScrollowView alloc] initWithFrame:self.view.frame];
-//        _bgView.delegate = self;
-//    }
-//    return _bgView;
-//}
-//
-//- (void)detailsForegroundView:(UIView *)foregroundView{
-//    
-//    [foregroundView addSubview:self.tableView];
-//    
-//}
+
+- (ExpandTableViewHeader *)headerView{
+    if (!_headerView) {
+        _headerView = [[ExpandTableViewHeader alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, headerViewHeight)];
+    }
+    return _headerView;
+}
+
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.navBar.height, self.view.width, self.view.height - 44 - self.navBar.height)];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.backgroundColor = RGB(230, 230, 230);
-        _tableView.tableHeaderView = self.imageView;
-     //   _tableView.backgroundColor = [UIColor clearColor];
-        //   [self.view addSubview:_tableView];
-        
-//        void *context = (__bridge void *)self;
-//        [_tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:context];
+        _tableView.tableHeaderView = self.headerView;
+        void *context = (__bridge void *)self;
+        [_tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:context];
     }
     return _tableView;
 }
-//- (void)dealloc
-//{
-//    [self.tableView removeObserver:self forKeyPath:@"contentOffset"];
-//}
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-//{
-//    // Make sure we are observing this value.
-//    if (context != (__bridge void *)self) {
-//        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-//        return;
-//    }
-//    
-//    if ((object == self.tableView) &&
-//        ([keyPath isEqualToString:@"contentOffset"] == YES))
-//    {
-//        [self scrollViewDidScrollWithOffset:self.tableView.contentOffset.y];
-//        return;
-//    }
-//}
+- (void)dealloc
+{
+    [self.tableView removeObserver:self forKeyPath:@"contentOffset"];
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    // Make sure we are observing this value.
+    if (context != (__bridge void *)self) {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        return;
+    }
+    
+    if ((object == self.tableView) &&
+        ([keyPath isEqualToString:@"contentOffset"] == YES))
+    {
+        [self scrollViewDidScrollWithOffset:self.tableView.contentOffset.y];
+        return;
+    }
+}
 #pragma mark ScrollView Methods
 
-//- (void)scrollViewDidScrollWithOffset:(CGFloat)scrollOffset
-//{
-//    
-//    CGFloat a = (scrollOffset + 220)/150;
-//    if (1 >= a > 0) {
-//        self.navBar.alpha = a;
-//        if (a>0.9) {
-//            _button.backgroundColor = [UIColor clearColor];
-//        }
-//        NSLog(@"scrollOffset = %f", a );
-//        if (a == 0) {
-//            _button.backgroundColor = RGBA(40, 40, 40, 0.3);
-//        }
-//    }
-//    
-////    if(scrollOffset > 100 && self.navBar.alpha == 0.0)
-////    { //make the navbar appear
-////       // CGFloat a = (scrollOffset - 100)/120;
-////        self.navBar.alpha = 0;
-////        self.navBar.hidden = NO;
-////        [UIView animateWithDuration:0.5 animations:^
-////         {
-////             self.navBar.alpha = 1;
-////         }];
-////    }
-////    else if(scrollOffset < 100 && self.navBar.alpha == 1.0)
-////    { //make the navbar disappear
-////       // self.navBar.alpha = scrollOffset/180;
-////        [UIView animateWithDuration:0.5 animations:^{
-////            self.navBar.alpha = 0;
-////        } completion: ^(BOOL finished) {
-////            self.navBar.hidden = YES;
-////        }];
-////    }
-//}
+- (void)scrollViewDidScrollWithOffset:(CGFloat)scrollOffset
+{
+//    NSLog(@"scrollOffset = %f", scrollOffset);
+    if ((headerViewHeight - 64)>=scrollOffset>0) {
+        CGFloat a = scrollOffset/(headerViewHeight - 64);
+        if (a > 0.9 && a != 0.9) {
+            a = 0.9;
+        }
+        self.navBar.alpha = a;
+    }
+
+}
 
 - (void)loadProductData{
     [UIUtils showProgressHUDto:self.view withString:nil showTime:30];
     [[YXNetworkingTool sharedInstance] getProductDetailWithID:self.product.product_id success:^(id JSON) {
         [UIView animateWithDuration:0.4 animations:^{
+            self.navBar.alpha = 0;
             CoverView.alpha = 0.;
         } completion:^(BOOL finished) {
             [CoverView removeFromSuperview];
@@ -145,19 +114,16 @@
         [UIUtils hideProgressHUD:self.view];
         
         Model_product *product = [Model_product productWithDictionary:JSON];
-        [self.imageView setProduct:product];
-       // _header = [CExpandHeader expandWithScrollView:self.tableView expandView:self.imageView];
-//        self.countView.maxCount = product.product_num;
+        self.headerView.product = product;
         self.describe.text = product.product_description;
 //
-        _moneyLabel.text = [NSString stringWithFormat:@"应付总额: ￥%@", product.product_price];
+        _moneyLabel.text = [NSString stringWithFormat:@"￥%@", product.product_price];
         product_id = [NSString stringWithFormat:@"%@", product.product_id];
        // [self.tableView reloadData];
     } failure:^(NSError *error, id JSON) {
         [UIUtils hideProgressHUD:self.view];
         [CoverView showFailure];
     }];
-    
 }
 - (void)addCoverView{
     CoverView  = [[YXLoadingView alloc] initWithFrame:CGRectMake(0, self.navBar.height, ScreenWidth, ScreenHeight -  self.navBar.height) color:[UIColor whiteColor]];
@@ -195,19 +161,12 @@
         _countView.countChange = ^(NSString *count){
            // YXLog(@"%@", count);
             _counts = count;
-            labe.text = [NSString stringWithFormat:@"应付总额: ￥%d", [self.product.product_price intValue] * [count intValue]];
+            labe.text = [NSString stringWithFormat:@"￥%d", [self.product.product_price intValue] * [count intValue]];
         };
     }
     return _countView;
 }
-- (CourseHeaderView *)imageView{
-    if (!_imageView) {
-        _imageView = [[CourseHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 180)];
-        // [_imageView setProduct:self.product];
-        
-    }
-    return _imageView;
-}
+
 
 
 
@@ -215,15 +174,24 @@
     UIView *but = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44)];
     but.backgroundColor = RGB(60, 60, 60);
     [self.view addSubview:but];
-    _moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.view.width - 10, but.height)];
-    _moneyLabel.textColor = [UIColor redColor];
+    NSString *str = @"应付总额:";
+    CGSize textSize = [str boundingRectWithSize:CGSizeMake(ScreenWidth/2, but.height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:YXCharacterFont(16)} context:nil].size;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, textSize.width, but.height)];
+    label.textColor = [UIColor whiteColor];
+    label.font = YXCharacterFont(16);
+    label.text = str;
+    [but addSubview:label];
+    
+    _moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(label.width + label.origin.x + 5, 0, 110, but.height)];
+    //_moneyLabel.backgroundColor = [UIColor orangeColor];
+    _moneyLabel.textColor = RGB(199, 21, 133);
     [but addSubview:_moneyLabel];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(ScreenWidth - 120, 0, 120, but.height);
     [button setTitle:@"购买课程" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor purpleColor];
+    button.backgroundColor = RGB(199, 21, 133);
     [button addTarget:self action:@selector(pay) forControlEvents:UIControlEventTouchUpInside];
     button.titleLabel.font = YXCharacterFont(16);
     [but addSubview:button];
@@ -249,19 +217,18 @@
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        return 1;
-    }
+
     return 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section ==0) {
+        
         static NSString *CellIdentifier = @"MainCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil)
@@ -269,7 +236,37 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell.contentView addSubview:self.countView];
+            UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(0, 44 - 0.6, ScreenWidth, 0.6)];
+            line1.backgroundColor = RGB(220, 220, 220);
+            [cell addSubview:line1];
         }
+        return cell;
+    }else if (indexPath.section == 1){
+        static NSString *CellIdentifier = @"DateCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            _label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth - 60, 44)];
+            _label.font = YXCharacterFont(17);
+            _label.textAlignment = NSTextAlignmentRight;
+            _label.textColor = RGB(199, 21, 133);
+            [cell addSubview:_label];
+            UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 0.6)];
+            line.backgroundColor = RGB(220, 220, 220);
+            [cell addSubview:line];
+            
+            UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(0, 44 - 0.6, ScreenWidth, 0.6)];
+            line1.backgroundColor = RGB(220, 220, 220);
+            [cell addSubview:line1];
+            
+            cell.textLabel.font = YXCharacterFont(17);
+            cell.textLabel.textColor = RGB(60, 60, 60);
+        }
+
+        cell.textLabel.text = @"选择日期";
         return cell;
     }else{
         static NSString *CellIdentifier = @"Cell";
@@ -278,35 +275,69 @@
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            [cell.contentView addSubview:self.describe];
+           // [cell.contentView addSubview:self.scrollView];
+//            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//            button.frame = CGRectMake(0, 0, self.view.width, 38);
+//            [button setTitle:@"选择日期" forState:UIControlStateNormal];
+//            [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+//            [button addTarget:self action:@selector(getData) forControlEvents:UIControlEventTouchUpInside];
+//            [cell.contentView addSubview:button];
         }
         return cell;
     }
     return nil;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 1) {
+        YXCalendarViewController *calendar = [[YXCalendarViewController alloc] init];
+        if (_indexPa != nil) {
+            calendar.index = _indexPa;
+        }
+        calendar.dateChoose = ^(NSString *dateString, NSIndexPath *path){
+            YXLog(@"chooseData = %@ --- %@ ", dateString , path);
+            _label.text = dateString;
+            _indexPa = path;
+        };
+
+        [self pushViewController:calendar];
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         return 44;
+    }else if (indexPath.section == 1){
+        return 44;
     }
-    return 300;
+    return 400;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section == 1) {
-        return self.buttonView;
-    }
-    return nil;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-
-    if (section == 0) {
-        return 0.1;
-    }
-    return 44;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    if (section == 1) {
+//        return self.buttonView;
+//    }
+//    return nil;
+//}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//
+//    if (section == 0) {
+//        return 0.1;
+//    }
+//    return 44;
+//}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section == 0) {
         return 10;
+    }else if (section == 1){
+        return 10;
     }
     return 0.1;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView == self.tableView)
+    {
+        // pass the current offset of the UITableView so that the ParallaxHeaderView layouts the subViews.
+        [self.headerView layoutHeaderViewForScrollViewOffset:scrollView.contentOffset];
+    }
 }
 @end

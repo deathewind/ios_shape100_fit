@@ -40,7 +40,7 @@
     put.frame = CGRectMake(10, self.textView.height + self.textView.origin.y + 15, ScreenWidth - 20, 44);
     [put setTitle:@"提交反馈" forState:UIControlStateNormal];
     put.layer.cornerRadius = 5;
-    put.backgroundColor = self.navBar.backgroundColor;
+    put.backgroundColor = RGB(199, 21, 133);
     put.titleLabel.font = YXCharacterFont(16);
     [put addTarget:self action:@selector(putSuess) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:put];

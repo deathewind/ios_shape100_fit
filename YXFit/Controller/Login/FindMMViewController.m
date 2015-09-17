@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleBar.text = NSLocalizedString(@"Find passwork", nil);
-    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.scrollView];
    // [self.view insertSubview:self.scrollView belowSubview:self.navBar];
     [self creatBackButton];
@@ -82,7 +81,7 @@
     btnVerify.tag = 100;
     [btnVerify addTarget:self action:@selector(btnFindMMAction:) forControlEvents:UIControlEventTouchUpInside];
     btnVerify.layer.cornerRadius = 5;
-    btnVerify.backgroundColor = self.navBar.backgroundColor;
+    btnVerify.backgroundColor = RGB(199, 21, 133);
     btnVerify.titleLabel.font = YXCharacterFont(15);
     _btnVerify = btnVerify;
     [btnVerify setTitle:NSLocalizedString(@"Code", nil) forState:UIControlStateNormal];
@@ -137,8 +136,9 @@
     btnRegist.frame = CGRectMake(pwdConView.frame.origin.x, pwdConView.frame.origin.y + pwdConView.frame.size.height + 20, pwdConView.frame.size.width, pwdConView.frame.size.height);
     [btnRegist setTitle:NSLocalizedString(@"Reset password", nil) forState:UIControlStateNormal];
     btnRegist.layer.cornerRadius = 5;
-    btnRegist.backgroundColor = self.navBar.backgroundColor;
+    btnRegist.backgroundColor = RGB(199, 21, 133);
     btnRegist.tag = 101;
+    btnRegist.titleLabel.font = YXCharacterFont(16);
     [btnRegist addTarget:self action:@selector(btnFindMMAction:)forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:btnRegist];
 }
@@ -239,7 +239,7 @@
 - (void)stopTimePage
 {
     [_btnVerify setUserInteractionEnabled:YES];
-    _btnVerify.backgroundColor = self.navBar.backgroundColor;
+    _btnVerify.backgroundColor = RGB(199, 21, 133);
     [_btnVerify setTitle:NSLocalizedString(@"Code", nil) forState:UIControlStateNormal];
     if(_timer_countDown) {
         [_timer_countDown invalidate];

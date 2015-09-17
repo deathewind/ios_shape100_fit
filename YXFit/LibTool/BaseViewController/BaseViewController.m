@@ -35,6 +35,7 @@
     UIView *imageView_title = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width,64)];
    // imageView_title.backgroundColor = RGB(156, 210, 120);
    // imageView_title.backgroundColor = [UIColor orangeColor];
+    imageView_title.alpha = 0.9;
     imageView_title.backgroundColor = [UIColor whiteColor];
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, imageView_title.height - 0.5, imageView_title.width, 0.5)];
     line.backgroundColor = RGB(200, 200, 200);

@@ -11,8 +11,11 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) YXTabBarViewController *tabbar;
-@property (strong, nonatomic) NSString *orderID;
+//@property (strong, nonatomic) YXTabBarViewController *tabbar;
+//@property (strong, nonatomic) NSString *orderID;
+
+@property (nonatomic, assign) double latitude;
+@property (nonatomic, assign) double longitude;
 - (void)loadMainView;
 @end
 

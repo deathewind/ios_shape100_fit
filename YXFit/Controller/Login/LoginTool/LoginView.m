@@ -59,9 +59,10 @@
         
         UIButton* btnLogin = [[UIButton alloc] initWithFrame:CGRectMake(phoneView.frame.origin.x, pwdView.frame.origin.y + pwdView.frame.size.height + 20, phoneView.frame.size.width, phoneView.frame.size.height)];
         btnLogin.layer.cornerRadius = 5;
-        btnLogin.backgroundColor = RGB(156, 210, 120);
+        btnLogin.backgroundColor = RGB(199, 21, 133);
         [btnLogin setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
         btnLogin.tag = 100;
+        btnLogin.titleLabel.font = YXCharacterFont(16);
         [btnLogin addTarget:self action:@selector(btnLoginAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btnLogin];
         
@@ -69,7 +70,7 @@
         UIButton *button_forget = [UIButton buttonWithType:UIButtonTypeCustom];
         button_forget.frame = CGRectMake(self.frame.size.width - 130, btnLogin.frame.origin.y + btnLogin.frame.size.height + 20, 120, 20);
         [button_forget setTitle:NSLocalizedString(@"Find passwork", nil) forState:UIControlStateNormal];
-        [button_forget setTitleColor:RGB(86, 196, 231) forState:UIControlStateNormal];
+        [button_forget setTitleColor:RGB(199, 21, 133) forState:UIControlStateNormal];
         button_forget.titleLabel.font = YXCharacterFont(16);
         button_forget.tag = 101;
         [button_forget addTarget:self action:@selector(btnLoginAction:)forControlEvents:UIControlEventTouchUpInside];

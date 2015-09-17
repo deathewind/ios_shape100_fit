@@ -1,73 +1,58 @@
 //
-//  YXOrderViewController.m
+//  YXClubListViewController.m
 //  YXFit
 //
-//  Created by 何军 on 24/8/15.
+//  Created by 何军 on 10/9/15.
 //  Copyright (c) 2015年 itcast. All rights reserved.
 //
 
-#import "YXOrderViewController.h"
-#import "YXOrderDetailViewController.h"
+#import "YXClubListViewController.h"
+#import "ClubListCell.h"
 #import "YXLoadMoreView.h"
-#import "OrderCell.h"
-
-@interface YXOrderViewController ()<UITableViewDataSource,UITableViewDelegate,YXLoadMoreViewDelegate, MJRefreshBaseViewDelegate, UIScrollViewDelegate>
+#import "YXClubDetailViewController.h"
+@interface YXClubListViewController ()<UITableViewDataSource,UITableViewDelegate,YXLoadMoreViewDelegate,MJRefreshBaseViewDelegate>
 {
-    MJRefreshBaseView       *_head;
+    MJRefreshBaseView  *_head;
     int page;
     BOOL isLoadMore;
 }
-@property(nonatomic, strong) UITableView    *tableView;
+@property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSMutableArray *dataArray;
 @property(nonatomic, strong) YXLoadMoreView *footerView;
 @end
-@implementation YXOrderViewController
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-  //  [_head beginRefreshing];
-}
+@implementation YXClubListViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleBar.text = @"我的订单";
+    self.titleBar.text = @"俱乐部";
     [self loadRefreshView];
-    [self creatBackButton];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderShouldRefresh) name:YXPaySuccessNoti object:nil];
 }
-
-- (void)orderShouldRefresh{
-    [_head beginRefreshing];
-}
-
 - (void)loadRefreshView
 {
-    // 1、下拉刷新控件
     MJRefreshHeaderView *head = [MJRefreshHeaderView header];
     head.scrollView = self.tableView;
     head.delegate = self;
     _head = head;
     [_head beginRefreshing];
 }
-
 - (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
 {
-    
     if ([refreshView isKindOfClass:[MJRefreshHeaderView class]]) {
-        // 下拉操作加载最新数据
         [self loadNewState:refreshView];
     }
 }
-
 - (void)loadNewState:(MJRefreshBaseView *)refreshView
 {
     page = 1;
-    NSDictionary *dic = @{@"page"     : [NSString stringWithFormat:@"%d", page],
-                          @"count"    : [NSString stringWithFormat:@"%d", stateCount]
-                          };
-    [[YXNetworkingTool sharedInstance] getTradeList:dic success:^(id JSON) {
+    NSMutableDictionary *parmeter = [NSMutableDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", page] forKey:@"page"];
+    [parmeter setObject:[NSString stringWithFormat:@"%d", stateCount] forKey:@"count"];
+    if (APPDELEGATE.latitude != 0) {
+        [parmeter setObject:[NSString stringWithFormat:@"%f", APPDELEGATE.latitude] forKey:@"lat"];
+        [parmeter setObject:[NSString stringWithFormat:@"%f", APPDELEGATE.longitude] forKey:@"long"];
+    }
+    [[YXNetworkingTool sharedInstance] getClubProductList:parmeter success:^(id JSON) {
         self.dataArray = [[NSMutableArray alloc] initWithArray:JSON];
-        //  NSLog(@"%d", self.dataArray.count);
         [self.tableView reloadData];
         [refreshView endRefreshing];
         
@@ -82,15 +67,7 @@
         }
         
     } failure:^(NSError *error, id JSON) {
-        YXLog(@"--- %@ ---- %@", error, JSON);
         [refreshView endRefreshing];
-//        NSHTTPURLResponse *response = (NSHTTPURLResponse *)JSON;
-//        if (response.statusCode == 401) {
-//            [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"NoLogin", nil)];
-//        }else{
-//            [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
-//        }
-        
     }];
 }
 - (UITableView *)tableView{
@@ -98,15 +75,16 @@
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
         _tableView.dataSource = self;
         _tableView.delegate = self;
+        // _tableView.backgroundColor =
+        _tableView.allowsMultipleSelection = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
         _tableView.tableFooterView = self.footerView;
-       // [self.view addSubview:_tableView];
+      //  [self.view addSubview:_tableView];
         [self.view insertSubview:_tableView belowSubview:self.navBar];
     }
     return _tableView;
 }
-
 - (YXLoadMoreView *)footerView{
     if (!_footerView) {
         _footerView = [[YXLoadMoreView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
@@ -114,7 +92,6 @@
     }
     return _footerView;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dataArray.count;
 }
@@ -122,36 +99,31 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"orderCell";
-    OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil){
-        cell = [[OrderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        //   cell.backgroundColor = [UIColor clearColor];
-        
+    static NSString *CellIdentifier = @"ClubCell";
+    ClubListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[ClubListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.order = [self.dataArray objectAtIndex:indexPath.row];
+    cell.club = [self.dataArray objectAtIndex:indexPath.row];
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    YXClubDetailViewController *detail = [[YXClubDetailViewController alloc] init];
+    Model_club *club = [self.dataArray objectAtIndex:indexPath.row];
+    detail.club = club;
+    [self pushViewController:detail];
     
 }
 
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    YXOrderDetailViewController *detail = [[YXOrderDetailViewController alloc] init];
-    Model_order *order = [self.dataArray objectAtIndex:indexPath.row];
-    detail.orderID = order.order_id;
-    [self pushViewController:detail];
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return 125;
+    return 220;
 }
 
-//#define DEFAULT_HEIGHT_OFFSET 44.0f
+
 #pragma mark UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -176,7 +148,7 @@
     NSDictionary *dic = @{@"page"    : [NSString stringWithFormat:@"%d", page],
                           @"count"     : [NSString stringWithFormat:@"%d", stateCount]
                           };
-    [[YXNetworkingTool sharedInstance] getTradeList:dic success:^(id JSON) {
+    [[YXNetworkingTool sharedInstance] getClubProductList:dic success:^(id JSON) {
         NSArray *posts = [NSArray arrayWithArray:JSON];
         if (posts.count) {
             [self.dataArray addObjectsFromArray:posts];
@@ -196,13 +168,10 @@
         }
     } failure:^(NSError *error, id JSON) {
         [self.footerView.activeView stopAnimating];
-      //  [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
+        //  [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
         self.footerView.titleLabel.text = NSLocalizedString(@"Network", nil);
         isLoadMore = YES;
     }];
 }
-- (void)dealloc{
-    [_head free];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:YXPaySuccessNoti object:nil];
-}
+
 @end

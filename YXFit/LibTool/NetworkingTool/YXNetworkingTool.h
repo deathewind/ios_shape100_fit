@@ -33,6 +33,10 @@ typedef NS_ENUM(int, RequestMethod){
 //商品列表
 - (void)getProductListSuccess:(Success)success failure:(Failure)failure;
 - (void)getProductDetailWithID:(NSString *)productID success:(Success)success failure:(Failure)failure;
+//俱乐部商品
+- (void)getClubProductList:(NSDictionary *)paremeter success:(Success)success failure:(Failure)failure;
+//企业课商品
+- (void)getEnterpriseProductList:(NSDictionary *)paremeter success:(Success)success failure:(Failure)failure;
 - (void)payWithOrder:(NSString *)order channel:(NSString *)channel success:(Success)success failure:(Failure)failure;
 - (void)createOrderWithProduct:(NSString *)productID count:(NSString *)count success:(Success)success failure:(Failure)failure;
 - (void)getTradeList:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure;

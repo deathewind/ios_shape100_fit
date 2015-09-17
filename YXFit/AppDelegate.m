@@ -7,42 +7,66 @@
 //
 
 #import "AppDelegate.h"
-#import "YXIntroduceViewController.h"
+
 #import "YXProductViewController.h"
 #import "YXOrderViewController.h"
 #import "YXMyViewController.h"
-
+#import "YXClubListViewController.h"
 #import "MLNavigationController.h"
 
 #import "Pingpp.h"
 #import "YXIntroViewController.h"
-
+#import <CoreLocation/CoreLocation.h>
 #import "YXOrderDetailViewController.h"
 
 #define umengfeedback @"55e5284de0f55a7145000d56" //
-@interface AppDelegate ()<UITabBarControllerDelegate>
+@interface AppDelegate ()<UITabBarControllerDelegate, CLLocationManagerDelegate>
+{
+    CLLocationManager *_locationManager;//用于获取位置
+}
 
 @end
 
 @implementation AppDelegate
-
+- (void)setupLocationManager{
+    //6.经纬度
+//#define LATITUDE_DEFAULT 39.983497
+//#define LONGITUDE_DEFAULT 116.318042
+    _latitude = 0;
+    _longitude = 0;
+    _locationManager = [[CLLocationManager alloc] init];
+    if ([CLLocationManager locationServicesEnabled]){
+        if (IOS_VERSION >= 8.0) {
+            if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                [_locationManager requestWhenInUseAuthorization];
+            }
+        }
+        _locationManager.delegate = self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.distanceFilter = 200.0;
+        
+        [_locationManager startUpdatingLocation];
+    }else{
+        YXLog(@"定位失败");
+    }
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self setupLocationManager];
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-
+    
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]){
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
         YXIntroViewController *intro = [[YXIntroViewController alloc] init];
         self.window.rootViewController = intro;
     }else{
-        UIViewController *rootViewController = [self setRootVC];
-        [[self window] setRootViewController:rootViewController];
-        [[YXTabBarView sharedInstance] showAnimation];
+        [self loadMainView];
     }
    // [self checkVersion]; //版本检测
+
     return YES;
 }
 - (void)loadMainView{
@@ -53,12 +77,12 @@
 - (UITabBarController *)setRootVC{
     YXTabBarViewController *tabBarController = [[YXTabBarViewController alloc] init];
     tabBarController.delegate = self;
-    self.tabbar = tabBarController;
+   // self.tabbar = tabBarController;
     
     YXProductViewController *productVC = [[YXProductViewController alloc] init];
     MLNavigationController *productNav = [[MLNavigationController alloc] initWithRootViewController:productVC];
     
-    YXIntroduceViewController *introduceVC = [[YXIntroduceViewController alloc] init];
+    YXClubListViewController *introduceVC = [[YXClubListViewController alloc] init];
     MLNavigationController *introduceNav = [[MLNavigationController alloc] initWithRootViewController:introduceVC];
     
 //    YXOrderViewController *orderVC = [[YXOrderViewController alloc] init];
@@ -67,10 +91,7 @@
     YXMyViewController *myVC = [[YXMyViewController alloc] init];
     MLNavigationController *myNav = [[MLNavigationController alloc] initWithRootViewController:myVC];
     
-
-    
     tabBarController.viewControllers = @[productNav, introduceNav, myNav];
-    
     return tabBarController;
 }
 
@@ -114,7 +135,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    YXLog(@"open222222");
+   // YXLog(@"open222222");
     NSString *urlStr=[[url absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     if ([urlStr rangeOfString:@"pingpp?"].location != NSNotFound) {
         [Pingpp handleOpenURL:url withCompletion:^(NSString *result, PingppError *error) {
@@ -122,9 +143,12 @@
             YXLog(@"支付结果%@", result);
             NSString *msg;
             if (error == nil) {
-                YXLog(@"PingppError is nil");
+              //  YXLog(@"PingppError is nil");
                 if ([result isEqualToString:@"success"]) {
                     msg = @"支付成功";
+                    YXLog(@"支付成功");
+                    [[NSNotificationCenter defaultCenter] postNotificationName:YXPaySuccessNoti object:nil];
+        
                 }
                 if ([result isEqualToString:@"cancel"]) {
                     msg = @"支付取消";
@@ -137,20 +161,38 @@
                 YXLog(@"PingppError: code=%lu msg=%@", (unsigned long)error.code, [error getMsg]);
                 msg = [NSString stringWithFormat:@"result=%@ PingppError: code=%lu msg=%@", result, (unsigned long)error.code, [error getMsg]];
             }
+            
             // [(ViewController*)self.viewController.visibleViewController showAlertMessage:msg];
            // [UIUtils showTextOnly:self.window.rootViewController.view labelString:msg time:2];
            // [self.tabbar changeIndex:2];
            // YXOrderViewController *order = (YXOrderViewController *)self.tabbar.selectedViewController;
             
 //            NSString *orderid = [[NSUserDefaults standardUserDefaults] objectForKey:@"orderID"];
-            YXOrderDetailViewController *orderDetail = [[YXOrderDetailViewController alloc] init];
+//            YXOrderDetailViewController *orderDetail = [[YXOrderDetailViewController alloc] init];
 //            orderDetail.orderID = orderid;
-//           // [order.navigationController pushViewController:orderDetail animated:YES];
-            [self.window.rootViewController.navigationController pushViewController:orderDetail animated:YES];
+//            self.window.rootViewController = orderDetail;
+            
+////           // [order.navigationController pushViewController:orderDetail animated:YES];
+//            [self.window.rootViewController.navigationController pushViewController:orderDetail animated:YES];
             
         }];
     }
     
     return YES;
+}
+#pragma mark CLLocationManagerDelegate
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation *cl = [locations lastObject];
+    _latitude = cl.coordinate.latitude;
+    _longitude = cl.coordinate.longitude;
+    YXLog(@"%f--%f",_latitude,_longitude);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    YXLog(@"定位失败");
+}
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application{
+    YXLog(@"内存警告");
+    [_locationManager stopUpdatingLocation];
 }
 @end

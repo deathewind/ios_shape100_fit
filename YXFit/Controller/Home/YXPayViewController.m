@@ -12,6 +12,8 @@
 #import "MoneyView.h"
 #import "DescribeView.h"
 #import "Model_order.h"
+
+#import "YXOrderDetailViewController.h"
 #define kUrlScheme      @"iosshape100fitapp"
 @interface YXPayViewController ()
 @property(nonatomic, strong) UIScrollView *scrollView;
@@ -29,9 +31,11 @@
     self.titleBar.text = @"订单支付";
     // Do any additional setup after loading the view.
     [self.view addSubview:self.scrollView];
-    _payString = @"wx";
+    _payString = WEIX;
     [self creatBackButton];
     [self addPayButton];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderDetailShow) name:YXPaySuccessNoti object:nil];
 }
 
 - (UIScrollView *)scrollView{
@@ -92,7 +96,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44);
     [button setTitle:@"立即支付" forState:UIControlStateNormal];
-    button.backgroundColor = RGB(156, 210, 122);
+    button.backgroundColor = RGB(199, 21, 133);
     [button addTarget:self action:@selector(pay) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 }
@@ -105,18 +109,18 @@
         NSError *parseError = nil;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:JSON options:NSJSONWritingPrettyPrinted error:&parseError];
         NSString *string =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        [[NSUserDefaults standardUserDefaults] setObject:self.order.order_id forKey:@"orderID"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+//        [[NSUserDefaults standardUserDefaults] setObject:self.order.order_id forKey:@"orderID"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
 
 //        [self.navigationController popToRootViewControllerAnimated:YES];
 //        AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
 //        [appDelegate.tabbar changeIndex:2];
         [Pingpp createPayment:string appURLScheme:kUrlScheme withCompletion:^(NSString *result, PingppError *error) {
-            NSLog(@"completion block: %@", result);
+            YXLog(@"111111completion block: %@", result);
             if (error == nil) {
-                NSLog(@"PingppError is nil");
+                YXLog(@"11111111PingppError is nil");
             } else {
-                NSLog(@"PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
+                YXLog(@"111111PingppError: code=%lu msg=%@", (unsigned  long)error.code, [error getMsg]);
             }
 
         }];
@@ -145,5 +149,27 @@
        // [UIUtils showTextOnly:self.view labelString:NSLocalizedString(@"Network", nil)];
     }];
 
+}
+
+- (void)orderDetailShow{
+    [UIUtils showTextOnly:self.view labelString:@"支付成功" time:2];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        if (_isMyPush) {
+            [self.navigationController popViewControllerAnimated:YES];
+          //  [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
+        }else{
+            [[YXTabBarView sharedInstance] showAnimation];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+
+    });
+    
+//    YXOrderDetailViewController *orderDetail = [[YXOrderDetailViewController alloc] init];
+//    orderDetail.orderID = self.order.order_id;
+//    [self pushViewController:orderDetail];
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:YXPaySuccessNoti object:nil];
 }
 @end

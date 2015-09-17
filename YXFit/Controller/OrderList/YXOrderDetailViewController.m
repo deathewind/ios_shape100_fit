@@ -25,14 +25,17 @@
 @end
 
 @implementation YXOrderDetailViewController
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self getOrderData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleBar.text = @"订单详情";
     self.view.backgroundColor = RGB(240, 240, 240);
     [self.view addSubview:self.scrollView];
     [self addCoverView];
-    [self getOrderData];
+  //  [self getOrderData];
     [self creatBackButton];
 }
 - (void)getOrderData{
@@ -107,11 +110,11 @@
     UIButton *cancel = [UIButton buttonWithType:UIButtonTypeCustom];
     cancel.frame = CGRectMake(10, 5, view.frame.size.width / 2 - 30 /2, 34);
     [cancel setTitle:@"订单取消" forState:UIControlStateNormal];
-    cancel.titleLabel.font = YXCharacterFont(15);
-    [cancel setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    cancel.titleLabel.font = YXCharacterFont(16);
+    [cancel setTitleColor:RGB(199, 21, 133) forState:UIControlStateNormal];
     cancel.layer.cornerRadius = 5;
     cancel.layer.borderWidth = 1;
-    cancel.layer.borderColor = [UIColor orangeColor].CGColor;
+    cancel.layer.borderColor = RGB(199, 21, 133).CGColor;
     cancel.tag = 100;
     [cancel addTarget:self action:@selector(clickButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:cancel];
@@ -119,11 +122,11 @@
     UIButton *pay = [UIButton buttonWithType:UIButtonTypeCustom];
     pay.frame = CGRectMake(cancel.frame.size.width + cancel.frame.origin.x + 5, 5, cancel.frame.size.width , 34);
     [pay setTitle:@"立即支付" forState:UIControlStateNormal];
-    pay.titleLabel.font = YXCharacterFont(15);
-    [pay setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    pay.titleLabel.font = YXCharacterFont(16);
+    [pay setTitleColor:RGB(199, 21, 133) forState:UIControlStateNormal];
     pay.layer.cornerRadius = 5;
     pay.layer.borderWidth = 1;
-    pay.layer.borderColor = [UIColor orangeColor].CGColor;
+    pay.layer.borderColor = RGB(199, 21, 133).CGColor;
     pay.tag = 101;
     [pay addTarget:self action:@selector(clickButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:pay];
@@ -132,6 +135,7 @@
     if (button.tag == 101) {
         YXPayViewController *pay = [[YXPayViewController alloc] init];
         pay.order = self.order;
+        pay.isMyPush = YES;
         [self pushViewController:pay];
     }
 }

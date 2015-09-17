@@ -22,7 +22,7 @@
         [button setTitle:@"课程介绍" forState:UIControlStateNormal];
         button.titleLabel.font = YXCharacterFont(15);
         button.tag = 0;
-        [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [button setTitleColor:RGB(199, 21, 133) forState:UIControlStateNormal];
         [button addTarget:self action:@selector(changeBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
         
@@ -66,13 +66,13 @@
 //        [button2 addSubview:line2];
         
         _line = [[UIView alloc] initWithFrame:CGRectMake(0, self.height - 2, button.width, 2)];
-        _line.backgroundColor = [UIColor orangeColor];
+        _line.backgroundColor = RGB(199, 21, 133);
         [self addSubview:_line];
     }
     return self;
 }
 - (void)changeBtn:(UIButton *)button{
-    [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [button setTitleColor:RGB(199, 21, 133) forState:UIControlStateNormal];
     CGRect lineRect = _line.frame;
     lineRect.origin.x = button.origin.x;
     [UIView animateWithDuration:0.3 animations:^{

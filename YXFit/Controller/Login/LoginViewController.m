@@ -28,26 +28,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-   // self.titleBar.text = @"会员登录";
     [self addLeftBtn];
     [self.view addSubview:self.scrollView];
 
 }
 - (void)addLeftBtn{
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(5, StatusBarHeight, 60, 44);
-    [backBtn setImage:[UIImage imageFileName:@"cd_back.png"] forState:UIControlStateNormal];
+    backBtn.frame = CGRectMake(0, StatusBarHeight, 60, 44);
+    [backBtn setImage:[UIImage imageFileName:@"cd_backBlack.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.navBar addSubview:backBtn];
     
   //  [self.navBar addSubview:self.topView];
     
     UISegmentedControl *segment_order = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Login", nil), NSLocalizedString(@"Register", nil)]];
-    segment_order.frame = CGRectMake(70, 23, self.view.frame.size.width - 70 * 2, 38);
+    segment_order.frame = CGRectMake(70, 25, self.view.frame.size.width - 70 * 2, 32);
     segment_order.selectedSegmentIndex = 0;
-    segment_order.tintColor = [UIColor whiteColor];
-    [segment_order setTitleTextAttributes:@{NSFontAttributeName :YXCharacterBoldFont(17)} forState:UIControlStateNormal];
+    segment_order.tintColor = RGB(199, 21, 133);
+    [segment_order setTitleTextAttributes:@{NSFontAttributeName :YXCharacterBoldFont(16)} forState:UIControlStateNormal];
     [segment_order addTarget:self action:@selector(didClickButton_segment:) forControlEvents:UIControlEventValueChanged];
     [self.navBar addSubview:segment_order];
 }

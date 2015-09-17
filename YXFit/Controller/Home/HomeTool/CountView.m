@@ -19,14 +19,14 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, self.height)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, self.height)];
        // label.backgroundColor = [UIColor redColor];
-        label.font = YXCharacterFont(15);
+        label.font = YXCharacterFont(17);
         label.text = @"购买数量";
         label.textColor = RGB(60, 60, 60);
         [self addSubview:label];
         
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width - 185, 8, 175, self.frame.size.height - 8 * 2)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width - 185, 8, 165, self.frame.size.height - 8 * 2)];
         view.layer.borderWidth = 1;
         view.layer.borderColor = RGB(136, 136, 136).CGColor;
         view.layer.cornerRadius = 5;
@@ -36,7 +36,8 @@
         _label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)];
         _label.textAlignment = NSTextAlignmentCenter;
         _label.text = @"1";
-        _label.textColor = RGB(60, 60, 60);
+        _label.backgroundColor = RGB(199, 21, 133);
+        _label.textColor = [UIColor whiteColor];
         [view addSubview:_label];
         
         _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];

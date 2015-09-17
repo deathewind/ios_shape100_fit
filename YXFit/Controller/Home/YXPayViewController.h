@@ -10,4 +10,5 @@
 
 @interface YXPayViewController : BaseViewController
 @property(nonatomic, strong) Model_order *order;
+@property(nonatomic, assign) BOOL isMyPush;
 @end

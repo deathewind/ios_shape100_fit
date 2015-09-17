@@ -101,13 +101,13 @@
 - (void)payWay:(UIButton *)button{
     NSString *payString = nil;
     if (button.tag == 100) {
-        payString = @"wx";
+        payString = WEIX;
         _wxImage.image = [UIImage imageFileName:@"pay_check.png"];
         _alipayImage.image = [UIImage imageFileName:@"pay_uncheck.png"];
     }else{
         _alipayImage.image = [UIImage imageFileName:@"pay_check.png"];
         _wxImage.image = [UIImage imageFileName:@"pay_uncheck.png"];
-        payString = @"alipay";
+        payString = ALIPAY;
     }
     _payChange(payString);
 }

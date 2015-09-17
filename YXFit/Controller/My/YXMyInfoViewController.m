@@ -320,7 +320,7 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44);
     [button setTitle:@"退出登录" forState:UIControlStateNormal];
-    button.backgroundColor = RGB(156, 210, 122);
+    button.backgroundColor = RGB(199, 21, 133);
     button.titleLabel.font = YXCharacterFont(16);
     [button addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];

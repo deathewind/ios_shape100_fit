@@ -89,19 +89,19 @@
         [view1 addSubview:line];
         
         UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(10, view1.height - 0.5, self.width - 10, 0.5)];
-        line1.backgroundColor = [UIColor lightGrayColor];
+        line1.backgroundColor = line.backgroundColor;
         [view1 addSubview:line1];
         
         UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(line1.origin.x, 0, line1.width, 0.5)];
-        line2.backgroundColor = [UIColor lightGrayColor];
+        line2.backgroundColor = line.backgroundColor;
         [view3 addSubview:line2];
         
         UIView *line3 = [[UIView alloc] initWithFrame:CGRectMake(line1.origin.x, 0, line1.width, 0.5)];
-        line3.backgroundColor = [UIColor lightGrayColor];
+        line3.backgroundColor = line.backgroundColor;
         [view4 addSubview:line3];
         
         UIView *line4 = [[UIView alloc] initWithFrame:CGRectMake(0, view4.height - 0.5, self.width, 0.5)];
-        line4.backgroundColor = [UIColor lightGrayColor];
+        line4.backgroundColor = line.backgroundColor;
         [view4 addSubview:line4];
  
     }

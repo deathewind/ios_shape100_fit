@@ -13,6 +13,10 @@
     Model_product *product = [[Model_product alloc] init];
     product.product_id = [dict objectForKey:@"product_id"];
     product.product_name = [dict objectForKey:@"name"];
+    product.product_summary = [dict objectForKey:@"summary"];
+    product.product_distance = [NSString stringWithFormat:@"%@", [dict objectForKey:@"distance"]];
+    product.product_place = [dict objectForKey:@"place"];
+    
     NSString *price;
     if ([[dict objectForKey:@"price"] intValue]<100) {
         price = [NSString stringWithFormat:@"%.2f",[[dict objectForKey:@"price"] floatValue]/100];
@@ -28,11 +32,15 @@
         stand_price = [NSString stringWithFormat:@"%d",[[dict objectForKey:@"standard_price"] intValue]/100];
     }
     product.product_standard_price = stand_price;
+    
+    
     product.product_num = [NSString stringWithFormat:@"%@", [dict objectForKey:@"num"]];
     product.product_description = [dict objectForKey:@"description"];
     product.product_created = [dict objectForKey:@"created"];
     product.product_modified = [dict objectForKey:@"modified"];
     product.product_pic_urls = [dict objectForKey:@"pic_urls"];
+    
+    
     return product;
 }
 @end

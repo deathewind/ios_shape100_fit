@@ -30,10 +30,9 @@ static YXTabBarView *YXTabBarInstance = nil;
     if (self)
     {
         self.backgroundColor = RGB(243, 243, 243);
+        self.alpha = 0.9;
         [self setFrame:CGRectMake(0, ScreenHeight, ScreenWidth, 51)];
         _tabBarView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width , self.frame.size.height)];
-       // _tabBarView.tag = 100;
-        //_tabBarView.backgroundColor = RGB(144, 238, 144);
         _tabBarView.userInteractionEnabled = YES;
         _tabBarView.image = [UIImage imageFileName:@"tabbar_bg.png"];
         [self addSubview:_tabBarView];

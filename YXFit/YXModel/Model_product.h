@@ -18,5 +18,9 @@
 @property(nonatomic, strong) NSString *product_created;
 @property(nonatomic, strong) NSString *product_modified;
 @property(nonatomic, strong) NSArray  *product_pic_urls;
+
+@property(nonatomic, strong) NSString *product_summary;
+@property(nonatomic, strong) NSString *product_distance;
+@property(nonatomic, strong) NSString *product_place;
 + (id)productWithDictionary:(NSDictionary *)dict;
 @end

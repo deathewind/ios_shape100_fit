@@ -75,7 +75,7 @@
     } completion:^(BOOL finished) {
         self.view.alpha = 0;
         [self.view removeFromSuperview];
-        [(AppDelegate *)[UIApplication sharedApplication].delegate loadMainView];
+        [APPDELEGATE loadMainView];
     }];
     
     

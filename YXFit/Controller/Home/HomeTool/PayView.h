@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#define WEIX @"wx"
+#define ALIPAY @"alipay"
 @interface PayView : UIView
 @property (nonatomic,copy) void(^payChange)(NSString *);
 @end

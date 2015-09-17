@@ -62,8 +62,9 @@ static NSString * const YXProductDetail = @"product/item/detail.json";
 static NSString * const YXOrderCreate = @"trade/order/create.json";
 static NSString * const YXTradeList = @"trade/list/bought.json";
 static NSString * const YXOrderDetail = @"trade/order/detail.json";
+static NSString * const YXClubList = @"place/club/shape100.json";
 
-
+static NSString * const YXEnterpriseList = @"product/list/enterprise.json";
 
 static YXNetworkingTool *networkManager = nil;
 @implementation YXNetworkingTool
@@ -252,6 +253,37 @@ static YXNetworkingTool *networkManager = nil;
 
     
 }
+//俱乐部商品
+- (void)getClubProductList:(NSDictionary *)paremeter success:(Success)success failure:(Failure)failure{
+    NSString *string_url = [YXHttp stringByAppendingString:YXClubList];
+    [self noLoginWithRequest:GET baseurl:string_url paremeter:paremeter success:^(id JSON) {
+        YXLog(@"%@", JSON);
+        NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[JSON count]];
+        for (NSDictionary *attributes in JSON) {
+            Model_club *product = [Model_club clubWithDictionary:attributes];
+            [mutablePosts addObject:product];
+        }
+        success(mutablePosts);
+    } failure:^(NSError *error, id JSON) {
+        failure(error, JSON);
+    }];
+}
+//企业课商品
+- (void)getEnterpriseProductList:(NSDictionary *)paremeter success:(Success)success failure:(Failure)failure{
+    NSString *string_url = [YXHttp stringByAppendingString:YXEnterpriseList];
+    [self noLoginWithRequest:GET baseurl:string_url paremeter:paremeter success:^(id JSON) {
+        YXLog(@"%@", JSON);
+        NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[JSON count]];
+        for (NSDictionary *attributes in JSON) {
+            Model_product *product = [Model_product productWithDictionary:attributes];
+            [mutablePosts addObject:product];
+        }
+        success(mutablePosts);
+    } failure:^(NSError *error, id JSON) {
+        
+    }];
+}
+
 //创建订单
 - (void)createOrderWithProduct:(NSString *)productID count:(NSString *)count success:(Success)success failure:(Failure)failure{
     NSString *string_url = [YXHttp stringByAppendingString:YXOrderCreate];
@@ -430,7 +462,7 @@ static YXNetworkingTool *networkManager = nil;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error,operation.responseObject);
-        YXLog(@"operation.response = %@ ", operation);
+        YXLog(@"operation.response = %@ ", operation.responseString);
         if (operation.response == NULL || operation.response.statusCode == 0) {//请求超时
             NSLog(@"111");
             AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
