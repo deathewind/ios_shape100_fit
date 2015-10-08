@@ -72,7 +72,8 @@
         self.backgroundColor = RGB(245, 245, 245);
         _titleLabel = [[UILabel alloc]initWithFrame:self.bounds];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.font = [UIFont systemFontOfSize:16];
+        _titleLabel.font = YXCharacterFont(16);
+        _titleLabel.textColor = RGB(60, 60, 60);
         [self addSubview:_titleLabel];
 
     }
@@ -84,10 +85,10 @@
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if(self){
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = RGB(245, 245, 245);
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         _button.frame = self.bounds;
-        [_button setTitle:@"加载更多" forState:UIControlStateNormal];
+        [_button setTitle:@"点击加载更多" forState:UIControlStateNormal];
         [_button setTitleColor:RGB(136, 136, 136) forState:UIControlStateNormal];
         _button.titleLabel.font = [UIFont systemFontOfSize:16];
         [_button addTarget:self action:@selector(loadMore:) forControlEvents:UIControlEventTouchUpInside];

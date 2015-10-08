@@ -7,10 +7,10 @@
 //
 
 #import "YXOrderViewController.h"
-#import "YXOrderDetailViewController.h"
+//#import "YXOrderDetailViewController.h"
 #import "YXLoadMoreView.h"
 #import "OrderCell.h"
-
+#import "YXOrderDetaViewController.h"
 @interface YXOrderViewController ()<UITableViewDataSource,UITableViewDelegate,YXLoadMoreViewDelegate, MJRefreshBaseViewDelegate, UIScrollViewDelegate>
 {
     MJRefreshBaseView       *_head;
@@ -33,12 +33,12 @@
     [self loadRefreshView];
     [self creatBackButton];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderShouldRefresh) name:YXPaySuccessNoti object:nil];
+   // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderShouldRefresh) name:YXPaySuccessNoti object:nil];
 }
 
-- (void)orderShouldRefresh{
-    [_head beginRefreshing];
-}
+//- (void)orderShouldRefresh{
+//    [_head beginRefreshing];
+//}
 
 - (void)loadRefreshView
 {
@@ -129,7 +129,6 @@
     OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil){
         cell = [[OrderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        //   cell.backgroundColor = [UIColor clearColor];
         
     }
     cell.order = [self.dataArray objectAtIndex:indexPath.row];
@@ -140,10 +139,13 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    YXOrderDetailViewController *detail = [[YXOrderDetailViewController alloc] init];
+
     Model_order *order = [self.dataArray objectAtIndex:indexPath.row];
-    detail.orderID = order.order_id;
-    [self pushViewController:detail];
+    
+    YXOrderDetaViewController *de = [[YXOrderDetaViewController alloc] init];
+    de.orderID = order.order_id;
+    de.index = 100;
+    [self pushViewController:de];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -203,6 +205,6 @@
 }
 - (void)dealloc{
     [_head free];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:YXPaySuccessNoti object:nil];
+   // [[NSNotificationCenter defaultCenter] removeObserver:self name:YXPaySuccessNoti object:nil];
 }
 @end

@@ -10,7 +10,7 @@
 #import "LoginView.h"
 #import "RegistView.h"
 #import "FindMMViewController.h"
-#import "Model_user.h"
+//#import "Model_user.h"
 @interface LoginViewController ()<UIScrollViewDelegate, LoginViewDelegate, RegistViewDelegate, UITextFieldDelegate>
 
 

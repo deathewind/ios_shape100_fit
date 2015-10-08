@@ -17,7 +17,7 @@
 #import "Pingpp.h"
 #import "YXIntroViewController.h"
 #import <CoreLocation/CoreLocation.h>
-#import "YXOrderDetailViewController.h"
+#import "YXOrderDetaViewController.h"
 
 #define umengfeedback @"55e5284de0f55a7145000d56" //
 @interface AppDelegate ()<UITabBarControllerDelegate, CLLocationManagerDelegate>
@@ -77,7 +77,7 @@
 - (UITabBarController *)setRootVC{
     YXTabBarViewController *tabBarController = [[YXTabBarViewController alloc] init];
     tabBarController.delegate = self;
-   // self.tabbar = tabBarController;
+    self.tabbar = tabBarController;
     
     YXProductViewController *productVC = [[YXProductViewController alloc] init];
     MLNavigationController *productNav = [[MLNavigationController alloc] initWithRootViewController:productVC];
@@ -147,7 +147,7 @@
                 if ([result isEqualToString:@"success"]) {
                     msg = @"支付成功";
                     YXLog(@"支付成功");
-                    [[NSNotificationCenter defaultCenter] postNotificationName:YXPaySuccessNoti object:nil];
+                   // [[NSNotificationCenter defaultCenter] postNotificationName:YXPaySuccessNoti object:nil];
         
                 }
                 if ([result isEqualToString:@"cancel"]) {
@@ -162,18 +162,18 @@
                 msg = [NSString stringWithFormat:@"result=%@ PingppError: code=%lu msg=%@", result, (unsigned long)error.code, [error getMsg]];
             }
             
-            // [(ViewController*)self.viewController.visibleViewController showAlertMessage:msg];
-           // [UIUtils showTextOnly:self.window.rootViewController.view labelString:msg time:2];
-           // [self.tabbar changeIndex:2];
-           // YXOrderViewController *order = (YXOrderViewController *)self.tabbar.selectedViewController;
+            [UIUtils showTextOnly:self.window.rootViewController.view labelString:msg];
             
-//            NSString *orderid = [[NSUserDefaults standardUserDefaults] objectForKey:@"orderID"];
-//            YXOrderDetailViewController *orderDetail = [[YXOrderDetailViewController alloc] init];
-//            orderDetail.orderID = orderid;
-//            self.window.rootViewController = orderDetail;
-            
-////           // [order.navigationController pushViewController:orderDetail animated:YES];
-//            [self.window.rootViewController.navigationController pushViewController:orderDetail animated:YES];
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+
+                MLNavigationController *nav = (MLNavigationController *)self.tabbar.selectedViewController;
+                YXOrderDetaViewController *detail = [[YXOrderDetaViewController alloc] init];
+                detail.index = self.tabbar.selectedIndex;
+                detail.orderID = self.orderID;
+                [nav pushViewController:detail animated:YES];
+            });
+
             
         }];
     }

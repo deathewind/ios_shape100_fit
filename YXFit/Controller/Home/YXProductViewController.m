@@ -13,7 +13,7 @@
 #import "YXCalendarViewController.h"
 
 
-#import "YXFontViewController.h"
+//#import "YXFontViewController.h"
 @interface YXProductViewController()<UITableViewDataSource,UITableViewDelegate,YXLoadMoreViewDelegate,MJRefreshBaseViewDelegate>
 {
     MJRefreshBaseView  *_head;
@@ -30,7 +30,7 @@
     [super viewDidLoad];
     self.titleBar.text = @"商品列表";
     [self loadRefreshView];
-    [self goFont];
+   // [self goFont];
 }
 - (void)goFont{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
@@ -40,8 +40,8 @@
    
 }
 - (void)pushFont{
-    YXFontViewController *font = [[YXFontViewController alloc] init];
-    [self pushViewController:font];
+//    YXFontViewController *font = [[YXFontViewController alloc] init];
+//    [self pushViewController:font];
 }
 - (void)loadRefreshView
 {
@@ -93,15 +93,6 @@
     }];
 }
 
-//- (CLLocationManager *)locationManager{
-//    if (_locationManager == nil) {
-//        _locationManager = [[CLLocationManager alloc] init];
-//        [_locationManager setDelegate:self];
-//        [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-//        _locationManager.distanceFilter = kCLDistanceFilterNone;
-//    }
-//    return _locationManager;
-//}
 - (UITableView *)tableView{
     if (!_tableView) {
        // _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - self.navBar.height)];

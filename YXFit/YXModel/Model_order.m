@@ -11,7 +11,7 @@
 @implementation Model_order
 + (id)orderWithDictionary:(NSDictionary *)dict{
     Model_order *order = [[Model_order alloc] init];
-    order.order_id = [dict objectForKey:@"order_id"];
+    order.order_id = [NSString stringWithFormat:@"%@", [dict objectForKey:@"order_id"]];
     order.order_title = [dict objectForKey:@"title"];
     
     NSString *price;

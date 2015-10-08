@@ -46,6 +46,8 @@
     }
 }
 - (void)reloadNew:(UITapGestureRecognizer*)tap{
-    [self.delegate loadNewDate];
+    if ([self.delegate respondsToSelector:@selector(loadNewDate)]) {
+        [self.delegate loadNewDate];
+    }
 }
 @end

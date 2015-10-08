@@ -15,7 +15,7 @@
 
 
 // return the count of day in a certain month ,a certain year
-+ (int)getDaysInMonth:(int)month year:(int)year;
++ (NSInteger)getDaysInMonth:(NSInteger)month year:(NSInteger)year;
 
 //获取某个月的第一天
 + (NSDateComponents *)firstDateComponentsWithMonthComponents:(NSDateComponents *)monthComponents;

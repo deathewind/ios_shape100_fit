@@ -36,15 +36,15 @@
     [self loadData];
 }
 - (void)loadData{
-    self.dataArray = [NSArray arrayWithObjects:@"我的订单",@"个人信息",@"我的优惠券",@"意见反馈",@"关于我们", nil];
+    self.dataArray = [NSArray arrayWithObjects:@"个人信息",@"我的优惠券",@"意见反馈",@"关于我们", nil];
     [self.tableView reloadData];
 }
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
         _tableView.delegate =self;
         _tableView.dataSource = self;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+       // _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.tableHeaderView = self.headerView;
     }
     return _tableView;
@@ -64,39 +64,58 @@
     [self presentViewController:nav animated:YES completion:nil];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return self.dataArray.count;
+    if (section == 0) {
+        return 1;
+    }
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        static NSString *cellReuseIdentifier  = @"cell";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
+           // cell.selectionStyle  = UITableViewCellSelectionStyleNone;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(20, 50 - 0.5, ScreenWidth - 20, 0.5)];
+//            line.backgroundColor = [UIColor lightGrayColor];
+//            [cell addSubview:line];
+            cell.textLabel.textColor = RGB(60, 60, 60);
+        }
+        cell.textLabel.text = @"我的订单";
+        return cell;
+    }
     static NSString *cellReuseIdentifier  = @"cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
-        cell.selectionStyle  = UITableViewCellSelectionStyleNone;
+       // cell.selectionStyle  = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(20, 50 - 0.5, ScreenWidth - 20, 0.5)];
-        line.backgroundColor = [UIColor lightGrayColor];
-        [cell addSubview:line];
+
+        cell.textLabel.textColor = RGB(60, 60, 60);
     }
     cell.textLabel.text = [self.dataArray objectAtIndex:indexPath.row];
-    cell.textLabel.textColor = RGB(60, 60, 60);
+    
     return cell;
 }
 
 
 #pragma mark - UITableViewDelegate
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 20;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0){
+    if (indexPath.section == 0){
         NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:YXToken];
         if (token == nil) {
             [self presentLoginView];
@@ -105,31 +124,33 @@
             [self pushViewController:info];
         }
         
-    }
-    if (indexPath.row == 1) {
-        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:YXToken];
-        if (token == nil) {
-            [self presentLoginView];
-        }else{
-            YXMyInfoViewController *info = [[YXMyInfoViewController alloc] init];
-            [self pushViewController:info];
+    }else{
+        if (indexPath.row == 0) {
+            NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:YXToken];
+            if (token == nil) {
+                [self presentLoginView];
+            }else{
+                YXMyInfoViewController *info = [[YXMyInfoViewController alloc] init];
+                [self pushViewController:info];
+            }
+        }
+        if (indexPath.row == 1) {
+            
+        }
+        if (indexPath.row == 2) {
+            YXFeedbackViewController *feedback = [[YXFeedbackViewController alloc] init];
+            [self pushViewController:feedback];
+        }
+        if (indexPath.row == 3) {
+            YXAboutUSViewController *about = [[YXAboutUSViewController alloc] init];
+            [self pushViewController:about];
         }
     }
-    if (indexPath.row == 2) {
-        
-    }
-    if (indexPath.row == 3) {
-        YXFeedbackViewController *feedback = [[YXFeedbackViewController alloc] init];
-        [self pushViewController:feedback];
-    }
-    if (indexPath.row == 4) {
-        YXAboutUSViewController *about = [[YXAboutUSViewController alloc] init];
-        [self pushViewController:about];
-    }
+
 
 //            //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"还未登录,是否现在登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
 //            //            [alert show];
-
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消选中状态
 }
 #pragma mark alertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

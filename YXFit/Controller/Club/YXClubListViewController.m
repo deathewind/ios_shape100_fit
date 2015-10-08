@@ -76,7 +76,7 @@
         _tableView.dataSource = self;
         _tableView.delegate = self;
         // _tableView.backgroundColor =
-        _tableView.allowsMultipleSelection = NO;
+        //_tableView.allowsMultipleSelection = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
         _tableView.tableFooterView = self.footerView;

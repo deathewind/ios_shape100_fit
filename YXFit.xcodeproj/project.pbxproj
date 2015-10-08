@@ -10,6 +10,10 @@
 		7908AF6F1BA2AB2E00D31C65 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7908AF6E1BA2AB2E00D31C65 /* GradientView.m */; };
 		7908AF721BA2BF1100D31C65 /* YXClubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7908AF711BA2BF1100D31C65 /* YXClubDetailViewController.m */; };
 		7908AF741BA2CF7E00D31C65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7908AF731BA2CF7E00D31C65 /* CoreLocation.framework */; };
+		79119F581BB4E74C00CA9496 /* YXOrderDetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79119F571BB4E74C00CA9496 /* YXOrderDetaViewController.m */; settings = {ASSET_TAGS = (); }; };
+		79119F5B1BB4E89A00CA9496 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79119F5A1BB4E89A00CA9496 /* DetailCell.m */; settings = {ASSET_TAGS = (); }; };
+		79119F5E1BB4F92600CA9496 /* YXPayInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79119F5D1BB4F92600CA9496 /* YXPayInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		79119F611BB4FC6800CA9496 /* PayInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79119F601BB4FC6800CA9496 /* PayInfoCell.m */; settings = {ASSET_TAGS = (); }; };
 		791624E81B95B32B0071360A /* cd_backBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791624E71B95B32B0071360A /* cd_backBlack@2x.png */; };
 		7917C4DF1B8D4A0B00896027 /* YXCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7917C4DE1B8D4A0B00896027 /* YXCouponViewController.m */; };
 		7917C4E51B8D792700896027 /* ButtonDoctView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7917C4E41B8D792700896027 /* ButtonDoctView.m */; };
@@ -35,6 +39,8 @@
 		79489B261BA1856B00B960A6 /* YXClubListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79489B251BA1856B00B960A6 /* YXClubListViewController.m */; };
 		79489B291BA1872A00B960A6 /* Model_club.m in Sources */ = {isa = PBXBuildFile; fileRef = 79489B281BA1872A00B960A6 /* Model_club.m */; };
 		79489B2D1BA18B1D00B960A6 /* ClubListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79489B2C1BA18B1D00B960A6 /* ClubListCell.m */; };
+		795F37D51BB3934C00404BFC /* ToolService.m in Sources */ = {isa = PBXBuildFile; fileRef = 795F37D41BB3934C00404BFC /* ToolService.m */; };
+		795F37D81BB3944F00404BFC /* UIViewController+AOPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 795F37D71BB3944F00404BFC /* UIViewController+AOPViewController.m */; };
 		7974D8B51B9D77B800CC4579 /* ExpandTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7974D8B41B9D77B800CC4579 /* ExpandTableViewHeader.m */; };
 		7978A5CF1B8FF91C0048325A /* YXHandleError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7978A5CE1B8FF91C0048325A /* YXHandleError.m */; };
 		7978A5D21B9002760048325A /* YXIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7978A5D11B9002760048325A /* YXIndicatorView.m */; };
@@ -64,7 +70,6 @@
 		797F67261B8ACD200070E41B /* YXOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67251B8ACD200070E41B /* YXOrderViewController.m */; };
 		797F67291B8ACD3F0070E41B /* YXMyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67281B8ACD3F0070E41B /* YXMyViewController.m */; };
 		797F672D1B8ACE0A0070E41B /* YXNetworkingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F672C1B8ACE0A0070E41B /* YXNetworkingTool.m */; };
-		797F67301B8ACFDF0070E41B /* Model_user.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F672F1B8ACFDF0070E41B /* Model_user.m */; };
 		797F674C1B8AD35B0070E41B /* 1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 797F67361B8AD35B0070E41B /* 1024x1024.png */; };
 		797F675F1B8AD35B0070E41B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 797F67491B8AD35B0070E41B /* Default-568h@2x.png */; };
 		797F67601B8AD35B0070E41B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 797F674A1B8AD35B0070E41B /* Default.png */; };
@@ -94,17 +99,9 @@
 		797F67B31B8B01D30070E41B /* myCenter_back_one@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 797F67B21B8B01D30070E41B /* myCenter_back_one@2x.png */; };
 		797F67C01B8B0FD80070E41B /* YXLoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67BF1B8B0FD80070E41B /* YXLoadMoreView.m */; };
 		797F67C41B8B10FB0070E41B /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67C31B8B10FB0070E41B /* OrderCell.m */; };
-		797F67C71B8B14490070E41B /* YXOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67C61B8B14490070E41B /* YXOrderDetailViewController.m */; };
-		797F67CE1B8B14540070E41B /* OrderNumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67C91B8B14540070E41B /* OrderNumView.m */; };
-		797F67CF1B8B14540070E41B /* OrderInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67CB1B8B14540070E41B /* OrderInfoView.m */; };
-		797F67D01B8B14540070E41B /* OrderPayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67CD1B8B14540070E41B /* OrderPayView.m */; };
-		797F67D31B8B152F0070E41B /* YXPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67D21B8B152F0070E41B /* YXPayViewController.m */; };
-		797F67D81B8B153A0070E41B /* PayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67D51B8B153A0070E41B /* PayView.m */; };
-		797F67D91B8B153A0070E41B /* MoneyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F67D71B8B153A0070E41B /* MoneyView.m */; };
 		797F67EB1B8B15BC0070E41B /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 797F67DD1B8B15BC0070E41B /* AlipaySDK.bundle */; };
 		797F67EC1B8B15BC0070E41B /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 797F67DE1B8B15BC0070E41B /* AlipaySDK.framework */; };
 		797F67ED1B8B15BC0070E41B /* libpingpp+alipay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 797F67DF1B8B15BC0070E41B /* libpingpp+alipay.a */; };
-		797F67EE1B8B15BC0070E41B /* libpingpp+applepay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 797F67E11B8B15BC0070E41B /* libpingpp+applepay.a */; };
 		797F67EF1B8B15BC0070E41B /* libpingpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 797F67E31B8B15BC0070E41B /* libpingpp.a */; };
 		797F67F01B8B15BC0070E41B /* libpingpp+up.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 797F67E61B8B15BC0070E41B /* libpingpp+up.a */; };
 		797F67F11B8B15BC0070E41B /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 797F67E71B8B15BC0070E41B /* libUPPayPlugin.a */; };
@@ -132,7 +129,6 @@
 		797F68251B8C28B10070E41B /* STAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797F68241B8C28B10070E41B /* STAlertView.m */; };
 		79A05B451B9FC85C00BA7C87 /* MyHeaderExpandView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A05B441B9FC85C00BA7C87 /* MyHeaderExpandView.m */; };
 		79A05B481B9FE17800BA7C87 /* YXCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A05B471B9FE17800BA7C87 /* YXCalendarViewController.m */; };
-		79AA7ACF1BA95BF800B11036 /* YXFontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AA7ACE1BA95BF800B11036 /* YXFontViewController.m */; };
 		79C33C581B7EE0F400247956 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C33C2B1B7EE0F300247956 /* AFHTTPRequestOperation.m */; };
 		79C33C591B7EE0F400247956 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C33C2D1B7EE0F300247956 /* AFHTTPRequestOperationManager.m */; };
 		79C33C5A1B7EE0F400247956 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C33C2F1B7EE0F300247956 /* AFHTTPSessionManager.m */; };
@@ -180,6 +176,14 @@
 		7908AF701BA2BF1100D31C65 /* YXClubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXClubDetailViewController.h; sourceTree = "<group>"; };
 		7908AF711BA2BF1100D31C65 /* YXClubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXClubDetailViewController.m; sourceTree = "<group>"; };
 		7908AF731BA2CF7E00D31C65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		79119F561BB4E74C00CA9496 /* YXOrderDetaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXOrderDetaViewController.h; sourceTree = "<group>"; };
+		79119F571BB4E74C00CA9496 /* YXOrderDetaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXOrderDetaViewController.m; sourceTree = "<group>"; };
+		79119F591BB4E89A00CA9496 /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCell.h; sourceTree = "<group>"; };
+		79119F5A1BB4E89A00CA9496 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
+		79119F5C1BB4F92600CA9496 /* YXPayInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXPayInfoViewController.h; sourceTree = "<group>"; };
+		79119F5D1BB4F92600CA9496 /* YXPayInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXPayInfoViewController.m; sourceTree = "<group>"; };
+		79119F5F1BB4FC6800CA9496 /* PayInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayInfoCell.h; sourceTree = "<group>"; };
+		79119F601BB4FC6800CA9496 /* PayInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayInfoCell.m; sourceTree = "<group>"; };
 		791624E71B95B32B0071360A /* cd_backBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cd_backBlack@2x.png"; sourceTree = "<group>"; };
 		7917C4DD1B8D4A0B00896027 /* YXCouponViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXCouponViewController.h; sourceTree = "<group>"; };
 		7917C4DE1B8D4A0B00896027 /* YXCouponViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXCouponViewController.m; sourceTree = "<group>"; };
@@ -220,6 +224,10 @@
 		79489B281BA1872A00B960A6 /* Model_club.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model_club.m; sourceTree = "<group>"; };
 		79489B2B1BA18B1D00B960A6 /* ClubListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubListCell.h; sourceTree = "<group>"; };
 		79489B2C1BA18B1D00B960A6 /* ClubListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubListCell.m; sourceTree = "<group>"; };
+		795F37D31BB3934C00404BFC /* ToolService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolService.h; sourceTree = "<group>"; };
+		795F37D41BB3934C00404BFC /* ToolService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolService.m; sourceTree = "<group>"; };
+		795F37D61BB3944F00404BFC /* UIViewController+AOPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AOPViewController.h"; sourceTree = "<group>"; };
+		795F37D71BB3944F00404BFC /* UIViewController+AOPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AOPViewController.m"; sourceTree = "<group>"; };
 		7974D8B31B9D77B800CC4579 /* ExpandTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpandTableViewHeader.h; sourceTree = "<group>"; };
 		7974D8B41B9D77B800CC4579 /* ExpandTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpandTableViewHeader.m; sourceTree = "<group>"; };
 		7978A5CD1B8FF91C0048325A /* YXHandleError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXHandleError.h; sourceTree = "<group>"; };
@@ -268,8 +276,6 @@
 		797F67281B8ACD3F0070E41B /* YXMyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXMyViewController.m; sourceTree = "<group>"; };
 		797F672B1B8ACE0A0070E41B /* YXNetworkingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXNetworkingTool.h; sourceTree = "<group>"; };
 		797F672C1B8ACE0A0070E41B /* YXNetworkingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXNetworkingTool.m; sourceTree = "<group>"; };
-		797F672E1B8ACFDF0070E41B /* Model_user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model_user.h; sourceTree = "<group>"; };
-		797F672F1B8ACFDF0070E41B /* Model_user.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model_user.m; sourceTree = "<group>"; };
 		797F67361B8AD35B0070E41B /* 1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1024x1024.png; sourceTree = "<group>"; };
 		797F67491B8AD35B0070E41B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		797F674A1B8AD35B0070E41B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -323,25 +329,9 @@
 		797F67BF1B8B0FD80070E41B /* YXLoadMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXLoadMoreView.m; sourceTree = "<group>"; };
 		797F67C21B8B10FB0070E41B /* OrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
 		797F67C31B8B10FB0070E41B /* OrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
-		797F67C51B8B14490070E41B /* YXOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXOrderDetailViewController.h; sourceTree = "<group>"; };
-		797F67C61B8B14490070E41B /* YXOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXOrderDetailViewController.m; sourceTree = "<group>"; };
-		797F67C81B8B14540070E41B /* OrderNumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderNumView.h; sourceTree = "<group>"; };
-		797F67C91B8B14540070E41B /* OrderNumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderNumView.m; sourceTree = "<group>"; };
-		797F67CA1B8B14540070E41B /* OrderInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderInfoView.h; sourceTree = "<group>"; };
-		797F67CB1B8B14540070E41B /* OrderInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderInfoView.m; sourceTree = "<group>"; };
-		797F67CC1B8B14540070E41B /* OrderPayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPayView.h; sourceTree = "<group>"; };
-		797F67CD1B8B14540070E41B /* OrderPayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayView.m; sourceTree = "<group>"; };
-		797F67D11B8B152F0070E41B /* YXPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXPayViewController.h; sourceTree = "<group>"; };
-		797F67D21B8B152F0070E41B /* YXPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXPayViewController.m; sourceTree = "<group>"; };
-		797F67D41B8B153A0070E41B /* PayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayView.h; sourceTree = "<group>"; };
-		797F67D51B8B153A0070E41B /* PayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayView.m; sourceTree = "<group>"; };
-		797F67D61B8B153A0070E41B /* MoneyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyView.h; sourceTree = "<group>"; };
-		797F67D71B8B153A0070E41B /* MoneyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoneyView.m; sourceTree = "<group>"; };
 		797F67DD1B8B15BC0070E41B /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		797F67DE1B8B15BC0070E41B /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		797F67DF1B8B15BC0070E41B /* libpingpp+alipay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+alipay.a"; sourceTree = "<group>"; };
-		797F67E11B8B15BC0070E41B /* libpingpp+applepay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+applepay.a"; sourceTree = "<group>"; };
-		797F67E21B8B15BC0070E41B /* Pingpp+ApplePay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Pingpp+ApplePay.h"; sourceTree = "<group>"; };
 		797F67E31B8B15BC0070E41B /* libpingpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpingpp.a; sourceTree = "<group>"; };
 		797F67E41B8B15BC0070E41B /* Pingpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pingpp.h; sourceTree = "<group>"; };
 		797F67E61B8B15BC0070E41B /* libpingpp+up.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libpingpp+up.a"; sourceTree = "<group>"; };
@@ -379,8 +369,6 @@
 		79A05B441B9FC85C00BA7C87 /* MyHeaderExpandView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHeaderExpandView.m; sourceTree = "<group>"; };
 		79A05B461B9FE17800BA7C87 /* YXCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXCalendarViewController.h; sourceTree = "<group>"; };
 		79A05B471B9FE17800BA7C87 /* YXCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXCalendarViewController.m; sourceTree = "<group>"; };
-		79AA7ACD1BA95BF800B11036 /* YXFontViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXFontViewController.h; sourceTree = "<group>"; };
-		79AA7ACE1BA95BF800B11036 /* YXFontViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXFontViewController.m; sourceTree = "<group>"; };
 		79C33C2A1B7EE0F300247956 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		79C33C2B1B7EE0F300247956 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		79C33C2C1B7EE0F300247956 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -451,7 +439,6 @@
 				797F67F71B8B187E0070E41B /* SystemConfiguration.framework in Frameworks */,
 				797F67F51B8B18680070E41B /* CFNetwork.framework in Frameworks */,
 				797F67EC1B8B15BC0070E41B /* AlipaySDK.framework in Frameworks */,
-				797F67EE1B8B15BC0070E41B /* libpingpp+applepay.a in Frameworks */,
 				797F67F31B8B15BC0070E41B /* libWeChatSDK.a in Frameworks */,
 				797F67ED1B8B15BC0070E41B /* libpingpp+alipay.a in Frameworks */,
 				797F67F01B8B15BC0070E41B /* libpingpp+up.a in Frameworks */,
@@ -554,6 +541,17 @@
 			path = ClubTool;
 			sourceTree = "<group>";
 		};
+		795F37D21BB392A800404BFC /* LoadObject */ = {
+			isa = PBXGroup;
+			children = (
+				795F37D31BB3934C00404BFC /* ToolService.h */,
+				795F37D41BB3934C00404BFC /* ToolService.m */,
+				795F37D61BB3944F00404BFC /* UIViewController+AOPViewController.h */,
+				795F37D71BB3944F00404BFC /* UIViewController+AOPViewController.m */,
+			);
+			path = LoadObject;
+			sourceTree = "<group>";
+		};
 		797F66EB1B8AC7E00070E41B /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,8 +603,8 @@
 				797F67C11B8B10EB0070E41B /* OrderTool */,
 				797F67241B8ACD200070E41B /* YXOrderViewController.h */,
 				797F67251B8ACD200070E41B /* YXOrderViewController.m */,
-				797F67C51B8B14490070E41B /* YXOrderDetailViewController.h */,
-				797F67C61B8B14490070E41B /* YXOrderDetailViewController.m */,
+				79119F561BB4E74C00CA9496 /* YXOrderDetaViewController.h */,
+				79119F571BB4E74C00CA9496 /* YXOrderDetaViewController.m */,
 			);
 			path = OrderList;
 			sourceTree = "<group>";
@@ -653,8 +651,6 @@
 				797F671F1B8ACCAE0070E41B /* Model_product.m */,
 				797F67201B8ACCAE0070E41B /* Model_order.h */,
 				797F67211B8ACCAE0070E41B /* Model_order.m */,
-				797F672E1B8ACFDF0070E41B /* Model_user.h */,
-				797F672F1B8ACFDF0070E41B /* Model_user.m */,
 				79489B271BA1872A00B960A6 /* Model_club.h */,
 				79489B281BA1872A00B960A6 /* Model_club.m */,
 			);
@@ -746,14 +742,12 @@
 				797F679B1B8AEF350070E41B /* CountView.m */,
 				797F679E1B8AEF350070E41B /* DescribeView.h */,
 				797F679F1B8AEF350070E41B /* DescribeView.m */,
-				797F67D41B8B153A0070E41B /* PayView.h */,
-				797F67D51B8B153A0070E41B /* PayView.m */,
-				797F67D61B8B153A0070E41B /* MoneyView.h */,
-				797F67D71B8B153A0070E41B /* MoneyView.m */,
 				7917C4E31B8D792700896027 /* ButtonDoctView.h */,
 				7917C4E41B8D792700896027 /* ButtonDoctView.m */,
 				7974D8B31B9D77B800CC4579 /* ExpandTableViewHeader.h */,
 				7974D8B41B9D77B800CC4579 /* ExpandTableViewHeader.m */,
+				79119F5F1BB4FC6800CA9496 /* PayInfoCell.h */,
+				79119F601BB4FC6800CA9496 /* PayInfoCell.m */,
 				79489B0D1BA1265E00B960A6 /* YXCalendar */,
 			);
 			path = HomeTool;
@@ -801,12 +795,8 @@
 			children = (
 				797F67C21B8B10FB0070E41B /* OrderCell.h */,
 				797F67C31B8B10FB0070E41B /* OrderCell.m */,
-				797F67C81B8B14540070E41B /* OrderNumView.h */,
-				797F67C91B8B14540070E41B /* OrderNumView.m */,
-				797F67CA1B8B14540070E41B /* OrderInfoView.h */,
-				797F67CB1B8B14540070E41B /* OrderInfoView.m */,
-				797F67CC1B8B14540070E41B /* OrderPayView.h */,
-				797F67CD1B8B14540070E41B /* OrderPayView.m */,
+				79119F591BB4E89A00CA9496 /* DetailCell.h */,
+				79119F5A1BB4E89A00CA9496 /* DetailCell.m */,
 			);
 			path = OrderTool;
 			sourceTree = "<group>";
@@ -815,7 +805,6 @@
 			isa = PBXGroup;
 			children = (
 				797F67DC1B8B15BC0070E41B /* Alipay */,
-				797F67E01B8B15BC0070E41B /* ApplePay */,
 				797F67E31B8B15BC0070E41B /* libpingpp.a */,
 				797F67E41B8B15BC0070E41B /* Pingpp.h */,
 				797F67E51B8B15BC0070E41B /* UnionPay */,
@@ -832,15 +821,6 @@
 				797F67DF1B8B15BC0070E41B /* libpingpp+alipay.a */,
 			);
 			path = Alipay;
-			sourceTree = "<group>";
-		};
-		797F67E01B8B15BC0070E41B /* ApplePay */ = {
-			isa = PBXGroup;
-			children = (
-				797F67E11B8B15BC0070E41B /* libpingpp+applepay.a */,
-				797F67E21B8B15BC0070E41B /* Pingpp+ApplePay.h */,
-			);
-			path = ApplePay;
 			sourceTree = "<group>";
 		};
 		797F67E51B8B15BC0070E41B /* UnionPay */ = {
@@ -992,6 +972,7 @@
 		79C33C701B7EE0FC00247956 /* LibTool */ = {
 			isa = PBXGroup;
 			children = (
+				795F37D21BB392A800404BFC /* LoadObject */,
 				797F68221B8C28A50070E41B /* AlertView */,
 				797F672A1B8ACDC60070E41B /* NetworkingTool */,
 				797F67101B8ACB8D0070E41B /* YXCategory */,
@@ -1019,14 +1000,12 @@
 				797F67931B8AE2330070E41B /* HomeTool */,
 				797F66E31B8AC71F0070E41B /* YXProductViewController.h */,
 				797F66E41B8AC71F0070E41B /* YXProductViewController.m */,
-				79AA7ACD1BA95BF800B11036 /* YXFontViewController.h */,
-				79AA7ACE1BA95BF800B11036 /* YXFontViewController.m */,
 				797F66E61B8AC7420070E41B /* YXProductDetailViewController.h */,
 				797F66E71B8AC7420070E41B /* YXProductDetailViewController.m */,
 				79A05B461B9FE17800BA7C87 /* YXCalendarViewController.h */,
 				79A05B471B9FE17800BA7C87 /* YXCalendarViewController.m */,
-				797F67D11B8B152F0070E41B /* YXPayViewController.h */,
-				797F67D21B8B152F0070E41B /* YXPayViewController.m */,
+				79119F5C1BB4F92600CA9496 /* YXPayInfoViewController.h */,
+				79119F5D1BB4F92600CA9496 /* YXPayInfoViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1254,12 +1233,8 @@
 				79C33C6F1B7EE0F400247956 /* MJRefreshHeaderView.m in Sources */,
 				79C33C611B7EE0F400247956 /* Reachability.m in Sources */,
 				79A05B481B9FE17800BA7C87 /* YXCalendarViewController.m in Sources */,
-				79AA7ACF1BA95BF800B11036 /* YXFontViewController.m in Sources */,
-				797F67D01B8B14540070E41B /* OrderPayView.m in Sources */,
 				797F671B1B8ACB8D0070E41B /* UIImage+RenderedImage.m in Sources */,
-				797F67D31B8B152F0070E41B /* YXPayViewController.m in Sources */,
 				797F680C1B8B1FD80070E41B /* LoginView.m in Sources */,
-				797F67CE1B8B14540070E41B /* OrderNumView.m in Sources */,
 				797F671A1B8ACB8D0070E41B /* UIColor+herColor.m in Sources */,
 				797F67A21B8AEF350070E41B /* DescribeView.m in Sources */,
 				797F67821B8AD4D00070E41B /* SDWebImageCompat.m in Sources */,
@@ -1273,23 +1248,22 @@
 				797F671C1B8ACB8D0070E41B /* UIWebView+JavaScriptAlert.m in Sources */,
 				7917C4E81B8DAF6F00896027 /* YXIntroViewController.m in Sources */,
 				797F678D1B8AD4D00070E41B /* UIView+WebCacheOperation.m in Sources */,
+				79119F5B1BB4E89A00CA9496 /* DetailCell.m in Sources */,
 				79C33C5B1B7EE0F400247956 /* AFNetworkReachabilityManager.m in Sources */,
 				797F680D1B8B1FD80070E41B /* RegistView.m in Sources */,
-				797F67D91B8B153A0070E41B /* MoneyView.m in Sources */,
 				797F67231B8ACCAE0070E41B /* Model_order.m in Sources */,
 				797F67831B8AD4D00070E41B /* SDWebImageDecoder.m in Sources */,
-				797F67C71B8B14490070E41B /* YXOrderDetailViewController.m in Sources */,
 				79489B1B1BA1265E00B960A6 /* YXCollectionViewCell.m in Sources */,
 				79C33C621B7EE0F400247956 /* UIImageView+AFNetworking.m in Sources */,
 				79C33C5F1B7EE0F400247956 /* AFURLResponseSerialization.m in Sources */,
 				7978A5D51B9024860048325A /* YXLoadingView.m in Sources */,
+				79119F611BB4FC6800CA9496 /* PayInfoCell.m in Sources */,
 				79C33C6A1B7EE0F400247956 /* MBProgressHUD.m in Sources */,
 				797F67A01B8AEF350070E41B /* CountView.m in Sources */,
 				79C33C5D1B7EE0F400247956 /* AFURLConnectionOperation.m in Sources */,
 				797F68061B8B1FD00070E41B /* LoginViewController.m in Sources */,
 				797F681F1B8C08920070E41B /* YXAboutUSViewController.m in Sources */,
 				797F678B1B8AD4D00070E41B /* UIImage+WebP.m in Sources */,
-				797F67301B8ACFDF0070E41B /* Model_user.m in Sources */,
 				797F67851B8AD4D00070E41B /* SDWebImageDownloaderOperation.m in Sources */,
 				7917C4DF1B8D4A0B00896027 /* YXCouponViewController.m in Sources */,
 				797F670D1B8ACAE30070E41B /* YXCustonButton.m in Sources */,
@@ -1314,6 +1288,8 @@
 				79489B191BA1265E00B960A6 /* CalendarFrame.m in Sources */,
 				79C33C601B7EE0F400247956 /* AFURLSessionManager.m in Sources */,
 				797F66E81B8AC7420070E41B /* YXProductDetailViewController.m in Sources */,
+				79119F5E1BB4F92600CA9496 /* YXPayInfoViewController.m in Sources */,
+				795F37D51BB3934C00404BFC /* ToolService.m in Sources */,
 				79C97F6D1B72F627006AE0EF /* AppDelegate.m in Sources */,
 				7974D8B51B9D77B800CC4579 /* ExpandTableViewHeader.m in Sources */,
 				797F67C01B8B0FD80070E41B /* YXLoadMoreView.m in Sources */,
@@ -1322,10 +1298,11 @@
 				797F67841B8AD4D00070E41B /* SDWebImageDownloader.m in Sources */,
 				797F67291B8ACD3F0070E41B /* YXMyViewController.m in Sources */,
 				797F67891B8AD4D00070E41B /* UIImage+GIF.m in Sources */,
-				797F67D81B8B153A0070E41B /* PayView.m in Sources */,
 				79489B291BA1872A00B960A6 /* Model_club.m in Sources */,
+				795F37D81BB3944F00404BFC /* UIViewController+AOPViewController.m in Sources */,
 				79C97F6A1B72F627006AE0EF /* main.m in Sources */,
 				797F68251B8C28B10070E41B /* STAlertView.m in Sources */,
+				79119F581BB4E74C00CA9496 /* YXOrderDetaViewController.m in Sources */,
 				797F68071B8B1FD00070E41B /* FindMMViewController.m in Sources */,
 				797F67811B8AD4D00070E41B /* SDImageCache.m in Sources */,
 				79489B1C1BA1265E00B960A6 /* YXDateManager.m in Sources */,
@@ -1337,7 +1314,6 @@
 				797F678A1B8AD4D00070E41B /* UIImage+MultiFormat.m in Sources */,
 				797F678C1B8AD4D00070E41B /* UIImageView+WebCache.m in Sources */,
 				797F67261B8ACD200070E41B /* YXOrderViewController.m in Sources */,
-				797F67CF1B8B14540070E41B /* OrderInfoView.m in Sources */,
 				797F670F1B8ACAE30070E41B /* YXTabBarView.m in Sources */,
 				7917C5251B8EF3FF00896027 /* YXShareCenter.m in Sources */,
 				79489B261BA1856B00B960A6 /* YXClubListViewController.m in Sources */,
@@ -1461,6 +1437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YXFit/LibSDK/ChannelPING/Alipay",
@@ -1490,6 +1467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YXFit/LibSDK/ChannelPING/Alipay",

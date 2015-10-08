@@ -7,7 +7,6 @@
 //
 
 #import "YXProductDetailViewController.h"
-#import "YXPayViewController.h"
 
 #import "CountView.h"
 #import "DescribeView.h"
@@ -16,6 +15,8 @@
 #import "ExpandTableViewHeader.h"
 #import "YXCalendarViewController.h"
 
+
+#import "YXPayInfoViewController.h"
 @interface YXProductDetailViewController()<ButtonDoctViewDelegate, YXLoadingViewDelegate, UITableViewDataSource,UITableViewDelegate, UIScrollViewDelegate>
 {
     YXLoadingView *CoverView;
@@ -206,9 +207,11 @@
             [UIUtils hideProgressHUD:self.view];
             
             Model_order *order = [Model_order orderWithDictionary:JSON];
-            YXPayViewController *pay = [[YXPayViewController alloc] init];
-            pay.order = order;
-            [self pushViewController:pay];
+            
+            YXPayInfoViewController *info = [[YXPayInfoViewController alloc] init];
+            info.order = order;
+            [self pushViewController:info];
+
         } failure:^(NSError *error, id JSON) {
             [UIUtils hideProgressHUD:self.view];
         }];

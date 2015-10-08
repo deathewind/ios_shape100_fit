@@ -113,13 +113,13 @@
 
 
 
-+ (int)getDaysInMonth:(int)month year:(int)year
++ (NSInteger)getDaysInMonth:(NSInteger)month year:(NSInteger)year
 {
-    int daysInFeb = 28;
+    NSInteger daysInFeb = 28;
     if (year%4 == 0) {
         daysInFeb = 29;
     }
-    int daysInMonth [12] = {31,daysInFeb,31,30,31,30,31,31,30,31,30,31};
+    NSInteger daysInMonth [12] = {31,daysInFeb,31,30,31,30,31,31,30,31,30,31};
     return daysInMonth[month-1];
 }
 + (NSArray*)getMonths{

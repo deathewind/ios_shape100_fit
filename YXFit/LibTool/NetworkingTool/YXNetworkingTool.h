@@ -16,8 +16,17 @@ typedef NS_ENUM(int, RequestMethod){
     PUT
 };
 
+//@protocol YXNetworkingDelegate <NSObject>
+//
+//@optional
+//- (void)successedWithResponse:(id)response;
+//- (void)failedWithRequest:(id)request error:(NSError *)error;
+//@end
+
+
 @interface YXNetworkingTool : NSObject
 + (YXNetworkingTool *)sharedInstance;
+//@property(nonatomic, assign) id<YXNetworkingDelegate>delegate;
 #pragma mark - 用户登录相关
 - (void)userLogin:(NSString *)name password:(NSString *)password success:(Success)success failure:(Failure)failure;
 - (void)getVerifyCode:(NSString *)phoneNum success:(Success)success failure:(Failure)failure;

@@ -272,7 +272,7 @@ static YXNetworkingTool *networkManager = nil;
 - (void)getEnterpriseProductList:(NSDictionary *)paremeter success:(Success)success failure:(Failure)failure{
     NSString *string_url = [YXHttp stringByAppendingString:YXEnterpriseList];
     [self noLoginWithRequest:GET baseurl:string_url paremeter:paremeter success:^(id JSON) {
-        YXLog(@"%@", JSON);
+       // YXLog(@"%@", JSON);
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[JSON count]];
         for (NSDictionary *attributes in JSON) {
             Model_product *product = [Model_product productWithDictionary:attributes];
@@ -280,7 +280,7 @@ static YXNetworkingTool *networkManager = nil;
         }
         success(mutablePosts);
     } failure:^(NSError *error, id JSON) {
-        
+        failure(error, JSON);
     }];
 }
 
@@ -299,7 +299,7 @@ static YXNetworkingTool *networkManager = nil;
 - (void)getTradeList:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure{
     NSString *string_url = [YXHttp stringByAppendingString:YXTradeList];
     [self loginWithRequest:GET baseurl:string_url paremeter:parameters success:^(id JSON) {
-        YXLog(@"订单列表 = %@ --- %d", JSON, [JSON count]);
+        YXLog(@"订单列表 = %@ --- %lu", JSON, (unsigned long)[JSON count]);
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[JSON count]];
         for (NSDictionary *attributes in JSON) {
             Model_order *order = [Model_order orderWithDictionary:attributes];
@@ -459,17 +459,22 @@ static YXNetworkingTool *networkManager = nil;
     //  manager.requestSerializer.timeoutInterval = 10.f;
     AFHTTPRequestOperation *operation= [[AFHTTPRequestOperationManager manager]HTTPRequestOperationWithRequest:theRequest success:^(AFHTTPRequestOperation *operation, id responseObject) {
         success(responseObject);
-        
+//        if ([self.delegate respondsToSelector:@selector(successedWithResponse:)]) {
+//            [self.delegate successedWithResponse:responseObject];
+//        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error,operation.responseObject);
+//        if ([self.delegate respondsToSelector:@selector(failedWithRequest:error:)]) {
+//            [self.delegate failedWithRequest:operation.responseObject error:error];
+//        }
         YXLog(@"operation.response = %@ ", operation.responseString);
         if (operation.response == NULL || operation.response.statusCode == 0) {//请求超时
             NSLog(@"111");
-            AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
-            [UIUtils showTextOnly:appDelegate.window.rootViewController.view labelString:NSLocalizedString(@"Network", nil)];
+
+            [UIUtils showTextOnly:APPDELEGATE.window.rootViewController.view labelString:NSLocalizedString(@"Network", nil)];
         }else{
-            AppDelegate *appDelegate=[[UIApplication sharedApplication] delegate];
-            [UIUtils showTextOnly:appDelegate.window.rootViewController.view labelString:NSLocalizedString(@"Network", nil)];
+
+            [UIUtils showTextOnly:APPDELEGATE.window.rootViewController.view labelString:NSLocalizedString(@"Network", nil)];
         }
     }];
     [[AFHTTPRequestOperationManager manager].operationQueue addOperation:operation];
@@ -652,5 +657,12 @@ static YXNetworkingTool *networkManager = nil;
     
     return result;
 }
-
++ (void)get:(NSString *)url params:(NSDictionary *)params success:(void (^)(id ))success failure:(void (^)(NSError *))failure{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
 @end

@@ -42,6 +42,7 @@
         }
         label.textAlignment = NSTextAlignmentCenter;
         label.text = array[i];
+        label.textColor = RGB(60, 60, 60);
         [_dataView addSubview:label];
     }
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, _dataView.height - CellLine, _dataView.width, CellLine)];
@@ -141,7 +142,7 @@
     }else{
         cell.hidden = NO;
         NSInteger currentDay = indexPath.row - calendarFrame.firstDay + 1;
-        cell.dateLabel.text = [NSString stringWithFormat:@"%d", currentDay];
+        cell.dateLabel.text = [NSString stringWithFormat:@"%ld", (long)currentDay];
         cell.selected = [collectionView.indexPathsForSelectedItems containsObject:indexPath];
         if (indexPath.row%7 == 0 || indexPath.row%7 == 6){
             cell.weekend = YES;
@@ -149,7 +150,7 @@
         if (calendarFrame.isCurrentMonth) {
             if (indexPath.row < calendarFrame.dateComponents.day + calendarFrame.firstDay - 1) {
                 cell.userInteractionEnabled = NO;
-                cell.dateLabel.textColor = RGB(136, 136, 136);
+                cell.dateLabel.textColor = RGB(170, 170, 170);
             }else{
                 cell.userInteractionEnabled = YES;
                 if (currentDay == calendarFrame.dateComponents.day) {
@@ -177,7 +178,7 @@
         self.index = nil;
     }
     CalendarFrame *calendarFrame = [self.dataArray objectAtIndex:indexPath.section];
-    NSString *chooseData = [NSString stringWithFormat:@"%d-%02d-%02d",calendarFrame.dateComponents.year,calendarFrame.dateComponents.month,indexPath.row - calendarFrame.firstDay + 1];
+    NSString *chooseData = [NSString stringWithFormat:@"%ld-%02ld-%02ld",(long)calendarFrame.dateComponents.year,(long)calendarFrame.dateComponents.month,indexPath.row - calendarFrame.firstDay + 1];
    // YXLog(@"chooseData = %@ --- %d --- %d --- %@", chooseData , indexPath.section, indexPath.row, indexPath);
     _dateChoose(chooseData, indexPath);
     
